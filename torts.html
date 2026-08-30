@@ -2482,24 +2482,31 @@ function renderLibrary(
     ) => {
 
 
-      const matchingCases =
+    const matchingCases =
 
-        topic.cases.filter(
-          caseName => {
+  [...topic.cases]
+
+    .sort(
+      (a, b) =>
+        a.localeCompare(b)
+    )
+
+    .filter(
+      caseName => {
 
 
-            const searchable =
+        const searchable =
 
-              `${caseName} ${topic.title}`
-                .toLowerCase();
+          `${caseName} ${topic.title}`
+            .toLowerCase();
 
 
-            return searchable.includes(
-              normalizedQuery
-            );
-
-          }
+        return searchable.includes(
+          normalizedQuery
         );
+
+      }
+    );
 
 
       if (
