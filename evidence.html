@@ -850,34 +850,37 @@
 
     .player-overlay {
 
-      position:
-        fixed;
+  position:
+    fixed;
 
-      inset:
-        0;
+  inset:
+    0;
 
-      z-index:
-        500;
+  z-index:
+    500;
 
-      display:
-        none;
+  display:
+    none;
 
-      align-items:
-        center;
+  align-items:
+    flex-start;
 
-      justify-content:
-        center;
+  justify-content:
+    center;
 
-      padding:
-        24px;
+  padding:
+    24px;
 
-      background:
-        rgba(7,18,37,0.58);
+  overflow-y:
+    auto;
 
-      backdrop-filter:
-        blur(10px);
+  background:
+    rgba(7,18,37,0.58);
 
-    }
+  backdrop-filter:
+    blur(10px);
+
+}
 
 
     .player-overlay.visible {
@@ -895,6 +898,10 @@
 
     .expanded-player {
 
+  margin:
+    auto 0;
+
+
       width:
         min(
           900px,
@@ -902,7 +909,7 @@
         );
 
       max-height:
-        calc(100vh - 48px);
+  calc(100dvh - 48px);
 
       overflow:
         auto;
