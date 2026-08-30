@@ -53,10 +53,6 @@
         0 8px 30px
         rgba(26,55,100,0.08);
 
-      --shadow-large:
-        0 24px 70px
-        rgba(6,23,49,0.24);
-
     }
 
 
@@ -117,17 +113,14 @@
     .site-header {
 
       position: sticky;
-
       top: 0;
-
       z-index: 100;
 
       background:
         rgba(255,255,255,0.96);
 
       border-bottom:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       backdrop-filter:
         blur(12px);
@@ -143,11 +136,11 @@
           calc(100% - 32px)
         );
 
-      margin:
-        0 auto;
-
       min-height:
         76px;
+
+      margin:
+        0 auto;
 
       display:
         flex;
@@ -217,6 +210,9 @@
       display:
         flex;
 
+      align-items:
+        center;
+
       gap:
         8px;
 
@@ -224,6 +220,12 @@
 
 
     .nav-link {
+
+      padding:
+        9px 12px;
+
+      border-radius:
+        9px;
 
       color:
         var(--muted);
@@ -234,11 +236,8 @@
       font-weight:
         600;
 
-      padding:
-        9px 12px;
-
-      border-radius:
-        9px;
+      transition:
+        0.18s ease;
 
     }
 
@@ -309,9 +308,6 @@
       align-items:
         center;
 
-      flex-wrap:
-        wrap;
-
       gap:
         8px;
 
@@ -354,14 +350,14 @@
 
     .hero-icon {
 
+      flex-shrink:
+        0;
+
       width:
         72px;
 
       height:
         72px;
-
-      flex-shrink:
-        0;
 
       border-radius:
         20px;
@@ -411,6 +407,9 @@
 
     .course-heading p {
 
+      max-width:
+        800px;
+
       color:
         var(--muted);
 
@@ -444,6 +443,11 @@
 
     }
 
+
+
+    /* ========================================
+       LIBRARY HEADER
+    ======================================== */
 
     .library-top {
 
@@ -534,7 +538,7 @@
         relative;
 
       margin-bottom:
-        24px;
+        38px;
 
     }
 
@@ -568,7 +572,7 @@
         100%;
 
       height:
-        52px;
+        54px;
 
       padding:
         0 18px 0 46px;
@@ -593,6 +597,9 @@
         0 4px 16px
         rgba(30,58,95,0.04);
 
+      transition:
+        0.18s ease;
+
     }
 
 
@@ -610,7 +617,127 @@
 
 
     /* ========================================
-       CASE LIST
+       TOPIC SECTIONS
+    ======================================== */
+
+    .topic-section {
+
+      margin-bottom:
+        42px;
+
+    }
+
+
+    .topic-header {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        16px;
+
+      margin-bottom:
+        13px;
+
+    }
+
+
+    .topic-title-wrap {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+    }
+
+
+    .topic-number {
+
+      width:
+        34px;
+
+      height:
+        34px;
+
+      flex-shrink:
+        0;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      border-radius:
+        10px;
+
+      background:
+        var(--blue-light);
+
+      color:
+        var(--blue);
+
+      font-size:
+        0.72rem;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .topic-header h3 {
+
+      font-family:
+        "Libre Baskerville",
+        serif;
+
+      color:
+        var(--navy);
+
+      font-size:
+        1.2rem;
+
+      line-height:
+        1.35;
+
+      letter-spacing:
+        -0.025em;
+
+    }
+
+
+    .topic-case-count {
+
+      flex-shrink:
+        0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.75rem;
+
+      font-weight:
+        600;
+
+    }
+
+
+
+    /* ========================================
+       CASE CARDS
     ======================================== */
 
     .case-list {
@@ -622,7 +749,7 @@
         column;
 
       gap:
-        12px;
+        9px;
 
     }
 
@@ -636,10 +763,10 @@
         center;
 
       gap:
-        18px;
+        15px;
 
       padding:
-        19px 20px;
+        17px 18px;
 
       background:
         var(--white);
@@ -649,14 +776,16 @@
         var(--border);
 
       border-radius:
-        17px;
+        15px;
 
       box-shadow:
-        0 4px 18px
-        rgba(30,58,95,0.04);
+        0 3px 14px
+        rgba(30,58,95,0.035);
 
       transition:
-        0.18s ease;
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
 
     }
 
@@ -675,48 +804,13 @@
     }
 
 
-    .case-number {
-
-      flex-shrink:
-        0;
-
-      width:
-        40px;
-
-      height:
-        40px;
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-      border-radius:
-        12px;
-
-      background:
-        var(--blue-light);
-
-      color:
-        var(--blue);
-
-      font-weight:
-        700;
-
-      font-size:
-        0.8rem;
-
-    }
-
-
     .case-content {
-
-      min-width:
-        0;
 
       flex:
         1;
+
+      min-width:
+        0;
 
     }
 
@@ -726,95 +820,128 @@
       color:
         var(--navy);
 
+      font-size:
+        0.9rem;
+
       font-weight:
-        700;
+        650;
 
       line-height:
         1.4;
-
-      margin-bottom:
-        5px;
 
     }
 
 
     .case-meta {
 
+      margin-top:
+        4px;
+
       color:
         var(--muted);
 
       font-size:
-        0.77rem;
+        0.72rem;
 
     }
 
 
-.listen-button {
-
-  flex-shrink: 0;
-
-  border: 2px solid var(--blue);
-
-  border-radius: 11px;
-
-  padding:
-    10px 15px;
-
-  background:
-    var(--white);
-
-  color:
-    var(--blue);
-
-  font-weight: 700;
-
-  font-size: 0.8rem;
-
-  transition:
-    0.16s ease;
-
-}
-
-
-    .listen-button:hover {
-
-  background:
-    var(--blue-light);
-
-  color:
-    var(--blue-dark);
-
-  transform:
-    translateY(-1px);
-
-}
-
-
-    .coming-soon {
+    .status {
 
       flex-shrink:
         0;
 
       padding:
-        7px 10px;
+        5px 9px;
 
       border-radius:
         999px;
 
-      background:
-        #f1f4f8;
-
-      color:
-        var(--muted);
-
       font-size:
-        0.69rem;
+        0.66rem;
 
       font-weight:
         700;
 
     }
 
+
+    .status.available {
+
+      color:
+        var(--blue-dark);
+
+      background:
+        var(--blue-light);
+
+    }
+
+
+    .status.soon {
+
+      color:
+        var(--muted);
+
+      background:
+        #f1f4f8;
+
+    }
+
+
+    .play-button {
+
+      flex-shrink:
+        0;
+
+      width:
+        40px;
+
+      height:
+        40px;
+
+      border-radius:
+        50%;
+
+      border:
+        2px solid
+        var(--blue);
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        var(--white);
+
+      color:
+        var(--blue);
+
+      font-size:
+        0.82rem;
+
+      transition:
+        0.16s ease;
+
+    }
+
+
+    .play-button:hover {
+
+      transform:
+        scale(1.06);
+
+      background:
+        var(--blue-light);
+
+    }
+
+
+
+    /* ========================================
+       NO RESULTS
+    ======================================== */
 
     .no-results {
 
@@ -822,20 +949,20 @@
         none;
 
       padding:
-        42px 20px;
-
-      text-align:
-        center;
+        50px 20px;
 
       border:
         1px solid
         var(--border);
 
       border-radius:
-        17px;
+        18px;
 
       background:
         var(--white);
+
+      text-align:
+        center;
 
       color:
         var(--muted);
@@ -843,286 +970,79 @@
     }
 
 
-
-    /* ========================================
-       PLAYER OVERLAY
-    ======================================== */
-
-    .player-overlay {
-
-  position:
-    fixed;
-
-  inset:
-    0;
-
-  z-index:
-    500;
-
-  display:
-    none;
-
-  align-items:
-    flex-start;
-
-  justify-content:
-    center;
-
-  padding:
-    24px;
-
-  overflow-y:
-    auto;
-
-  background:
-    rgba(7,18,37,0.58);
-
-  backdrop-filter:
-    blur(10px);
-
-}
-
-
-    .player-overlay.visible {
+    .no-results strong {
 
       display:
-        flex;
+        block;
 
-    }
-
-
-
-    /* ========================================
-       PLAYER
-    ======================================== */
-
-    .expanded-player {
-
-  margin:
-    auto 0;
-
-
-      width:
-        min(
-          900px,
-          100%
-        );
-
-      max-height:
-  calc(100dvh - 48px);
-
-      overflow:
-        auto;
-
-      background:
-        var(--white);
-
-      border-radius:
-        26px;
-
-      box-shadow:
-        var(--shadow-large);
-
-      position:
-        relative;
-
-    }
-
-
-    .player-top {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        15px;
-
-      padding:
-        19px 22px;
-
-      border-bottom:
-        1px solid
-        var(--border);
-
-    }
-
-
-    .player-brand {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        9px;
-
-      color:
-        var(--navy);
-
-      font-weight:
-        700;
-
-    }
-
-
-    .player-brand img {
-
-      width:
-        34px;
-
-      height:
-        34px;
-
-      object-fit:
-        contain;
-
-    }
-
-
-    .player-top-actions {
-
-      display:
-        flex;
-
-      gap:
+      margin-bottom:
         7px;
 
-    }
-
-
-    .icon-button {
-
-      width:
-        38px;
-
-      height:
-        38px;
-
-      border:
-        0;
-
-      border-radius:
-        10px;
-
-      background:
-        var(--blue-light);
-
-      color:
-        var(--blue-dark);
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-      font-weight:
-        700;
-
-    }
-
-
-    .icon-button:hover {
-
-      background:
-        var(--blue-soft);
-
-    }
-
-
-
-    /* PLAYER BODY */
-
-    .player-body {
-
-      padding:
-        36px 38px 34px;
-
-    }
-
-
-    .player-case-heading {
-
-      text-align:
-        center;
-
-      margin-bottom:
-        30px;
-
-    }
-
-
-    .player-course {
-
-      color:
-        var(--blue);
-
-      font-size:
-        0.72rem;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        0.1em;
-
-      text-transform:
-        uppercase;
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .player-case-heading h2 {
-
-      width:
-        min(
-          680px,
-          100%
-        );
-
-      margin:
-        0 auto;
-
-      font-family:
-        "Libre Baskerville",
-        serif;
-
       color:
         var(--navy);
-
-      font-size:
-        clamp(
-          1.55rem,
-          4vw,
-          2.2rem
-        );
-
-      line-height:
-        1.35;
-
-      letter-spacing:
-        -0.03em;
 
     }
 
 
 
     /* ========================================
-       MAIN AUDIO CONTROLS
+       AUDIO PLAYER
     ======================================== */
 
-    .main-controls {
+    .player {
+
+      position:
+        fixed;
+
+      left:
+        50%;
+
+      bottom:
+        18px;
+
+      transform:
+        translateX(-50%);
+
+      z-index:
+        200;
+
+      width:
+        min(
+          820px,
+          calc(100% - 28px)
+        );
+
+      padding:
+        16px 18px;
+
+      display:
+        none;
+
+      background:
+        rgba(16,33,61,0.98);
+
+      color:
+        white;
+
+      border-radius:
+        18px;
+
+      box-shadow:
+        0 18px 48px
+        rgba(6,23,49,0.24);
+
+    }
+
+
+    .player.visible {
+
+      display:
+        block;
+
+    }
+
+
+    .player-top-row {
 
       display:
         flex;
@@ -1130,74 +1050,22 @@
       align-items:
         center;
 
-      justify-content:
-        center;
-
       gap:
-        20px;
-
-      margin-bottom:
-        28px;
-
-    }
-
-
-    .skip-button {
-
-      width:
-        52px;
-
-      height:
-        52px;
-
-      border:
-        0;
-
-      border-radius:
-        50%;
-
-      background:
-        var(--blue-light);
-
-      color:
-        var(--blue-dark);
-
-      font-size:
-        0.75rem;
-
-      font-weight:
-        700;
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-      transition:
-        0.15s ease;
-
-    }
-
-
-    .skip-button:hover {
-
-      transform:
-        scale(1.05);
-
-      background:
-        var(--blue-soft);
+        14px;
 
     }
 
 
     .main-play {
 
+      flex-shrink:
+        0;
+
       width:
-        66px;
+        44px;
 
       height:
-        66px;
+        44px;
 
       border:
         0;
@@ -1212,91 +1080,170 @@
         center;
 
       background:
+        white;
+
+      color:
         var(--blue);
+
+      font-weight:
+        700;
+
+      font-size:
+        0.9rem;
+
+    }
+
+
+    .player-info {
+
+      flex:
+        1;
+
+      min-width:
+        0;
+
+    }
+
+
+    .player-label {
+
+      margin-bottom:
+        4px;
+
+      color:
+        #aebed5;
+
+      font-size:
+        0.66rem;
+
+      letter-spacing:
+        0.05em;
+
+    }
+
+
+    .player-name {
+
+      font-size:
+        0.88rem;
+
+      font-weight:
+        600;
+
+      white-space:
+        nowrap;
+
+      overflow:
+        hidden;
+
+      text-overflow:
+        ellipsis;
+
+    }
+
+
+    .close-player {
+
+      flex-shrink:
+        0;
+
+      width:
+        34px;
+
+      height:
+        34px;
+
+      border:
+        0;
+
+      border-radius:
+        50%;
+
+      background:
+        transparent;
 
       color:
         white;
 
       font-size:
-        1.2rem;
-
-      box-shadow:
-        0 8px 24px
-        rgba(37,99,235,0.25);
-
-      transition:
-        0.15s ease;
+        1rem;
 
     }
 
 
-    .main-play:hover {
-
-      transform:
-        scale(1.05);
+    .close-player:hover {
 
       background:
-        var(--blue-dark);
+        rgba(255,255,255,0.1);
 
     }
 
 
+    .player-controls {
 
-    /* ========================================
-       PROGRESS
-    ======================================== */
+      display:
+        none;
 
-    .progress-section {
+      margin-top:
+        14px;
 
-      margin-bottom:
-        26px;
+    }
+
+
+    .player-controls.visible {
+
+      display:
+        block;
+
+    }
+
+
+    .progress-row {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+    }
+
+
+    .player-time {
+
+      flex-shrink:
+        0;
+
+      color:
+        #aebed5;
+
+      font-size:
+        0.68rem;
 
     }
 
 
     .player-progress {
 
-      width:
-        100%;
+      flex:
+        1;
 
       accent-color:
-        var(--blue);
-
-      cursor:
-        pointer;
+        white;
 
     }
 
 
-    .time-row {
+    .player-button-row {
 
       display:
         flex;
 
-      justify-content:
-        space-between;
-
-      margin-top:
-        6px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        0.72rem;
-
-    }
-
-
-
-    /* ========================================
-       PLAYER OPTIONS
-    ======================================== */
-
-    .player-options {
-
-      display:
-        flex;
+      align-items:
+        center;
 
       justify-content:
         center;
@@ -1305,77 +1252,77 @@
         wrap;
 
       gap:
-        9px;
+        8px;
 
-      margin-bottom:
-        28px;
+      margin-top:
+        13px;
 
     }
 
 
-    .option-button {
+    .player-option {
 
       border:
         1px solid
-        var(--border);
+        rgba(255,255,255,0.18);
 
       border-radius:
         999px;
 
       padding:
-        9px 14px;
+        7px 12px;
 
       background:
-        var(--white);
+        rgba(255,255,255,0.08);
 
       color:
-        var(--muted);
+        white;
 
       font-size:
-        0.78rem;
+        0.72rem;
 
       font-weight:
-        700;
+        600;
+
+      transition:
+        0.15s ease;
 
     }
 
 
-    .option-button:hover,
-    .option-button.active {
-
-      color:
-        var(--blue);
-
-      border-color:
-        var(--blue-soft);
+    .player-option:hover {
 
       background:
-        var(--blue-light);
+        rgba(255,255,255,0.16);
 
     }
 
 
-
-    /* ========================================
-       PANELS
-    ======================================== */
-
-    .content-panel {
+    .player-panel {
 
       display:
         none;
 
-      border-top:
-        1px solid
-        var(--border);
+      margin-top:
+        14px;
 
       padding-top:
-        24px;
+        13px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.13);
+
+      max-height:
+        220px;
+
+      overflow-y:
+        auto;
 
     }
 
 
-    .content-panel.visible {
+    .player-panel.visible {
 
       display:
         block;
@@ -1385,35 +1332,23 @@
 
     .panel-heading {
 
-      font-family:
-        "Libre Baskerville",
-        serif;
+      margin-bottom:
+        8px;
 
       color:
-        var(--navy);
+        #aebed5;
 
       font-size:
-        1.2rem;
+        0.68rem;
 
-      margin-bottom:
-        16px;
+      font-weight:
+        700;
 
-    }
+      letter-spacing:
+        0.06em;
 
-
-
-    /* CHAPTERS */
-
-    .chapter-list {
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      gap:
-        8px;
+      text-transform:
+        uppercase;
 
     }
 
@@ -1423,163 +1358,55 @@
       width:
         100%;
 
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        15px;
-
       padding:
-        14px 15px;
+        9px 7px;
 
       border:
-        1px solid
-        var(--border);
+        0;
 
       border-radius:
-        12px;
+        8px;
 
       background:
-        var(--background);
+        transparent;
+
+      color:
+        white;
 
       text-align:
         left;
 
-      transition:
-        0.15s ease;
+      font-size:
+        0.8rem;
 
     }
 
 
     .chapter-button:hover {
 
-      border-color:
-        var(--blue-soft);
-
       background:
-        var(--blue-light);
+        rgba(255,255,255,0.08);
 
     }
 
 
-    .chapter-title {
+    .transcript-text {
 
       color:
-        var(--navy);
-
-      font-weight:
-        600;
-
-      font-size:
-        0.86rem;
-
-    }
-
-
-    .chapter-time {
-
-      color:
-        var(--blue);
-
-      font-size:
-        0.76rem;
-
-      font-weight:
-        700;
-
-    }
-
-
-
-    /* TRANSCRIPT */
-
-    .transcript {
-
-      max-height:
-        340px;
-
-      overflow-y:
-        auto;
-
-      padding:
-        18px;
-
-      border-radius:
-        14px;
-
-      background:
-        var(--background);
-
-      color:
-        var(--text);
+        #d7e2f1;
 
       font-family:
         "Libre Baskerville",
         serif;
 
-      font-size:
-        0.86rem;
-
       line-height:
-        1.8;
+        1.75;
+
+      font-size:
+        0.8rem;
 
       white-space:
         pre-line;
-
-    }
-
-
-
-    /* ========================================
-       FULLSCREEN
-    ======================================== */
-
-    .expanded-player:fullscreen {
-
-      width:
-        100%;
-
-      height:
-        100%;
-
-      max-height:
-        none;
-
-      border-radius:
-        0;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      background:
-        var(--white);
-
-    }
-
-
-    .expanded-player:fullscreen
-    .player-body {
-
-      width:
-        min(
-          900px,
-          calc(100% - 40px)
-        );
-
-      margin:
-        auto;
-
-      overflow-y:
-        auto;
 
     }
 
@@ -1640,7 +1467,7 @@
       }
 
 
-      .upper-link {
+      .nav-link.library-link {
 
         display:
           none;
@@ -1652,6 +1479,14 @@
 
         padding:
           42px 12px 44px;
+
+      }
+
+
+      .course-hero-inner {
+
+        width:
+          calc(100% - 10px);
 
       }
 
@@ -1700,18 +1535,34 @@
       }
 
 
+      .library-top {
+
+        align-items:
+          center;
+
+      }
+
+
+      .topic-header h3 {
+
+        font-size:
+          1.05rem;
+
+      }
+
+
       .case-card {
 
+        padding:
+          15px 13px;
+
         gap:
-          11px;
-
-        padding:
-          16px 14px;
+          10px;
 
       }
 
 
-      .case-number {
+      .status {
 
         display:
           none;
@@ -1719,81 +1570,26 @@
       }
 
 
-      .coming-soon {
+      .player {
 
-        display:
-          none;
-
-      }
-
-
-      .listen-button {
-
-        padding:
-          9px 11px;
+        bottom:
+          10px;
 
       }
 
 
-      .player-overlay {
+      .player-button-row {
 
-        padding:
-          0;
+        justify-content:
+          flex-start;
 
       }
 
 
-      .expanded-player {
+      .progress-row {
 
         width:
           100%;
-
-        max-height:
-          100vh;
-
-        height:
-          100vh;
-
-        border-radius:
-          0;
-
-      }
-
-
-      .player-body {
-
-        padding:
-          28px 20px 35px;
-
-      }
-
-
-      .main-controls {
-
-        gap:
-          15px;
-
-      }
-
-
-      .skip-button {
-
-        width:
-          48px;
-
-        height:
-          48px;
-
-      }
-
-
-      .main-play {
-
-        width:
-          62px;
-
-        height:
-          62px;
 
       }
 
@@ -1808,9 +1604,7 @@
 <body>
 
 
-  <!-- ========================================
-       HEADER
-  ======================================== -->
+  <!-- HEADER -->
 
   <header class="site-header">
 
@@ -1839,7 +1633,7 @@
 
         <a
           href="upper-level.html"
-          class="nav-link upper-link"
+          class="nav-link library-link"
         >
           Upper-Level
         </a>
@@ -1860,9 +1654,7 @@
 
 
 
-  <!-- ========================================
-       HERO
-  ======================================== -->
+  <!-- HERO -->
 
   <section class="course-hero">
 
@@ -1894,9 +1686,7 @@
 
 
         <div class="hero-icon">
-
           🔍
-
         </div>
 
 
@@ -1906,12 +1696,10 @@
             Evidence
           </h1>
 
-
           <p>
-
-            Landmark cases covering relevance, hearsay, witnesses,
-            expert testimony, character evidence, and courtroom proof.
-
+            Relevance, character evidence, impeachment, hearsay,
+            Confrontation, expert testimony, authentication,
+            privileges, and courtroom proof.
           </p>
 
         </div>
@@ -1926,9 +1714,7 @@
 
 
 
-  <!-- ========================================
-       CASE LIBRARY
-  ======================================== -->
+  <!-- MAIN -->
 
   <main>
 
@@ -1943,14 +1729,17 @@
         </h2>
 
         <p>
-          Select an available case to start listening.
+          Browse by rule or search the complete Evidence collection.
         </p>
 
       </div>
 
 
-      <div class="case-count">
-        6 cases
+      <div
+        class="case-count"
+        id="caseCount"
+      >
+        0 cases
       </div>
 
 
@@ -1975,202 +1764,7 @@
 
 
 
-    <div
-      class="case-list"
-      id="caseList"
-    >
-
-
-      <!-- CRAWFORD -->
-
-      <div
-        class="case-card"
-        data-case="Crawford v. Washington"
-      >
-
-        <div class="case-number">
-          01
-        </div>
-
-        <div class="case-content">
-
-          <div class="case-name">
-            Crawford v. Washington
-          </div>
-
-          <div class="case-meta">
-            Evidence
-          </div>
-
-        </div>
-
-        <span class="coming-soon">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-
-      <!-- DAUBERT -->
-
-      <div
-        class="case-card"
-        data-case="Daubert v. Merrell Dow Pharmaceuticals"
-      >
-
-        <div class="case-number">
-          02
-        </div>
-
-        <div class="case-content">
-
-          <div class="case-name">
-            Daubert v. Merrell Dow Pharmaceuticals
-          </div>
-
-          <div class="case-meta">
-            Evidence
-          </div>
-
-        </div>
-
-        <span class="coming-soon">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-
-      <!-- EICHEL -->
-
-      <div
-        class="case-card"
-        data-case="Eichel v. New York Central Railroad Co."
-      >
-
-        <div class="case-number">
-          03
-        </div>
-
-        <div class="case-content">
-
-          <div class="case-name">
-            Eichel v. New York Central Railroad Co.
-          </div>
-
-          <div class="case-meta">
-            Evidence
-          </div>
-
-        </div>
-
-        <span class="coming-soon">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-
-      <!-- NEW YORK CENTRAL -->
-
-      <div
-        class="case-card"
-        data-case="New York Central Railroad Co. v. United States"
-      >
-
-        <div class="case-number">
-          04
-        </div>
-
-        <div class="case-content">
-
-          <div class="case-name">
-            New York Central Railroad Co. v. United States
-          </div>
-
-          <div class="case-meta">
-            Evidence · Audio available
-          </div>
-
-        </div>
-
-
-        <button
-          class="listen-button"
-          onclick="openPlayer('New York Central Railroad Co. v. United States')"
-        >
-          ▶ Listen
-        </button>
-
-      </div>
-
-
-
-      <!-- OLD CHIEF -->
-
-      <div
-        class="case-card"
-        data-case="Old Chief v. United States"
-      >
-
-        <div class="case-number">
-          05
-        </div>
-
-        <div class="case-content">
-
-          <div class="case-name">
-            Old Chief v. United States
-          </div>
-
-          <div class="case-meta">
-            Evidence
-          </div>
-
-        </div>
-
-        <span class="coming-soon">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-
-      <!-- ABEL -->
-
-      <div
-        class="case-card"
-        data-case="United States v. Abel"
-      >
-
-        <div class="case-number">
-          06
-        </div>
-
-        <div class="case-content">
-
-          <div class="case-name">
-            United States v. Abel
-          </div>
-
-          <div class="case-meta">
-            Evidence
-          </div>
-
-        </div>
-
-        <span class="coming-soon">
-          Coming Soon
-        </span>
-
-      </div>
-
-
-    </div>
+    <div id="topicsContainer"></div>
 
 
 
@@ -2178,7 +1772,13 @@
       class="no-results"
       id="noResults"
     >
-      No Evidence cases found.
+
+      <strong>
+        No Evidence cases found
+      </strong>
+
+      Try searching for another case or Evidence rule.
+
     </div>
 
 
@@ -2186,250 +1786,171 @@
 
 
 
-  <!-- ========================================
-       EXPANDED PLAYER
-  ======================================== -->
+  <!-- PLAYER -->
 
   <div
-    class="player-overlay"
-    id="playerOverlay"
+    class="player"
+    id="player"
   >
 
 
-    <div
-      class="expanded-player"
-      id="expandedPlayer"
-    >
+    <div class="player-top-row">
 
 
-      <!-- PLAYER HEADER -->
+      <button
+        class="main-play"
+        id="mainPlay"
+        aria-label="Play or pause"
+      >
+        ▶
+      </button>
 
-      <div class="player-top">
 
+      <div class="player-info">
 
-        <div class="player-brand">
-
-          <img
-            src="hearsay-logo.png"
-            alt=""
-          >
-
-          HearSay
-
+        <div class="player-label">
+          NOW PLAYING
         </div>
 
-
-        <div class="player-top-actions">
-
-
-          <button
-            class="icon-button"
-            id="fullscreenButton"
-            aria-label="Full screen"
-            title="Full screen"
-          >
-            ⛶
-          </button>
-
-
-          <button
-            class="icon-button"
-            id="closePlayer"
-            aria-label="Close player"
-            title="Close"
-          >
-            ✕
-          </button>
-
-
+        <div
+          class="player-name"
+          id="playerName"
+        >
+          Case Name
         </div>
-
 
       </div>
 
 
-
-      <!-- PLAYER BODY -->
-
-      <div class="player-body">
-
-
-        <div class="player-case-heading">
-
-          <div class="player-course">
-            Evidence
-          </div>
-
-          <h2 id="playerCaseName">
-            Case Name
-          </h2>
-
-        </div>
-
-
-
-        <!-- MAIN CONTROLS -->
-
-        <div class="main-controls">
-
-
-          <button
-            class="skip-button"
-            id="rewindButton"
-            aria-label="Rewind 10 seconds"
-            title="Rewind 10 seconds"
-          >
-            ↶ 10
-          </button>
-
-
-          <button
-            class="main-play"
-            id="mainPlayButton"
-            aria-label="Play or pause"
-          >
-            ▶
-          </button>
-
-
-          <button
-            class="skip-button"
-            id="forwardButton"
-            aria-label="Fast forward 10 seconds"
-            title="Fast forward 10 seconds"
-          >
-            10 ↷
-          </button>
-
-
-        </div>
-
-
-
-        <!-- PROGRESS -->
-
-        <div class="progress-section">
-
-
-          <input
-            class="player-progress"
-            id="playerProgress"
-            type="range"
-            min="0"
-            max="100"
-            value="0"
-          >
-
-
-          <div class="time-row">
-
-            <span id="currentTime">
-              0:00
-            </span>
-
-            <span id="duration">
-              0:00
-            </span>
-
-          </div>
-
-
-        </div>
-
-
-
-        <!-- OPTIONS -->
-
-        <div class="player-options">
-
-
-          <button
-            class="option-button"
-            id="speedButton"
-          >
-            1× Speed
-          </button>
-
-
-          <button
-            class="option-button"
-            id="chaptersButton"
-          >
-            Chapters
-          </button>
-
-
-          <button
-            class="option-button"
-            id="transcriptButton"
-          >
-            Transcript
-          </button>
-
-
-        </div>
-
-
-
-        <!-- CHAPTERS -->
-
-        <div
-          class="content-panel"
-          id="chaptersPanel"
-        >
-
-          <div class="panel-heading">
-            Chapters
-          </div>
-
-          <div
-            class="chapter-list"
-            id="chapterList"
-          ></div>
-
-        </div>
-
-
-
-        <!-- TRANSCRIPT -->
-
-        <div
-          class="content-panel"
-          id="transcriptPanel"
-        >
-
-          <div class="panel-heading">
-            Transcript
-          </div>
-
-          <div
-            class="transcript"
-            id="transcriptText"
-          ></div>
-
-        </div>
-
-
-      </div>
-
-
-
-      <audio
-        id="audioPlayer"
-        preload="metadata"
-      ></audio>
+      <button
+        class="close-player"
+        id="closePlayer"
+        aria-label="Close player"
+      >
+        ✕
+      </button>
 
 
     </div>
+
+
+
+    <div
+      class="player-controls"
+      id="playerControls"
+    >
+
+
+      <div class="progress-row">
+
+
+        <span
+          class="player-time"
+          id="currentTime"
+        >
+          0:00
+        </span>
+
+
+        <input
+          class="player-progress"
+          id="progress"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+        >
+
+
+        <span
+          class="player-time"
+          id="duration"
+        >
+          0:00
+        </span>
+
+
+      </div>
+
+
+
+      <div class="player-button-row">
+
+
+        <button
+          class="player-option"
+          id="rewindButton"
+          aria-label="Rewind 10 seconds"
+        >
+          ↶ 10
+        </button>
+
+
+        <button
+          class="player-option"
+          id="forwardButton"
+          aria-label="Fast forward 10 seconds"
+        >
+          10 ↷
+        </button>
+
+
+        <button
+          class="player-option"
+          id="speedButton"
+        >
+          1×
+        </button>
+
+
+        <button
+          class="player-option"
+          id="chaptersButton"
+        >
+          Chapters
+        </button>
+
+
+        <button
+          class="player-option"
+          id="transcriptButton"
+        >
+          Transcript
+        </button>
+
+
+      </div>
+
+
+
+      <div
+        class="player-panel"
+        id="chaptersPanel"
+      ></div>
+
+
+
+      <div
+        class="player-panel"
+        id="transcriptPanel"
+      ></div>
+
+
+    </div>
+
+
+
+    <audio
+      id="audioPlayer"
+      preload="metadata"
+    ></audio>
 
 
   </div>
 
 
 
-  <!-- ========================================
-       FOOTER
-  ======================================== -->
+  <!-- FOOTER -->
 
   <footer>
 
@@ -2439,1038 +1960,2001 @@
 
 
 
-  <script>
-
-    /* ========================================
-       AUDIO LIBRARY
-    ======================================== */
-
-    const audioLibrary = {
-
-
-      "New York Central Railroad Co. v. United States": {
-
-        audio:
-          "files/new-york-central.mp3",
-
-
-        /*
-          CHANGE THESE TIMES ONCE YOU KNOW THE
-          REAL TIMESTAMPS IN YOUR AUDIO.
-
-          Times are measured in SECONDS.
-
-          Example:
-          2 minutes 30 seconds = 150
-        */
-
-        chapters: [
-
-          {
-            title:
-              "Majority Opinion",
-
-            time:
-              0
-          },
-
-          {
-            title:
-              "Concurring Opinion",
-
-            time:
-              120
-          },
-
-          {
-            title:
-              "Dissenting Opinion",
-
-            time:
-              240
-          }
-
-        ],
-
-
-        transcript: `
-Transcript coming soon.
-
-This is where you can paste the full cleaned opinion text for New York Central Railroad Co. v. United States.
-
-Once you add the transcript here, users will be able to read along while listening.
-        `
-
-      }
-
-
-    };
-
-
-
-    /* ========================================
-       ELEMENTS
-    ======================================== */
-
-    const playerOverlay =
-      document.getElementById(
-        "playerOverlay"
-      );
-
-
-    const expandedPlayer =
-      document.getElementById(
-        "expandedPlayer"
-      );
-
-
-    const audioPlayer =
-      document.getElementById(
-        "audioPlayer"
-      );
-
-
-    const playerCaseName =
-      document.getElementById(
-        "playerCaseName"
-      );
-
-
-    const mainPlayButton =
-      document.getElementById(
-        "mainPlayButton"
-      );
-
-
-    const rewindButton =
-      document.getElementById(
-        "rewindButton"
-      );
-
-
-    const forwardButton =
-      document.getElementById(
-        "forwardButton"
-      );
-
-
-    const playerProgress =
-      document.getElementById(
-        "playerProgress"
-      );
-
-
-    const currentTimeDisplay =
-      document.getElementById(
-        "currentTime"
-      );
-
-
-    const durationDisplay =
-      document.getElementById(
-        "duration"
-      );
-
-
-    const speedButton =
-      document.getElementById(
-        "speedButton"
-      );
-
-
-    const chaptersButton =
-      document.getElementById(
-        "chaptersButton"
-      );
-
-
-    const transcriptButton =
-      document.getElementById(
-        "transcriptButton"
-      );
-
-
-    const chaptersPanel =
-      document.getElementById(
-        "chaptersPanel"
-      );
-
-
-    const transcriptPanel =
-      document.getElementById(
-        "transcriptPanel"
-      );
-
-
-    const chapterList =
-      document.getElementById(
-        "chapterList"
-      );
-
-
-    const transcriptText =
-      document.getElementById(
-        "transcriptText"
-      );
-
-
-    const fullscreenButton =
-      document.getElementById(
-        "fullscreenButton"
-      );
-
-
-    const closePlayer =
-      document.getElementById(
-        "closePlayer"
-      );
-
-
-    const caseSearch =
-      document.getElementById(
-        "caseSearch"
-      );
-
-
-    const caseCards =
-      document.querySelectorAll(
-        ".case-card"
-      );
-
-
-    const noResults =
-      document.getElementById(
-        "noResults"
-      );
-
-
-    let currentCase =
-      null;
-
-
-    const playbackSpeeds = [
-
-      0.75,
-      1,
-      1.25,
-      1.5,
-      1.75,
-      2
-
-    ];
-
-
-    let speedIndex =
-      1;
-
-
-
-    /* ========================================
-       OPEN PLAYER
-    ======================================== */
-
-    function openPlayer(
-      caseName
-    ) {
-
-
-      const caseData =
-        audioLibrary[
-          caseName
-        ];
-
-
-      if (!caseData) {
-
-        return;
-
-      }
-
-
-      currentCase =
-        caseName;
-
-
-      playerCaseName.textContent =
-        caseName;
-
-
-      playerOverlay.classList.add(
-        "visible"
-      );
-
-
-      document.body.style.overflow =
-        "hidden";
-
-
-      chaptersPanel.classList.remove(
-        "visible"
-      );
-
-
-      transcriptPanel.classList.remove(
-        "visible"
-      );
-
-
-      chaptersButton.classList.remove(
-        "active"
-      );
-
-
-      transcriptButton.classList.remove(
-        "active"
-      );
-
-
-      /* AUDIO */
-
-      if (
-        audioPlayer.getAttribute(
-          "src"
-        )
-        !==
-        caseData.audio
-      ) {
-
-
-        audioPlayer.src =
-          caseData.audio;
-
-
-        audioPlayer.load();
-
-
-        playerProgress.value =
-          0;
-
-
-        currentTimeDisplay.textContent =
-          "0:00";
-
-
-        speedIndex =
-          1;
-
-
-        audioPlayer.playbackRate =
-          1;
-
-
-        speedButton.textContent =
-          "1× Speed";
-
-
-      }
-
-
-
-      /* CHAPTERS */
-
-      renderChapters(
-        caseData.chapters
-      );
-
-
-
-      /* TRANSCRIPT */
-
-      transcriptText.textContent =
-        caseData.transcript;
-
-
-
-      /* START AUDIO */
-
-      audioPlayer.play();
-
-      mainPlayButton.textContent =
-        "❚❚";
-
-
+<script>
+
+
+/* =====================================================
+   EVIDENCE LIBRARY
+===================================================== */
+
+
+const evidenceTopics = [
+
+
+  {
+    title: "Relevance — Rules 401 & 402",
+    cases: [
+      "Daubert v. Merrell Dow Pharmaceuticals, Inc.",
+      "Knapp v. State",
+      "People v. Collins",
+      "State v. Nicholas",
+      "United States v. James",
+      "United States v. Jackson"
+    ]
+  },
+
+
+  {
+    title: "Rule 403 — Unfair Prejudice, Confusion & Waste of Time",
+    cases: [
+      "Commonwealth v. Serge",
+      "Old Chief v. United States",
+      "State v. Chapple",
+      "United States v. Curtin",
+      "United States v. Hitt"
+    ]
+  },
+
+
+  {
+    title: "Conditional Relevance — Rule 104",
+    cases: [
+      "Bourjaily v. United States",
+      "Cox v. State",
+      "Huddleston v. United States"
+    ]
+  },
+
+
+  {
+    title: "Subsequent Remedial Measures — Rule 407",
+    cases: [
+      "Diehl v. Blaw-Knox",
+      "Flaminio v. Honda Motor Co.",
+      "Tuer v. McDonald"
+    ]
+  },
+
+
+  {
+    title: "Compromise, Offers to Pay & Pleas — Rules 408–410",
+    cases: [
+      "Bankcard America, Inc. v. Universal Bancard Systems, Inc.",
+      "Pierce v. F.R. Tripler & Co.",
+      "United States v. Biaggi",
+      "United States v. Mezzanatto"
+    ]
+  },
+
+
+  {
+    title: "Liability Insurance — Rule 411",
+    cases: [
+      "Charter v. Chleborad",
+      "Williams v. McCoy"
+    ]
+  },
+
+
+  {
+    title: "Current HearSay Recording",
+    cases: [
+      "New York Central Railroad Co. v. United States"
+    ]
+  },
+
+
+  {
+    title: "Character & Propensity Evidence — Rule 404",
+    cases: [
+      "Huddleston v. United States",
+      "Michelson v. United States",
+      "People v. Zackowitz",
+      "State v. Kirsch",
+      "United States v. Beechum",
+      "United States v. Cunningham",
+      "United States v. Gomez",
+      "United States v. Trenkler"
+    ]
+  },
+
+
+  {
+    title: "Other Crimes, Wrongs & Acts — Rule 404(b)",
+    cases: [
+      "Beechum v. United States",
+      "Huddleston v. United States",
+      "United States v. Caldwell",
+      "United States v. DeGeorge",
+      "United States v. Queen"
+    ]
+  },
+
+
+  {
+    title: "Methods of Proving Character — Rule 405",
+    cases: [
+      "Michelson v. United States",
+      "United States v. Keiser"
+    ]
+  },
+
+
+  {
+    title: "Habit & Routine Practice — Rule 406",
+    cases: [
+      "Halloran v. Virginia Chemicals Inc.",
+      "Perrin v. Anderson",
+      "Reyes v. Missouri Pacific Railroad Co."
+    ]
+  },
+
+
+  {
+    title: "Sexual Assault & Rape-Shield Evidence — Rules 412–415",
+    cases: [
+      "Michigan v. Lucas",
+      "United States v. Guardia",
+      "United States v. LeCompte"
+    ]
+  },
+
+
+  {
+    title: "Witness Competency & Personal Knowledge — Rules 601–606",
+    cases: [
+      "Rock v. Arkansas",
+      "United States v. Hickey",
+      "United States v. Lightly"
+    ]
+  },
+
+
+  {
+    title: "Jury Impeachment of Verdicts — Rule 606(b)",
+    cases: [
+      "Pena-Rodriguez v. Colorado",
+      "Tanner v. United States",
+      "Warger v. Shauers"
+    ]
+  },
+
+
+  {
+    title: "Impeachment — Bias",
+    cases: [
+      "Davis v. Alaska",
+      "United States v. Abel"
+    ]
+  },
+
+
+  {
+    title: "Character for Truthfulness — Rules 608 & 609",
+    cases: [
+      "Luce v. United States",
+      "Ohler v. United States",
+      "United States v. Lipscomb",
+      "United States v. Manske"
+    ]
+  },
+
+
+  {
+    title: "Prior Inconsistent Statements & Rehabilitation",
+    cases: [
+      "Tome v. United States",
+      "United States v. Ince",
+      "United States v. Owens"
+    ]
+  },
+
+
+  {
+    title: "Religious Beliefs & Impeachment — Rule 610",
+    cases: [
+      "United States v. Kalaydjian"
+    ]
+  },
+
+
+  {
+    title: "Witness Examination — Rules 611–615",
+    cases: [
+      "Geders v. United States",
+      "Perry v. Leeke",
+      "United States v. McLaughlin"
+    ]
+  },
+
+
+  {
+    title: "Hearsay — Foundations & Definition",
+    cases: [
+      "Commonwealth v. Vining",
+      "United States v. Hernandez",
+      "United States v. Zenni"
+    ]
+  },
+
+
+  {
+    title: "Statements Offered for a Non-Hearsay Purpose",
+    cases: [
+      "Subramaniam v. Public Prosecutor",
+      "United States v. Parry",
+      "United States v. Rodriguez-Lopez"
+    ]
+  },
+
+
+  {
+    title: "Machines, Animals & Nonhuman Declarants",
+    cases: [
+      "People v. Goldsmith",
+      "United States v. Washington"
+    ]
+  },
+
+
+  {
+    title: "Prior Statements of Witnesses — Rule 801(d)(1)",
+    cases: [
+      "California v. Green",
+      "Tome v. United States",
+      "United States v. Owens"
+    ]
+  },
+
+
+  {
+    title: "Opposing-Party Statements — Rule 801(d)(2)",
+    cases: [
+      "Mahlandt v. Wild Canid Survival & Research Center, Inc.",
+      "United States v. Hoosier",
+      "United States v. Reed"
+    ]
+  },
+
+
+  {
+    title: "Co-Conspirator Statements — Rule 801(d)(2)(E)",
+    cases: [
+      "Bourjaily v. United States",
+      "United States v. Silverman"
+    ]
+  },
+
+
+  {
+    title: "Present Sense Impression & Excited Utterance — Rules 803(1)–(2)",
+    cases: [
+      "Commonwealth v. Coleman",
+      "State v. Jones",
+      "United States v. Boyce"
+    ]
+  },
+
+
+  {
+    title: "Then-Existing State of Mind — Rule 803(3)",
+    cases: [
+      "Mutual Life Insurance Co. v. Hillmon",
+      "Shepard v. United States",
+      "United States v. Pheaster"
+    ]
+  },
+
+
+  {
+    title: "Statements for Medical Diagnosis or Treatment — Rule 803(4)",
+    cases: [
+      "United States v. Iron Shell",
+      "United States v. Renville"
+    ]
+  },
+
+
+  {
+    title: "Recorded Recollection — Rule 803(5)",
+    cases: [
+      "Baker v. State",
+      "United States v. Williams"
+    ]
+  },
+
+
+  {
+    title: "Business Records — Rule 803(6)",
+    cases: [
+      "Palmer v. Hoffman",
+      "United States v. Vigneau",
+      "Wilson v. Zapata Off-Shore Co."
+    ]
+  },
+
+
+  {
+    title: "Public Records — Rule 803(8)",
+    cases: [
+      "Beech Aircraft Corp. v. Rainey",
+      "Melendez-Diaz v. Massachusetts"
+    ]
+  },
+
+
+  {
+    title: "Learned Treatises — Rule 803(18)",
+    cases: [
+      "Costantino v. Herzog"
+    ]
+  },
+
+
+  {
+    title: "Unavailability — Rule 804",
+    cases: [
+      "Barber v. Page",
+      "United States v. Olafson"
+    ]
+  },
+
+
+  {
+    title: "Former Testimony — Rule 804(b)(1)",
+    cases: [
+      "Lloyd v. American Export Lines, Inc.",
+      "United States v. Salerno"
+    ]
+  },
+
+
+  {
+    title: "Dying Declarations — Rule 804(b)(2)",
+    cases: [
+      "Mattox v. United States",
+      "Shepard v. United States"
+    ]
+  },
+
+
+  {
+    title: "Statements Against Interest — Rule 804(b)(3)",
+    cases: [
+      "Lilly v. Virginia",
+      "Williamson v. United States"
+    ]
+  },
+
+
+  {
+    title: "Forfeiture by Wrongdoing — Rule 804(b)(6)",
+    cases: [
+      "Giles v. California",
+      "United States v. Houlihan"
+    ]
+  },
+
+
+  {
+    title: "Residual Hearsay — Rule 807",
+    cases: [
+      "Dallas County v. Commercial Union Assurance Co.",
+      "United States v. Laster"
+    ]
+  },
+
+
+  {
+    title: "Confrontation Clause — Foundations",
+    cases: [
+      "California v. Green",
+      "Chambers v. Mississippi",
+      "Dutton v. Evans",
+      "Ohio v. Roberts"
+    ]
+  },
+
+
+  {
+    title: "Confrontation Clause — Modern Testimonial Doctrine",
+    cases: [
+      "Bullcoming v. New Mexico",
+      "Crawford v. Washington",
+      "Davis v. Washington",
+      "Hammon v. Indiana",
+      "Hemphill v. New York",
+      "Melendez-Diaz v. Massachusetts",
+      "Michigan v. Bryant",
+      "Ohio v. Clark",
+      "Smith v. Arizona",
+      "Williams v. Illinois"
+    ]
+  },
+
+
+  {
+    title: "Compulsory Process / Constitutional Right to Present Evidence",
+    cases: [
+      "Chambers v. Mississippi",
+      "Crane v. Kentucky",
+      "Holmes v. South Carolina",
+      "Rock v. Arkansas",
+      "Washington v. Texas"
+    ]
+  },
+
+
+  {
+    title: "Lay Opinion — Rule 701",
+    cases: [
+      "Asplundh Manufacturing Division v. Benton Harbor Engineering",
+      "United States v. Jayyousi"
+    ]
+  },
+
+
+  {
+    title: "Expert Testimony — Rules 702–705",
+    cases: [
+      "Daubert v. Merrell Dow Pharmaceuticals, Inc.",
+      "General Electric Co. v. Joiner",
+      "Kumho Tire Co. v. Carmichael",
+      "United States v. Hines",
+      "United States v. Mejia"
+    ]
+  },
+
+
+  {
+    title: "Court-Appointed Experts — Rule 706",
+    cases: [
+      "In re Joint Eastern & Southern Districts Asbestos Litigation"
+    ]
+  },
+
+
+  {
+    title: "Authentication — Rules 901 & 902",
+    cases: [
+      "Lorraine v. Markel American Insurance Co.",
+      "United States v. Broomfield",
+      "United States v. Safavian",
+      "United States v. Vayner"
+    ]
+  },
+
+
+  {
+    title: "Authentication of Digital & Social-Media Evidence",
+    cases: [
+      "Griffin v. State",
+      "People v. Goldsmith",
+      "United States v. Browne",
+      "United States v. Vayner"
+    ]
+  },
+
+
+  {
+    title: "Best Evidence Rule — Rules 1001–1008",
+    cases: [
+      "Meyers v. United States",
+      "Seiler v. Lucasfilm, Ltd.",
+      "United States v. Diaz-Lopez"
+    ]
+  },
+
+
+  {
+    title: "Attorney-Client Privilege",
+    cases: [
+      "Fisher v. United States",
+      "Swidler & Berlin v. United States",
+      "Upjohn Co. v. United States"
+    ]
+  },
+
+
+  {
+    title: "Psychotherapist-Patient Privilege",
+    cases: [
+      "Jaffee v. Redmond"
+    ]
+  },
+
+
+  {
+    title: "Marital Privileges",
+    cases: [
+      "Trammel v. United States"
+    ]
+  },
+
+
+  {
+    title: "Clergy & Other Privileges",
+    cases: [
+      "In re Grand Jury Investigation"
+    ]
+  }
+
+
+];
+
+
+
+/* =====================================================
+   AUDIO LIBRARY
+===================================================== */
+
+
+const audioLibrary = {
+
+  "New York Central Railroad Co. v. United States":
+    "./files/new-york-central.mp3"
+
+};
+
+
+
+/* =====================================================
+   CHAPTER LIBRARY
+
+   Replace these times later with the exact chapter
+   timestamps for the recording if you want.
+===================================================== */
+
+
+const chapterLibrary = {
+
+  "New York Central Railroad Co. v. United States": [
+
+    {
+      title: "Introduction",
+      time: 0
+    },
+
+    {
+      title: "Facts & Background",
+      time: 30
+    },
+
+    {
+      title: "Opinion of the Court",
+      time: 60
     }
 
+  ]
 
+};
 
-    /* ========================================
-       PLAY / PAUSE
-    ======================================== */
 
-    mainPlayButton.addEventListener(
 
-      "click",
+/* =====================================================
+   TRANSCRIPT LIBRARY
+===================================================== */
 
-      () => {
 
+const transcriptLibrary = {
 
-        if (
-          audioPlayer.paused
-        ) {
+  "New York Central Railroad Co. v. United States":
+    "Transcript coming soon."
 
+};
 
-          audioPlayer.play();
 
 
-          mainPlayButton.textContent =
-            "❚❚";
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 
-        } else {
+const topicsContainer =
+  document.getElementById(
+    "topicsContainer"
+  );
 
 
-          audioPlayer.pause();
+const caseSearch =
+  document.getElementById(
+    "caseSearch"
+  );
 
 
-          mainPlayButton.textContent =
-            "▶";
+const caseCount =
+  document.getElementById(
+    "caseCount"
+  );
 
 
-        }
+const noResults =
+  document.getElementById(
+    "noResults"
+  );
 
 
-      }
+const player =
+  document.getElementById(
+    "player"
+  );
 
-    );
 
+const playerName =
+  document.getElementById(
+    "playerName"
+  );
 
 
-    /* ========================================
-       REWIND 10 SECONDS
-    ======================================== */
+const mainPlay =
+  document.getElementById(
+    "mainPlay"
+  );
 
-    rewindButton.addEventListener(
 
-      "click",
+const closePlayer =
+  document.getElementById(
+    "closePlayer"
+  );
 
-      () => {
 
+const playerControls =
+  document.getElementById(
+    "playerControls"
+  );
 
-        audioPlayer.currentTime =
 
-          Math.max(
+const audioPlayer =
+  document.getElementById(
+    "audioPlayer"
+  );
 
-            0,
 
-            audioPlayer.currentTime - 10
+const progress =
+  document.getElementById(
+    "progress"
+  );
 
-          );
 
+const currentTime =
+  document.getElementById(
+    "currentTime"
+  );
 
-      }
 
-    );
+const duration =
+  document.getElementById(
+    "duration"
+  );
 
 
+const speedButton =
+  document.getElementById(
+    "speedButton"
+  );
 
-    /* ========================================
-       FAST FORWARD 10 SECONDS
-    ======================================== */
 
-    forwardButton.addEventListener(
+const rewindButton =
+  document.getElementById(
+    "rewindButton"
+  );
 
-      "click",
 
-      () => {
+const forwardButton =
+  document.getElementById(
+    "forwardButton"
+  );
 
 
-        if (
-          !audioPlayer.duration
-        ) {
+const chaptersButton =
+  document.getElementById(
+    "chaptersButton"
+  );
 
 
-          audioPlayer.currentTime +=
-            10;
+const transcriptButton =
+  document.getElementById(
+    "transcriptButton"
+  );
 
 
-          return;
+const chaptersPanel =
+  document.getElementById(
+    "chaptersPanel"
+  );
 
-        }
 
+const transcriptPanel =
+  document.getElementById(
+    "transcriptPanel"
+  );
 
-        audioPlayer.currentTime =
 
-          Math.min(
 
-            audioPlayer.duration,
+let currentHasAudio =
+  false;
 
-            audioPlayer.currentTime + 10
 
-          );
+const playbackSpeeds = [
+  1,
+  1.25,
+  1.5,
+  1.75,
+  2,
+  0.75
+];
 
 
-      }
+let speedIndex =
+  0;
 
-    );
 
 
+/* =====================================================
+   BUILD DEDUPLICATED LIBRARY
+===================================================== */
 
-    /* ========================================
-       AUDIO METADATA
-    ======================================== */
 
-    audioPlayer.addEventListener(
+function buildUniqueLibrary() {
 
-      "loadedmetadata",
 
-      () => {
+  const seen =
+    new Set();
 
 
-        durationDisplay.textContent =
+  return evidenceTopics
 
-          formatTime(
+    .map(
+      topic => {
 
-            audioPlayer.duration
 
-          );
+        const uniqueCases =
 
+          topic.cases
 
-      }
+            .filter(
+              caseName => {
 
-    );
 
+                if (
+                  seen.has(
+                    caseName
+                  )
+                ) {
 
+                  return false;
 
-    /* ========================================
-       AUDIO PROGRESS
-    ======================================== */
+                }
 
-    audioPlayer.addEventListener(
 
-      "timeupdate",
+                seen.add(
+                  caseName
+                );
 
-      () => {
 
+                return true;
 
-        if (
-          !audioPlayer.duration
-        ) {
-
-          return;
-
-        }
-
-
-        playerProgress.value =
-
-          (
-
-            audioPlayer.currentTime
-            /
-            audioPlayer.duration
-
-          )
-
-          * 100;
-
-
-        currentTimeDisplay.textContent =
-
-          formatTime(
-
-            audioPlayer.currentTime
-
-          );
-
-
-      }
-
-    );
-
-
-
-    playerProgress.addEventListener(
-
-      "input",
-
-      () => {
-
-
-        if (
-          !audioPlayer.duration
-        ) {
-
-          return;
-
-        }
-
-
-        audioPlayer.currentTime =
-
-          (
-
-            playerProgress.value
-            /
-            100
-
-          )
-
-          *
-          audioPlayer.duration;
-
-
-      }
-
-    );
-
-
-
-    audioPlayer.addEventListener(
-
-      "ended",
-
-      () => {
-
-
-        mainPlayButton.textContent =
-          "▶";
-
-
-      }
-
-    );
-
-
-
-    /* ========================================
-       PLAYBACK SPEED
-    ======================================== */
-
-    speedButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        speedIndex =
-
-          (
-
-            speedIndex + 1
-
-          )
-
-          %
-          playbackSpeeds.length;
-
-
-        const speed =
-
-          playbackSpeeds[
-            speedIndex
-          ];
-
-
-        audioPlayer.playbackRate =
-          speed;
-
-
-        speedButton.textContent =
-          `${speed}× Speed`;
-
-
-      }
-
-    );
-
-
-
-    /* ========================================
-       CHAPTERS
-    ======================================== */
-
-    chaptersButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        transcriptPanel.classList.remove(
-          "visible"
-        );
-
-
-        transcriptButton.classList.remove(
-          "active"
-        );
-
-
-        chaptersPanel.classList.toggle(
-          "visible"
-        );
-
-
-        chaptersButton.classList.toggle(
-          "active"
-        );
-
-
-      }
-
-    );
-
-
-
-    function renderChapters(
-      chapters
-    ) {
-
-
-      chapterList.innerHTML =
-        "";
-
-
-      if (
-        !chapters ||
-        !chapters.length
-      ) {
-
-
-        chapterList.innerHTML =
-
-          "<p>No chapters available.</p>";
-
-
-        return;
-
-      }
-
-
-      chapters.forEach(
-
-        chapter => {
-
-
-          const button =
-
-            document.createElement(
-              "button"
+              }
             );
 
 
-          button.className =
-            "chapter-button";
+        return {
+
+          title:
+            topic.title,
+
+          cases:
+            uniqueCases
+
+        };
 
 
-          button.innerHTML = `
+      }
+    )
 
-            <span class="chapter-title">
-              ${chapter.title}
-            </span>
+    .filter(
+      topic =>
+        topic.cases.length > 0
+    );
 
-            <span class="chapter-time">
-              ${formatTime(chapter.time)}
-            </span>
+
+}
+
+
+
+const uniqueEvidenceTopics =
+  buildUniqueLibrary();
+
+
+
+/* =====================================================
+   TOTAL CASE COUNT
+===================================================== */
+
+
+function getTotalCases() {
+
+
+  return uniqueEvidenceTopics.reduce(
+
+    (
+      total,
+      topic
+    ) =>
+
+      total +
+      topic.cases.length,
+
+    0
+
+  );
+
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+
+function escapeHtml(text) {
+
+
+  return text
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+
+}
+
+
+
+/* =====================================================
+   RENDER LIBRARY
+===================================================== */
+
+
+function renderLibrary(
+  query = ""
+) {
+
+
+  const normalizedQuery =
+
+    query
+      .trim()
+      .toLowerCase();
+
+
+  let visibleCases =
+    0;
+
+
+  let visibleTopics =
+    0;
+
+
+  let html =
+    "";
+
+
+  uniqueEvidenceTopics.forEach(
+    (
+      topic,
+      topicIndex
+    ) => {
+
+
+      const matchingCases =
+
+        [...topic.cases]
+
+          .sort(
+            (a,b) =>
+              a.localeCompare(b)
+          )
+
+          .filter(
+            caseName => {
+
+
+              const searchable =
+
+                `${caseName} ${topic.title}`
+                  .toLowerCase();
+
+
+              return searchable.includes(
+                normalizedQuery
+              );
+
+
+            }
+          );
+
+
+      if (
+        matchingCases.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      visibleTopics++;
+
+      visibleCases +=
+        matchingCases.length;
+
+
+      html += `
+
+        <section class="topic-section">
+
+          <div class="topic-header">
+
+            <div class="topic-title-wrap">
+
+              <div class="topic-number">
+
+                ${String(
+                  topicIndex + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+
+              <h3>
+
+                ${escapeHtml(topic.title)}
+
+              </h3>
+
+            </div>
+
+
+            <div class="topic-case-count">
+
+              ${matchingCases.length}
+
+              ${
+                matchingCases.length === 1
+                  ? "case"
+                  : "cases"
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="case-list">
+
+      `;
+
+
+      matchingCases.forEach(
+        caseName => {
+
+
+          const hasAudio =
+
+            Boolean(
+              audioLibrary[
+                caseName
+              ]
+            );
+
+
+          html += `
+
+            <div class="case-card">
+
+
+              <div class="case-content">
+
+                <div class="case-name">
+
+                  ${escapeHtml(caseName)}
+
+                </div>
+
+
+                <div class="case-meta">
+
+                  ${escapeHtml(topic.title)}
+
+                  ${
+                    hasAudio
+                      ? " · Audio available"
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="status ${
+                  hasAudio
+                    ? "available"
+                    : "soon"
+                }"
+              >
+
+                ${
+                  hasAudio
+                    ? "Listen"
+                    : "Coming Soon"
+                }
+
+              </span>
+
+
+              <button
+                class="play-button"
+                data-case="${escapeHtml(caseName)}"
+                aria-label="Play ${escapeHtml(caseName)}"
+              >
+
+                ▶
+
+              </button>
+
+
+            </div>
 
           `;
 
 
-          button.addEventListener(
-
-            "click",
-
-            () => {
-
-
-              audioPlayer.currentTime =
-                chapter.time;
-
-
-              audioPlayer.play();
-
-
-              mainPlayButton.textContent =
-                "❚❚";
-
-
-            }
-
-          );
-
-
-          chapterList.appendChild(
-            button
-          );
-
-
         }
-
       );
 
 
+      html += `
+
+          </div>
+
+        </section>
+
+      `;
+
+
     }
+  );
+
+
+  topicsContainer.innerHTML =
+    html;
+
+
+  noResults.style.display =
+
+    visibleTopics === 0
+      ? "block"
+      : "none";
+
+
+  caseCount.textContent =
+
+    normalizedQuery
+
+      ? `${visibleCases} ${
+          visibleCases === 1
+            ? "result"
+            : "results"
+        }`
+
+      : `${getTotalCases()} cases`;
+
+
+  attachPlayButtons();
+
+
+}
 
 
 
-    /* ========================================
-       TRANSCRIPT
-    ======================================== */
-
-    transcriptButton.addEventListener(
-
-      "click",
-
-      () => {
+/* =====================================================
+   PLAY BUTTONS
+===================================================== */
 
 
-        chaptersPanel.classList.remove(
-          "visible"
-        );
+function attachPlayButtons() {
 
 
-        chaptersButton.classList.remove(
-          "active"
-        );
+  document
+
+    .querySelectorAll(
+      ".play-button"
+    )
+
+    .forEach(
+      button => {
 
 
-        transcriptPanel.classList.toggle(
-          "visible"
-        );
+        button.addEventListener(
+          "click",
+          () => {
 
 
-        transcriptButton.classList.toggle(
-          "active"
-        );
-
-
-      }
-
-    );
-
-
-
-    /* ========================================
-       FULLSCREEN
-    ======================================== */
-
-    fullscreenButton.addEventListener(
-
-      "click",
-
-      async () => {
-
-
-        try {
-
-
-          if (
-            !document.fullscreenElement
-          ) {
-
-
-            await expandedPlayer.requestFullscreen();
-
-
-          } else {
-
-
-            await document.exitFullscreen();
+            playCase(
+              button.dataset.case
+            );
 
 
           }
-
-
-        } catch (
-          error
-        ) {
-
-
-          console.log(
-            "Fullscreen is not supported on this browser."
-          );
-
-
-        }
-
-
-      }
-
-    );
-
-
-
-    /* ========================================
-       CLOSE PLAYER
-    ======================================== */
-
-    closePlayer.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        /*
-          Audio pauses when the player closes.
-          If you later want "minimize" to keep
-          playing, we can add a separate button.
-        */
-
-        audioPlayer.pause();
-
-
-        mainPlayButton.textContent =
-          "▶";
-
-
-        playerOverlay.classList.remove(
-          "visible"
         );
 
 
-        document.body.style.overflow =
-          "";
-
-
-        if (
-          document.fullscreenElement
-        ) {
-
-
-          document.exitFullscreen();
-
-
-        }
-
-
       }
-
     );
 
 
+}
 
-    /* ========================================
-       SEARCH
-    ======================================== */
 
-    caseSearch.addEventListener(
 
-      "input",
+/* =====================================================
+   SEARCH
+===================================================== */
 
+
+caseSearch.addEventListener(
+  "input",
+  () => {
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   PLAY CASE
+===================================================== */
+
+
+function playCase(
+  caseName
+) {
+
+
+  playerName.textContent =
+    caseName;
+
+
+  player.classList.add(
+    "visible"
+  );
+
+
+  chaptersPanel.classList.remove(
+    "visible"
+  );
+
+
+  transcriptPanel.classList.remove(
+    "visible"
+  );
+
+
+  loadChapters(
+    caseName
+  );
+
+
+  loadTranscript(
+    caseName
+  );
+
+
+  const audioFile =
+
+    audioLibrary[
+      caseName
+    ];
+
+
+  if (
+    !audioFile
+  ) {
+
+
+    currentHasAudio =
+      false;
+
+
+    audioPlayer.pause();
+
+
+    audioPlayer.removeAttribute(
+      "src"
+    );
+
+
+    playerControls.classList.remove(
+      "visible"
+    );
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    alert(
+      "Audio for this case is coming soon."
+    );
+
+
+    return;
+
+  }
+
+
+
+  currentHasAudio =
+    true;
+
+
+  playerControls.classList.add(
+    "visible"
+  );
+
+
+  if (
+
+    audioPlayer.getAttribute(
+      "src"
+    )
+
+    !==
+
+    audioFile
+
+  ) {
+
+
+    audioPlayer.src =
+      audioFile;
+
+
+    audioPlayer.load();
+
+
+    progress.value =
+      0;
+
+
+    currentTime.textContent =
+      "0:00";
+
+
+    duration.textContent =
+      "0:00";
+
+
+    speedIndex =
+      0;
+
+
+    audioPlayer.playbackRate =
+      1;
+
+
+    speedButton.textContent =
+      "1×";
+
+  }
+
+
+
+  audioPlayer.play()
+
+    .then(
       () => {
 
 
-        const query =
-
-          caseSearch.value
-            .trim()
-            .toLowerCase();
+        mainPlay.textContent =
+          "❚❚";
 
 
-        let visible =
-          0;
+      }
+    )
+
+    .catch(
+      error => {
 
 
-        caseCards.forEach(
-
-          card => {
-
-
-            const name =
-
-              card.dataset.case
-                .toLowerCase();
+        console.error(
+          "HearSay audio playback error:",
+          error
+        );
 
 
-            const matches =
-
-              name.includes(
-                query
-              );
+        mainPlay.textContent =
+          "▶";
 
 
-            card.style.display =
+        alert(
+          "HearSay found this recording, but the browser could not play it. Check that files/new-york-central.mp3 exists in your GitHub repository."
+        );
 
-              matches
-                ? "flex"
-                : "none";
+
+      }
+    );
+
+
+}
+
+
+
+/* =====================================================
+   PLAY / PAUSE
+===================================================== */
+
+
+mainPlay.addEventListener(
+  "click",
+  () => {
+
+
+    if (
+      !currentHasAudio
+    ) {
+
+
+      alert(
+        "Audio for this case is coming soon."
+      );
+
+
+      return;
+
+    }
+
+
+    if (
+      audioPlayer.paused
+    ) {
+
+
+      audioPlayer.play()
+
+        .then(
+          () => {
+
+
+            mainPlay.textContent =
+              "❚❚";
+
+
+          }
+        )
+
+        .catch(
+          error => {
+
+
+            console.error(
+              "HearSay playback error:",
+              error
+            );
+
+
+          }
+        );
+
+
+    } else {
+
+
+      audioPlayer.pause();
+
+
+      mainPlay.textContent =
+        "▶";
+
+
+    }
+
+
+  }
+);
+
+
+
+/* =====================================================
+   REWIND 10 SECONDS
+===================================================== */
+
+
+rewindButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (
+      !currentHasAudio
+    ) {
+
+      return;
+
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.max(
+        0,
+        audioPlayer.currentTime - 10
+      );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   FAST FORWARD 10 SECONDS
+===================================================== */
+
+
+forwardButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (
+      !currentHasAudio
+    ) {
+
+      return;
+
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.min(
+        audioPlayer.duration || Infinity,
+        audioPlayer.currentTime + 10
+      );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   CHAPTER BUTTON
+===================================================== */
+
+
+chaptersButton.addEventListener(
+  "click",
+  () => {
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    chaptersPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   TRANSCRIPT BUTTON
+===================================================== */
+
+
+transcriptButton.addEventListener(
+  "click",
+  () => {
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   LOAD CHAPTERS
+===================================================== */
+
+
+function loadChapters(
+  caseName
+) {
+
+
+  const chapters =
+
+    chapterLibrary[
+      caseName
+    ] || [];
+
+
+  if (
+    chapters.length === 0
+  ) {
+
+
+    chaptersPanel.innerHTML = `
+
+      <div class="panel-heading">
+        Chapters
+      </div>
+
+      <div class="transcript-text">
+        Chapters coming soon.
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="panel-heading">
+      Chapters
+    </div>
+
+  `;
+
+
+  chapters.forEach(
+    chapter => {
+
+
+      html += `
+
+        <button
+          class="chapter-button"
+          data-time="${chapter.time}"
+        >
+
+          ${escapeHtml(chapter.title)}
+          ·
+          ${formatTime(chapter.time)}
+
+        </button>
+
+      `;
+
+
+    }
+  );
+
+
+  chaptersPanel.innerHTML =
+    html;
+
+
+  chaptersPanel
+
+    .querySelectorAll(
+      ".chapter-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
 
 
             if (
-              matches
+              !currentHasAudio
             ) {
 
-
-              visible++;
-
+              return;
 
             }
 
 
-          }
+            audioPlayer.currentTime =
 
+              Number(
+                button.dataset.time
+              );
+
+
+            audioPlayer.play()
+
+              .then(
+                () => {
+
+
+                  mainPlay.textContent =
+                    "❚❚";
+
+
+                }
+              );
+
+
+          }
         );
 
 
-        noResults.style.display =
-
-          visible === 0
-            ? "block"
-            : "none";
-
-
       }
-
     );
 
 
-
-    /* ========================================
-       FORMAT TIME
-    ======================================== */
-
-    function formatTime(
-      seconds
-    ) {
+}
 
 
-      if (
-        !Number.isFinite(
-          seconds
-        )
-      ) {
+
+/* =====================================================
+   LOAD TRANSCRIPT
+===================================================== */
 
 
-        return "0:00";
+function loadTranscript(
+  caseName
+) {
 
 
+  const transcript =
+
+    transcriptLibrary[
+      caseName
+    ];
+
+
+  transcriptPanel.innerHTML = `
+
+    <div class="panel-heading">
+      Transcript
+    </div>
+
+    <div class="transcript-text">
+
+      ${
+        transcript
+          ?
+          escapeHtml(transcript)
+          :
+          "Transcript coming soon."
       }
 
+    </div>
 
-      const minutes =
-
-        Math.floor(
-
-          seconds / 60
-
-        );
+  `;
 
 
-      const remainingSeconds =
-
-        Math.floor(
-
-          seconds % 60
-
-        )
-
-        .toString()
-
-        .padStart(
-          2,
-          "0"
-        );
+}
 
 
-      return `${minutes}:${remainingSeconds}`;
 
+/* =====================================================
+   AUDIO ERROR
+===================================================== */
+
+
+audioPlayer.addEventListener(
+  "error",
+  () => {
+
+
+    console.error(
+      "Audio file could not be loaded:",
+      audioPlayer.src
+    );
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+  }
+);
+
+
+
+/* =====================================================
+   AUDIO METADATA
+===================================================== */
+
+
+audioPlayer.addEventListener(
+  "loadedmetadata",
+  () => {
+
+
+    duration.textContent =
+
+      formatTime(
+        audioPlayer.duration
+      );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+
+audioPlayer.addEventListener(
+  "timeupdate",
+  () => {
+
+
+    if (
+      !audioPlayer.duration
+    ) {
+
+      return;
 
     }
 
 
-  </script>
+    progress.value =
+
+      (
+        audioPlayer.currentTime
+        /
+        audioPlayer.duration
+      )
+
+      * 100;
+
+
+    currentTime.textContent =
+
+      formatTime(
+        audioPlayer.currentTime
+      );
+
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+
+    if (
+      !audioPlayer.duration
+    ) {
+
+      return;
+
+    }
+
+
+    audioPlayer.currentTime =
+
+      (
+        progress.value
+        /
+        100
+      )
+
+      *
+      audioPlayer.duration;
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "ended",
+  () => {
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+  }
+);
+
+
+
+/* =====================================================
+   PLAYBACK SPEED
+===================================================== */
+
+
+speedButton.addEventListener(
+  "click",
+  () => {
+
+
+    speedIndex =
+
+      (
+        speedIndex + 1
+      )
+
+      %
+      playbackSpeeds.length;
+
+
+    const speed =
+
+      playbackSpeeds[
+        speedIndex
+      ];
+
+
+    audioPlayer.playbackRate =
+      speed;
+
+
+    speedButton.textContent =
+      `${speed}×`;
+
+
+  }
+);
+
+
+
+/* =====================================================
+   CLOSE PLAYER
+===================================================== */
+
+
+closePlayer.addEventListener(
+  "click",
+  () => {
+
+
+    audioPlayer.pause();
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    player.classList.remove(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   TIME FORMAT
+===================================================== */
+
+
+function formatTime(
+  seconds
+) {
+
+
+  if (
+    !Number.isFinite(
+      seconds
+    )
+  ) {
+
+    return "0:00";
+
+  }
+
+
+  const minutes =
+
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const remainingSeconds =
+
+    Math.floor(
+      seconds % 60
+    )
+
+    .toString()
+
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  return `${minutes}:${remainingSeconds}`;
+
+
+}
+
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+
+renderLibrary();
+
+
+</script>
 
 
 </body>
