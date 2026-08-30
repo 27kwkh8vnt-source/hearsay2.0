@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>HearSay | Law School Audio Library</title>
+
+  <meta
+    name="description"
+    content="HearSay is an audio library of landmark law school cases."
+  >
+
+  <!-- GOOGLE FONTS -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    /* ========================================
+       COLORS
+    ======================================== */
+
+    :root {
+
+      --blue: #2563eb;
+      --blue-dark: #1746a2;
+      --blue-light: #eff6ff;
+      --blue-soft: #dbeafe;
+
+      --navy: #10213d;
+
+      --white: #ffffff;
+      --background: #f7faff;
+      --border: #e1e8f2;
+
+      --text: #172033;
+      --muted: #6b7485;
+
+      --shadow:
+        0 10px 35px
+        rgba(26, 55, 100, 0.08);
+
+      --shadow-hover:
+        0 18px 45px
+        rgba(26, 55, 100, 0.13);
+
+    }
+
+
+    /* ========================================
+       RESET
+    ======================================== */
+
+    * {
+
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+
+    }
+
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      background:
+        var(--background);
+
+      color:
+        var(--text);
+
+    }
+
+
+    a {
+
+      text-decoration: none;
+      color: inherit;
+
+    }
+
+
+    button {
+
+      font: inherit;
+      cursor: pointer;
+
+    }
+
+
+
+    /* ========================================
+       HEADER
+    ======================================== */
+
+    .site-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 100;
+
+      background:
+        rgba(255,255,255,0.96);
+
+      border-bottom:
+        1px solid
+        var(--border);
+
+      backdrop-filter:
+        blur(12px);
+
+    }
+
+
+    .header-inner {
+
+      width:
+        min(
+          1180px,
+          calc(100% - 32px)
+        );
+
+      margin:
+        0 auto;
+
+      min-height:
+        76px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        24px;
+
+    }
+
+
+    .logo {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+      color:
+        var(--navy);
+
+      font-size:
+        1.45rem;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        -0.04em;
+
+    }
+
+
+    .logo-image {
+
+      width:
+        48px;
+
+      height:
+        48px;
+
+      object-fit:
+        contain;
+
+      flex-shrink:
+        0;
+
+    }
+
+
+    .logo span {
+
+      color:
+        var(--blue);
+
+    }
+
+
+    .header-tagline {
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.9rem;
+
+    }
+
+
+
+    /* ========================================
+       HERO
+    ======================================== */
+
+    .hero {
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 10% 20%,
+          #e6f0ff 0,
+          transparent 32%
+        ),
+
+        radial-gradient(
+          circle at 90% 10%,
+          #eef5ff 0,
+          transparent 28%
+        ),
+
+        var(--white);
+
+      border-bottom:
+        1px solid
+        var(--border);
+
+      padding:
+        82px 20px 76px;
+
+    }
+
+
+    .hero-inner {
+
+      width:
+        min(
+          880px,
+          100%
+        );
+
+      margin:
+        0 auto;
+
+      text-align:
+        center;
+
+    }
+
+
+    .eyebrow {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      padding:
+        7px 13px;
+
+      margin-bottom:
+        22px;
+
+      border-radius:
+        999px;
+
+      background:
+        var(--blue-light);
+
+      color:
+        var(--blue-dark);
+
+      font-size:
+        0.78rem;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        0.08em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .hero h1 {
+
+      font-family:
+        "Libre Baskerville",
+        serif;
+
+      color:
+        var(--navy);
+
+      font-size:
+        clamp(
+          2.6rem,
+          6vw,
+          4.8rem
+        );
+
+      line-height:
+        1.06;
+
+      letter-spacing:
+        -0.045em;
+
+      margin-bottom:
+        22px;
+
+    }
+
+
+    .hero h1 span {
+
+      color:
+        var(--blue);
+
+    }
+
+
+    .hero-description {
+
+      width:
+        min(
+          670px,
+          100%
+        );
+
+      margin:
+        0 auto;
+
+      color:
+        var(--muted);
+
+      font-size:
+        1.05rem;
+
+      line-height:
+        1.75;
+
+    }
+
+
+
+    /* ========================================
+       ACCOUNT BUTTONS
+    ======================================== */
+
+    .account-buttons {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      gap:
+        12px;
+
+      margin-top:
+        34px;
+
+    }
+
+
+    .account-button {
+
+      min-width:
+        132px;
+
+      padding:
+        13px 24px;
+
+      border-radius:
+        12px;
+
+      border:
+        1px solid
+        var(--blue);
+
+      font-weight:
+        700;
+
+      font-size:
+        0.95rem;
+
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+
+    }
+
+
+    .signup-button {
+
+      background:
+        var(--blue);
+
+      color:
+        var(--white);
+
+      box-shadow:
+        0 7px 20px
+        rgba(37, 99, 235, 0.18);
+
+    }
+
+
+    .signup-button:hover {
+
+      background:
+        var(--blue-dark);
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 10px 25px
+        rgba(37, 99, 235, 0.24);
+
+    }
+
+
+    .login-button {
+
+      background:
+        var(--white);
+
+      color:
+        var(--blue);
+
+    }
+
+
+    .login-button:hover {
+
+      background:
+        var(--blue-light);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+
+    /* ========================================
+       LIBRARY SECTION
+    ======================================== */
+
+    .library-section {
+
+      width:
+        min(
+          1180px,
+          calc(100% - 32px)
+        );
+
+      margin:
+        0 auto;
+
+      padding:
+        72px 0 90px;
+
+    }
+
+
+    .library-heading {
+
+      text-align:
+        center;
+
+      margin-bottom:
+        36px;
+
+    }
+
+
+    .library-heading h2 {
+
+      font-family:
+        "Libre Baskerville",
+        serif;
+
+      color:
+        var(--navy);
+
+      font-size:
+        clamp(
+          1.9rem,
+          4vw,
+          2.5rem
+        );
+
+      letter-spacing:
+        -0.035em;
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .library-heading p {
+
+      color:
+        var(--muted);
+
+      font-size:
+        1rem;
+
+    }
+
+
+
+    /* ========================================
+       NAVIGATION CARDS
+    ======================================== */
+
+    .library-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0, 1fr)
+        );
+
+      gap:
+        20px;
+
+    }
+
+
+    .library-card {
+
+      position:
+        relative;
+
+      min-height:
+        260px;
+
+      padding:
+        30px 28px;
+
+      background:
+        var(--white);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        22px;
+
+      box-shadow:
+        0 5px 20px
+        rgba(30,58,95,0.045);
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        flex-start;
+
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+
+    }
+
+
+    .library-card:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        #b9cbe3;
+
+      box-shadow:
+        var(--shadow-hover);
+
+    }
+
+
+    .card-icon {
+
+      width:
+        54px;
+
+      height:
+        54px;
+
+      margin-bottom:
+        24px;
+
+      border-radius:
+        15px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        var(--blue-light);
+
+      color:
+        var(--blue);
+
+      font-size:
+        1.45rem;
+
+    }
+
+
+    .library-card h3 {
+
+      font-family:
+        "Libre Baskerville",
+        serif;
+
+      color:
+        var(--navy);
+
+      font-size:
+        1.35rem;
+
+      margin-bottom:
+        10px;
+
+      letter-spacing:
+        -0.025em;
+
+    }
+
+
+    .library-card p {
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.9rem;
+
+      line-height:
+        1.6;
+
+      margin-bottom:
+        24px;
+
+    }
+
+
+    .card-link {
+
+      margin-top:
+        auto;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      color:
+        var(--blue);
+
+      font-size:
+        0.88rem;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .card-arrow {
+
+      transition:
+        transform 0.18s ease;
+
+    }
+
+
+    .library-card:hover
+    .card-arrow {
+
+      transform:
+        translateX(4px);
+
+    }
+
+
+
+    /* ========================================
+       SEARCH PROMPT
+    ======================================== */
+
+    .search-note {
+
+      width:
+        min(
+          720px,
+          100%
+        );
+
+      margin:
+        50px auto 0;
+
+      padding:
+        24px;
+
+      border:
+        1px solid
+        var(--blue-soft);
+
+      border-radius:
+        18px;
+
+      background:
+        var(--blue-light);
+
+      text-align:
+        center;
+
+    }
+
+
+    .search-note strong {
+
+      display:
+        block;
+
+      color:
+        var(--navy);
+
+      font-size:
+        0.95rem;
+
+      margin-bottom:
+        5px;
+
+    }
+
+
+    .search-note span {
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.85rem;
+
+    }
+
+
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+
+    footer {
+
+      padding:
+        30px 16px;
+
+      text-align:
+        center;
+
+      border-top:
+        1px solid
+        var(--border);
+
+      background:
+        var(--white);
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.8rem;
+
+    }
+
+
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+
+    @media
+    (max-width: 800px) {
+
+      .library-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .library-card {
+
+        min-height:
+          215px;
+
+      }
+
+    }
+
+
+    @media
+    (max-width: 620px) {
+
+      .header-inner {
+
+        min-height:
+          66px;
+
+      }
+
+
+      .header-tagline {
+
+        display:
+          none;
+
+      }
+
+
+      .logo-image {
+
+        width:
+          42px;
+
+        height:
+          42px;
+
+      }
+
+
+      .hero {
+
+        padding:
+          58px 18px 60px;
+
+      }
+
+
+      .hero h1 {
+
+        font-size:
+          2.7rem;
+
+      }
+
+
+      .hero-description {
+
+        font-size:
+          0.95rem;
+
+      }
+
+
+      .account-buttons {
+
+        width:
+          100%;
+
+      }
+
+
+      .account-button {
+
+        flex:
+          1;
+
+        min-width:
+          0;
+
+      }
+
+
+      .library-section {
+
+        padding:
+          52px 0 70px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ========================================
+       HEADER
+  ========================================= -->
+
+  <header class="site-header">
+
+    <div class="header-inner">
+
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+
+        <img
+          src="hearsay-logo.png"
+          alt="HearSay"
+          class="logo-image"
+        >
+
+        <div>
+          Hear<span>Say</span>
+        </div>
+
+      </a>
+
+
+      <div class="header-tagline">
+
+        Law school, out loud.
+
+      </div>
+
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ========================================
+       HERO
+  ========================================= -->
+
+  <section class="hero">
+
+    <div class="hero-inner">
+
+
+      <div class="eyebrow">
+
+        🎧 Law School Audio Library
+
+      </div>
+
+
+      <h1>
+
+        Read less.<br>
+
+        <span>
+          Do more.
+        </span>
+
+      </h1>
+
+
+      <p class="hero-description">
+
+        Turn your commute, workout, or downtime into study time.
+
+        Browse landmark opinions by course and listen wherever you are.
+
+      </p>
+
+
+
+      <!-- ACCOUNT BUTTONS -->
+
+      <div class="account-buttons">
+
+
+        <a
+          href="signup.html"
+          class="account-button signup-button"
+        >
+
+          Sign Up
+
+        </a>
+
+
+        <a
+          href="login.html"
+          class="account-button login-button"
+        >
+
+          Log In
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================================
+       EXPLORE LIBRARY
+  ========================================= -->
+
+  <main>
+
+    <section class="library-section">
+
+
+      <div class="library-heading">
+
+        <h2>
+          Explore the Library
+        </h2>
+
+        <p>
+          Choose where you are in law school.
+        </p>
+
+      </div>
+
+
+
+      <div class="library-grid">
+
+
+        <!-- 1L -->
+
+        <a
+          href="1l.html"
+          class="library-card"
+        >
+
+
+          <div class="card-icon">
+
+            ⚖
+
+          </div>
+
+
+          <h3>
+
+            1L Courses
+
+          </h3>
+
+
+          <p>
+
+            Build your foundation with the core subjects every law student encounters.
+
+          </p>
+
+
+          <div class="card-link">
+
+            Browse 1L Courses
+
+            <span class="card-arrow">
+              →
+            </span>
+
+          </div>
+
+
+        </a>
+
+
+
+        <!-- UPPER LEVEL -->
+
+        <a
+          href="upper-level.html"
+          class="library-card"
+        >
+
+
+          <div class="card-icon">
+
+            🎓
+
+          </div>
+
+
+          <h3>
+
+            Upper-Level
+
+          </h3>
+
+
+          <p>
+
+            Explore advanced doctrinal courses and build your law school audio library.
+
+          </p>
+
+
+          <div class="card-link">
+
+            Browse Upper-Level
+
+            <span class="card-arrow">
+              →
+            </span>
+
+          </div>
+
+
+        </a>
+
+
+
+        <!-- BAR PREP -->
+
+        <a
+          href="bar-prep.html"
+          class="library-card"
+        >
+
+
+          <div class="card-icon">
+
+            📝
+
+          </div>
+
+
+          <h3>
+
+            Bar Prep
+
+          </h3>
+
+
+          <p>
+
+            Review major cases organized around the subjects you will see on the bar.
+
+          </p>
+
+
+          <div class="card-link">
+
+            Browse Bar Prep
+
+            <span class="card-arrow">
+              →
+            </span>
+
+          </div>
+
+
+        </a>
+
+
+      </div>
+
+
+
+      <div class="search-note">
+
+        <strong>
+          More HearSay is coming.
+        </strong>
+
+        <span>
+          New courses, cases, transcripts, and recordings will continue to be added to the library.
+        </span>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+
+    © 2026 HearSay · Law school cases, made listenable.
+
+  </footer>
+
+
+</body>
+
+</html>
