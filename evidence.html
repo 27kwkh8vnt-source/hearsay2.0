@@ -749,39 +749,45 @@
     }
 
 
-    .listen-button {
+.listen-button {
 
   flex-shrink: 0;
 
-  border: 0;
+  border: 2px solid var(--blue);
 
   border-radius: 11px;
 
   padding:
     10px 15px;
 
-  background: #2563eb;
+  background:
+    var(--white);
 
-  color: #ffffff;
+  color:
+    var(--blue);
 
   font-weight: 700;
 
   font-size: 0.8rem;
 
-  transition: 0.16s ease;
+  transition:
+    0.16s ease;
 
 }
 
 
     .listen-button:hover {
 
-      background:
-        var(--blue-dark);
+  background:
+    var(--blue-light);
 
-      transform:
-        translateY(-1px);
+  color:
+    var(--blue-dark);
 
-    }
+  transform:
+    translateY(-1px);
+
+}
 
 
     .coming-soon {
