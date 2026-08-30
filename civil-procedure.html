@@ -53,10 +53,6 @@
         0 8px 30px
         rgba(26,55,100,0.08);
 
-      --shadow-large:
-        0 24px 70px
-        rgba(6,23,49,0.24);
-
     }
 
 
@@ -110,12 +106,16 @@
 
 
 
-    /* HEADER */
+    /* ========================================
+       HEADER
+    ======================================== */
 
     .site-header {
 
       position: sticky;
+
       top: 0;
+
       z-index: 100;
 
       background:
@@ -213,6 +213,9 @@
       display:
         flex;
 
+      align-items:
+        center;
+
       gap:
         8px;
 
@@ -220,6 +223,12 @@
 
 
     .nav-link {
+
+      padding:
+        9px 12px;
+
+      border-radius:
+        9px;
 
       color:
         var(--muted);
@@ -230,11 +239,8 @@
       font-weight:
         600;
 
-      padding:
-        9px 12px;
-
-      border-radius:
-        9px;
+      transition:
+        0.18s ease;
 
     }
 
@@ -251,7 +257,9 @@
 
 
 
-    /* HERO */
+    /* ========================================
+       HERO
+    ======================================== */
 
     .course-hero {
 
@@ -303,9 +311,6 @@
       align-items:
         center;
 
-      flex-wrap:
-        wrap;
-
       gap:
         8px;
 
@@ -348,14 +353,14 @@
 
     .hero-icon {
 
+      flex-shrink:
+        0;
+
       width:
         72px;
 
       height:
         72px;
-
-      flex-shrink:
-        0;
 
       border-radius:
         20px;
@@ -405,6 +410,9 @@
 
     .course-heading p {
 
+      max-width:
+        800px;
+
       color:
         var(--muted);
 
@@ -418,7 +426,9 @@
 
 
 
-    /* MAIN */
+    /* ========================================
+       MAIN
+    ======================================== */
 
     main {
 
@@ -436,6 +446,11 @@
 
     }
 
+
+
+    /* ========================================
+       LIBRARY HEADER
+    ======================================== */
 
     .library-top {
 
@@ -516,7 +531,9 @@
 
 
 
-    /* SEARCH */
+    /* ========================================
+       SEARCH
+    ======================================== */
 
     .search-wrapper {
 
@@ -524,7 +541,7 @@
         relative;
 
       margin-bottom:
-        24px;
+        38px;
 
     }
 
@@ -558,7 +575,7 @@
         100%;
 
       height:
-        52px;
+        54px;
 
       padding:
         0 18px 0 46px;
@@ -583,6 +600,9 @@
         0 4px 16px
         rgba(30,58,95,0.04);
 
+      transition:
+        0.18s ease;
+
     }
 
 
@@ -599,7 +619,129 @@
 
 
 
-    /* CASE LIST */
+    /* ========================================
+       TOPIC SECTIONS
+    ======================================== */
+
+    .topic-section {
+
+      margin-bottom:
+        42px;
+
+    }
+
+
+    .topic-header {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        16px;
+
+      margin-bottom:
+        13px;
+
+    }
+
+
+    .topic-title-wrap {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+    }
+
+
+    .topic-number {
+
+      width:
+        34px;
+
+      height:
+        34px;
+
+      flex-shrink:
+        0;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      border-radius:
+        10px;
+
+      background:
+        var(--blue-light);
+
+      color:
+        var(--blue);
+
+      font-size:
+        0.72rem;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .topic-header h3 {
+
+      font-family:
+        "Libre Baskerville",
+        serif;
+
+      color:
+        var(--navy);
+
+      font-size:
+        1.2rem;
+
+      line-height:
+        1.35;
+
+      letter-spacing:
+        -0.025em;
+
+    }
+
+
+    .topic-case-count {
+
+      flex-shrink:
+        0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.75rem;
+
+      font-weight:
+        600;
+
+    }
+
+
+
+    /* ========================================
+       CASE CARDS
+    ======================================== */
 
     .case-list {
 
@@ -610,7 +752,7 @@
         column;
 
       gap:
-        12px;
+        9px;
 
     }
 
@@ -624,10 +766,10 @@
         center;
 
       gap:
-        18px;
+        15px;
 
       padding:
-        19px 20px;
+        17px 18px;
 
       background:
         var(--white);
@@ -637,14 +779,16 @@
         var(--border);
 
       border-radius:
-        17px;
+        15px;
 
       box-shadow:
-        0 4px 18px
-        rgba(30,58,95,0.04);
+        0 3px 14px
+        rgba(30,58,95,0.035);
 
       transition:
-        0.18s ease;
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
 
     }
 
@@ -663,48 +807,13 @@
     }
 
 
-    .case-number {
-
-      flex-shrink:
-        0;
-
-      width:
-        40px;
-
-      height:
-        40px;
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-      border-radius:
-        12px;
-
-      background:
-        var(--blue-light);
-
-      color:
-        var(--blue);
-
-      font-weight:
-        700;
-
-      font-size:
-        0.8rem;
-
-    }
-
-
     .case-content {
-
-      min-width:
-        0;
 
       flex:
         1;
+
+      min-width:
+        0;
 
     }
 
@@ -714,43 +823,97 @@
       color:
         var(--navy);
 
+      font-size:
+        0.9rem;
+
       font-weight:
-        700;
+        650;
 
       line-height:
         1.4;
-
-      margin-bottom:
-        5px;
 
     }
 
 
     .case-meta {
 
+      margin-top:
+        4px;
+
       color:
         var(--muted);
 
       font-size:
-        0.77rem;
+        0.72rem;
 
     }
 
 
-    .listen-button {
+    .status {
 
       flex-shrink:
         0;
+
+      padding:
+        5px 9px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        0.66rem;
+
+      font-weight:
+        700;
+
+    }
+
+
+    .status.available {
+
+      color:
+        var(--blue-dark);
+
+      background:
+        var(--blue-light);
+
+    }
+
+
+    .status.soon {
+
+      color:
+        var(--muted);
+
+      background:
+        #f1f4f8;
+
+    }
+
+
+    .play-button {
+
+      flex-shrink:
+        0;
+
+      width:
+        40px;
+
+      height:
+        40px;
+
+      border-radius:
+        50%;
 
       border:
         2px solid
         var(--blue);
 
-      border-radius:
-        11px;
+      display:
+        grid;
 
-      padding:
-        9px 14px;
+      place-items:
+        center;
 
       background:
         var(--white);
@@ -758,11 +921,8 @@
       color:
         var(--blue);
 
-      font-weight:
-        700;
-
       font-size:
-        0.8rem;
+        0.82rem;
 
       transition:
         0.16s ease;
@@ -770,45 +930,21 @@
     }
 
 
-    .listen-button:hover {
+    .play-button:hover {
+
+      transform:
+        scale(1.06);
 
       background:
         var(--blue-light);
 
-      color:
-        var(--blue-dark);
-
-      transform:
-        translateY(-1px);
-
     }
 
 
-    .coming-soon {
 
-      flex-shrink:
-        0;
-
-      padding:
-        7px 10px;
-
-      border-radius:
-        999px;
-
-      background:
-        #f1f4f8;
-
-      color:
-        var(--muted);
-
-      font-size:
-        0.69rem;
-
-      font-weight:
-        700;
-
-    }
-
+    /* ========================================
+       NO RESULTS
+    ======================================== */
 
     .no-results {
 
@@ -816,20 +952,20 @@
         none;
 
       padding:
-        42px 20px;
-
-      text-align:
-        center;
+        50px 20px;
 
       border:
         1px solid
         var(--border);
 
       border-radius:
-        17px;
+        18px;
 
       background:
         var(--white);
+
+      text-align:
+        center;
 
       color:
         var(--muted);
@@ -837,477 +973,109 @@
     }
 
 
+    .no-results strong {
 
-    /* PLAYER OVERLAY */
+      display:
+        block;
 
-    .player-overlay {
+      margin-bottom:
+        7px;
+
+      color:
+        var(--navy);
+
+    }
+
+
+
+    /* ========================================
+       AUDIO PLAYER
+    ======================================== */
+
+    .player {
 
       position:
         fixed;
 
-      inset:
-        0;
+      left:
+        50%;
+
+      bottom:
+        18px;
+
+      transform:
+        translateX(-50%);
 
       z-index:
-        500;
+        200;
+
+      width:
+        min(
+          780px,
+          calc(100% - 28px)
+        );
+
+      padding:
+        15px 18px;
 
       display:
         none;
 
       align-items:
-        flex-start;
-
-      justify-content:
-        center;
-
-      padding:
-        24px;
-
-      overflow-y:
-        auto;
-
-      background:
-        rgba(7,18,37,0.58);
-
-      backdrop-filter:
-        blur(10px);
-
-    }
-
-
-    .player-overlay.visible {
-
-      display:
-        flex;
-
-    }
-
-
-
-    /* EXPANDED PLAYER */
-
-    .expanded-player {
-
-      width:
-        min(
-          900px,
-          100%
-        );
-
-      max-height:
-        calc(100dvh - 48px);
-
-      overflow:
-        auto;
-
-      margin:
-        auto 0;
-
-      background:
-        var(--white);
-
-      border-radius:
-        26px;
-
-      box-shadow:
-        var(--shadow-large);
-
-      position:
-        relative;
-
-    }
-
-
-    .player-top {
-
-      position:
-        sticky;
-
-      top:
-        0;
-
-      z-index:
-        10;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        15px;
-
-      padding:
-        19px 22px;
-
-      border-bottom:
-        1px solid
-        var(--border);
-
-      background:
-        var(--white);
-
-    }
-
-
-    .player-brand {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        9px;
-
-      color:
-        var(--navy);
-
-      font-weight:
-        700;
-
-    }
-
-
-    .player-brand img {
-
-      width:
-        34px;
-
-      height:
-        34px;
-
-      object-fit:
-        contain;
-
-    }
-
-
-    .player-top-actions {
-
-      display:
-        flex;
-
-      gap:
-        7px;
-
-    }
-
-
-    .icon-button {
-
-      width:
-        38px;
-
-      height:
-        38px;
-
-      border:
-        0;
-
-      border-radius:
-        10px;
-
-      background:
-        var(--blue-light);
-
-      color:
-        var(--blue-dark);
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-      font-weight:
-        700;
-
-    }
-
-
-    .icon-button:hover {
-
-      background:
-        var(--blue-soft);
-
-    }
-
-
-    .player-body {
-
-      padding:
-        36px 38px 34px;
-
-    }
-
-
-    .player-case-heading {
-
-      text-align:
-        center;
-
-      margin-bottom:
-        30px;
-
-    }
-
-
-    .player-course {
-
-      color:
-        var(--blue);
-
-      font-size:
-        0.72rem;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        0.1em;
-
-      text-transform:
-        uppercase;
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .player-case-heading h2 {
-
-      width:
-        min(
-          680px,
-          100%
-        );
-
-      margin:
-        0 auto;
-
-      font-family:
-        "Libre Baskerville",
-        serif;
-
-      color:
-        var(--navy);
-
-      font-size:
-        clamp(
-          1.55rem,
-          4vw,
-          2.2rem
-        );
-
-      line-height:
-        1.35;
-
-      letter-spacing:
-        -0.03em;
-
-    }
-
-
-
-    /* AUDIO CONTROLS */
-
-    .main-controls {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      gap:
-        20px;
-
-      margin-bottom:
-        28px;
-
-    }
-
-
-    .skip-button {
-
-      width:
-        52px;
-
-      height:
-        52px;
-
-      border:
-        0;
-
-      border-radius:
-        50%;
-
-      background:
-        var(--blue-light);
-
-      color:
-        var(--blue-dark);
-
-      font-size:
-        0.75rem;
-
-      font-weight:
-        700;
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-    }
-
-
-    .skip-button:hover {
-
-      transform:
-        scale(1.05);
-
-      background:
-        var(--blue-soft);
-
-    }
-
-
-    .main-play {
-
-      width:
-        66px;
-
-      height:
-        66px;
-
-      border:
-        0;
-
-      border-radius:
-        50%;
-
-      display:
-        grid;
-
-      place-items:
-        center;
-
-      background:
-        var(--blue);
-
-      color:
-        white;
-
-      font-size:
-        1.2rem;
-
-      box-shadow:
-        0 8px 24px
-        rgba(37,99,235,0.25);
-
-    }
-
-
-
-    /* PROGRESS */
-
-    .progress-section {
-
-      margin-bottom:
-        26px;
-
-    }
-
-
-    .player-progress {
-
-      width:
-        100%;
-
-      accent-color:
-        var(--blue);
-
-      cursor:
-        pointer;
-
-    }
-
-
-    .time-row {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      margin-top:
-        6px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        0.72rem;
-
-    }
-
-
-
-    /* OPTIONS */
-
-    .player-options {
-
-      display:
-        flex;
-
-      justify-content:
         center;
 
       flex-wrap:
         wrap;
 
       gap:
-        9px;
+        14px;
 
-      margin-bottom:
-        28px;
+      background:
+        rgba(16,33,61,0.98);
+
+      color:
+        white;
+
+      border-radius:
+        18px;
+
+      box-shadow:
+        0 18px 48px
+        rgba(6,23,49,0.24);
 
     }
 
 
-    .option-button {
+    .player.visible {
+
+      display:
+        flex;
+
+    }
+
+
+    .main-play {
+
+      flex-shrink:
+        0;
+
+      width:
+        43px;
+
+      height:
+        43px;
 
       border:
-        1px solid
-        var(--border);
+        0;
 
       border-radius:
-        999px;
-
-      padding:
-        9px 14px;
+        50%;
 
       background:
-        var(--white);
+        white;
 
       color:
-        var(--muted);
-
-      font-size:
-        0.78rem;
+        var(--blue);
 
       font-weight:
         700;
@@ -1315,80 +1083,92 @@
     }
 
 
-    .option-button:hover,
-    .option-button.active {
+    .player-info {
 
-      color:
-        var(--blue);
+      flex:
+        1;
 
-      border-color:
-        var(--blue-soft);
-
-      background:
-        var(--blue-light);
+      min-width:
+        0;
 
     }
 
 
-
-    /* PANELS */
-
-    .content-panel {
-
-      display:
-        none;
-
-      border-top:
-        1px solid
-        var(--border);
-
-      padding-top:
-        24px;
-
-    }
-
-
-    .content-panel.visible {
-
-      display:
-        block;
-
-    }
-
-
-    .panel-heading {
-
-      font-family:
-        "Libre Baskerville",
-        serif;
-
-      color:
-        var(--navy);
-
-      font-size:
-        1.2rem;
+    .player-label {
 
       margin-bottom:
-        16px;
+        4px;
+
+      color:
+        #aebed5;
+
+      font-size:
+        0.66rem;
+
+      letter-spacing:
+        0.05em;
 
     }
 
 
-    .chapter-list {
+    .player-name {
 
-      display:
-        flex;
+      font-size:
+        0.88rem;
 
-      flex-direction:
-        column;
+      font-weight:
+        600;
 
-      gap:
-        8px;
+      white-space:
+        nowrap;
+
+      overflow:
+        hidden;
+
+      text-overflow:
+        ellipsis;
 
     }
 
 
-    .chapter-button {
+    .close-player {
+
+      flex-shrink:
+        0;
+
+      width:
+        34px;
+
+      height:
+        34px;
+
+      border:
+        0;
+
+      border-radius:
+        50%;
+
+      background:
+        transparent;
+
+      color:
+        white;
+
+      font-size:
+        1rem;
+
+    }
+
+
+    .close-player:hover {
+
+      background:
+        rgba(255,255,255,0.1);
+
+    }
+
+
+    .player-controls {
 
       width:
         100%;
@@ -1399,155 +1179,68 @@
       align-items:
         center;
 
-      justify-content:
-        space-between;
-
       gap:
-        15px;
+        10px;
 
-      padding:
-        14px 15px;
+    }
+
+
+    .player-time {
+
+      flex-shrink:
+        0;
+
+      color:
+        #aebed5;
+
+      font-size:
+        0.68rem;
+
+    }
+
+
+    .player-progress {
+
+      flex:
+        1;
+
+      accent-color:
+        white;
+
+    }
+
+
+    .speed-button {
 
       border:
         1px solid
-        var(--border);
+        rgba(255,255,255,0.18);
 
       border-radius:
-        12px;
+        999px;
+
+      padding:
+        6px 10px;
 
       background:
-        var(--background);
-
-      text-align:
-        left;
-
-    }
-
-
-    .chapter-button:hover {
-
-      border-color:
-        var(--blue-soft);
-
-      background:
-        var(--blue-light);
-
-    }
-
-
-    .chapter-title {
+        rgba(255,255,255,0.08);
 
       color:
-        var(--navy);
+        white;
+
+      font-size:
+        0.7rem;
 
       font-weight:
         600;
 
-      font-size:
-        0.86rem;
-
-    }
-
-
-    .chapter-time {
-
-      color:
-        var(--blue);
-
-      font-size:
-        0.76rem;
-
-      font-weight:
-        700;
-
-    }
-
-
-    .transcript {
-
-      max-height:
-        340px;
-
-      overflow-y:
-        auto;
-
-      padding:
-        18px;
-
-      border-radius:
-        14px;
-
-      background:
-        var(--background);
-
-      color:
-        var(--text);
-
-      font-family:
-        "Libre Baskerville",
-        serif;
-
-      font-size:
-        0.86rem;
-
-      line-height:
-        1.8;
-
-      white-space:
-        pre-line;
-
     }
 
 
 
-    /* FULLSCREEN */
-
-    .expanded-player:fullscreen {
-
-      width:
-        100%;
-
-      height:
-        100%;
-
-      max-height:
-        none;
-
-      border-radius:
-        0;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      background:
-        var(--white);
-
-    }
-
-
-    .expanded-player:fullscreen
-    .player-body {
-
-      width:
-        min(
-          900px,
-          calc(100% - 40px)
-        );
-
-      margin:
-        auto;
-
-      overflow-y:
-        auto;
-
-    }
-
-
-
-    /* FOOTER */
+    /* ========================================
+       FOOTER
+    ======================================== */
 
     footer {
 
@@ -1574,7 +1267,9 @@
 
 
 
-    /* MOBILE */
+    /* ========================================
+       MOBILE
+    ======================================== */
 
     @media
     (max-width: 620px) {
@@ -1598,10 +1293,26 @@
       }
 
 
+      .nav-link.library-link {
+
+        display:
+          none;
+
+      }
+
+
       .course-hero {
 
         padding:
           42px 12px 44px;
+
+      }
+
+
+      .course-hero-inner {
+
+        width:
+          calc(100% - 10px);
 
       }
 
@@ -1634,7 +1345,7 @@
       .course-heading h1 {
 
         font-size:
-          2.1rem;
+          2.2rem;
 
       }
 
@@ -1650,18 +1361,34 @@
       }
 
 
-      .case-card {
+      .library-top {
 
-        gap:
-          11px;
-
-        padding:
-          16px 14px;
+        align-items:
+          center;
 
       }
 
 
-      .case-number {
+      .topic-header h3 {
+
+        font-size:
+          1.05rem;
+
+      }
+
+
+      .case-card {
+
+        padding:
+          15px 13px;
+
+        gap:
+          10px;
+
+      }
+
+
+      .status {
 
         display:
           none;
@@ -1669,46 +1396,21 @@
       }
 
 
-      .coming-soon {
+      .player-controls {
 
-        font-size:
-          0.63rem;
-
-      }
-
-
-      .player-overlay {
-
-        padding:
-          0;
+        flex-wrap:
+          wrap;
 
       }
 
 
-      .expanded-player {
+      .player-progress {
 
-        width:
+        order:
+          5;
+
+        flex-basis:
           100%;
-
-        max-height:
-          100dvh;
-
-        height:
-          100dvh;
-
-        margin:
-          0;
-
-        border-radius:
-          0;
-
-      }
-
-
-      .player-body {
-
-        padding:
-          28px 20px 35px;
 
       }
 
@@ -1752,7 +1454,7 @@
 
         <a
           href="1l.html"
-          class="nav-link"
+          class="nav-link library-link"
         >
           1L Courses
         </a>
@@ -1805,9 +1507,7 @@
 
 
         <div class="hero-icon">
-
           ⚖
-
         </div>
 
 
@@ -1817,13 +1517,10 @@
             Civil Procedure
           </h1>
 
-
           <p>
-
-            Landmark cases covering personal jurisdiction,
-            subject-matter jurisdiction, venue, Erie, pleading,
-            discovery, joinder, class actions, preclusion, and trial procedure.
-
+            Jurisdiction, pleading, discovery, joinder, class actions,
+            trial, preclusion, appeals, and the rules governing
+            litigation in federal court.
           </p>
 
         </div>
@@ -1853,7 +1550,7 @@
         </h2>
 
         <p>
-          Browse Civil Procedure cases alphabetically.
+          Browse by doctrine or search the complete Civil Procedure collection.
         </p>
 
       </div>
@@ -1863,7 +1560,7 @@
         class="case-count"
         id="caseCount"
       >
-        59 cases
+        183 cases
       </div>
 
 
@@ -1890,19 +1587,23 @@
 
 
 
-    <!-- CASES -->
+    <!-- TOPICS GENERATED HERE -->
 
-    <div
-      class="case-list"
-      id="caseList"
-    ></div>
+    <div id="topicsContainer"></div>
+
 
 
     <div
       class="no-results"
       id="noResults"
     >
-      No Civil Procedure cases found.
+
+      <strong>
+        No Civil Procedure cases found
+      </strong>
+
+      Try searching for another case or doctrine.
+
     </div>
 
 
@@ -1910,222 +1611,99 @@
 
 
 
-  <!-- PLAYER -->
+  <!-- AUDIO PLAYER -->
 
   <div
-    class="player-overlay"
-    id="playerOverlay"
+    class="player"
+    id="player"
   >
 
 
-    <div
-      class="expanded-player"
-      id="expandedPlayer"
+    <button
+      class="main-play"
+      id="mainPlay"
     >
+      ▶
+    </button>
 
 
-      <div class="player-top">
+    <div class="player-info">
 
-
-        <div class="player-brand">
-
-          <img
-            src="hearsay-logo.png"
-            alt=""
-          >
-
-          HearSay
-
-        </div>
-
-
-        <div class="player-top-actions">
-
-
-          <button
-            class="icon-button"
-            id="fullscreenButton"
-            aria-label="Full screen"
-          >
-            ⛶
-          </button>
-
-
-          <button
-            class="icon-button"
-            id="closePlayer"
-            aria-label="Close player"
-          >
-            ✕
-          </button>
-
-
-        </div>
-
-
+      <div class="player-label">
+        NOW PLAYING
       </div>
 
-
-
-      <div class="player-body">
-
-
-        <div class="player-case-heading">
-
-          <div class="player-course">
-            Civil Procedure
-          </div>
-
-          <h2 id="playerCaseName">
-            Case Name
-          </h2>
-
-        </div>
-
-
-
-        <div class="main-controls">
-
-
-          <button
-            class="skip-button"
-            id="rewindButton"
-          >
-            ↶ 10
-          </button>
-
-
-          <button
-            class="main-play"
-            id="mainPlayButton"
-          >
-            ▶
-          </button>
-
-
-          <button
-            class="skip-button"
-            id="forwardButton"
-          >
-            10 ↷
-          </button>
-
-
-        </div>
-
-
-
-        <div class="progress-section">
-
-
-          <input
-            class="player-progress"
-            id="playerProgress"
-            type="range"
-            min="0"
-            max="100"
-            value="0"
-          >
-
-
-          <div class="time-row">
-
-            <span id="currentTime">
-              0:00
-            </span>
-
-            <span id="duration">
-              0:00
-            </span>
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="player-options">
-
-
-          <button
-            class="option-button"
-            id="speedButton"
-          >
-            1× Speed
-          </button>
-
-
-          <button
-            class="option-button"
-            id="chaptersButton"
-          >
-            Chapters
-          </button>
-
-
-          <button
-            class="option-button"
-            id="transcriptButton"
-          >
-            Transcript
-          </button>
-
-
-        </div>
-
-
-
-        <div
-          class="content-panel"
-          id="chaptersPanel"
-        >
-
-          <div class="panel-heading">
-            Chapters
-          </div>
-
-          <div
-            class="chapter-list"
-            id="chapterList"
-          ></div>
-
-        </div>
-
-
-
-        <div
-          class="content-panel"
-          id="transcriptPanel"
-        >
-
-          <div class="panel-heading">
-            Transcript
-          </div>
-
-          <div
-            class="transcript"
-            id="transcriptText"
-          ></div>
-
-        </div>
-
-
+      <div
+        class="player-name"
+        id="playerName"
+      >
+        Case Name
       </div>
-
-
-      <audio
-        id="audioPlayer"
-        preload="metadata"
-      ></audio>
-
 
     </div>
+
+
+    <button
+      class="close-player"
+      id="closePlayer"
+      aria-label="Close player"
+    >
+      ✕
+    </button>
+
+
+    <div
+      class="player-controls"
+      id="playerControls"
+    >
+
+      <span
+        class="player-time"
+        id="currentTime"
+      >
+        0:00
+      </span>
+
+
+      <input
+        class="player-progress"
+        id="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      >
+
+
+      <span
+        class="player-time"
+        id="duration"
+      >
+        0:00
+      </span>
+
+
+      <button
+        class="speed-button"
+        id="speedButton"
+      >
+        1×
+      </button>
+
+    </div>
+
+
+    <audio
+      id="audioPlayer"
+      preload="metadata"
+    ></audio>
 
 
   </div>
 
 
+
+  <!-- FOOTER -->
 
   <footer>
 
@@ -2135,339 +1713,705 @@
 
 
 
-  <script>
+<script>
 
-    /* ========================================
-       CIVIL PROCEDURE CASES
-    ======================================== */
 
-    const cases = [
+/* =====================================================
+   CIVIL PROCEDURE LIBRARY
+===================================================== */
 
-      "Amchem Products, Inc. v. Windsor",
 
-      "Anderson v. Liberty Lobby, Inc.",
+const civProTopics = [
 
+
+  {
+    title: "Personal Jurisdiction",
+    cases: [
       "Asahi Metal Industry Co. v. Superior Court",
-
-      "Ashcroft v. Iqbal",
-
-      "Atlantic Marine Construction Co. v. U.S. District Court",
-
-      "Beacon Theatres, Inc. v. Westover",
-
-      "Bell Atlantic Corp. v. Twombly",
-
+      "Blackmer v. United States",
       "Bristol-Myers Squibb Co. v. Superior Court",
-
       "Burger King Corp. v. Rudzewicz",
-
       "Burnham v. Superior Court",
-
-      "Business Guides, Inc. v. Chromatic Communications Enterprises, Inc.",
-
-      "Byrd v. Blue Ridge Rural Electric Cooperative, Inc.",
-
       "Calder v. Jones",
-
-      "Carnival Cruise Lines, Inc. v. Shute",
-
-      "Caterpillar Inc. v. Lewis",
-
-      "Celotex Corp. v. Catrett",
-
-      "Conley v. Gibson",
-
       "Daimler AG v. Bauman",
-
-      "Erie Railroad Co. v. Tompkins",
-
-      "Exxon Mobil Corp. v. Allapattah Services, Inc.",
-
-      "Federated Department Stores, Inc. v. Moitie",
-
-      "Foman v. Davis",
-
       "Ford Motor Co. v. Montana Eighth Judicial District Court",
-
-      "Gasperini v. Center for Humanities, Inc.",
-
       "Goodyear Dunlop Tires Operations, S.A. v. Brown",
-
-      "Grable & Sons Metal Products, Inc. v. Darue Engineering & Manufacturing",
-
-      "Guaranty Trust Co. v. York",
-
-      "Hanna v. Plumer",
-
-      "Hansberry v. Lee",
-
       "Hanson v. Denckla",
-
-      "Hertz Corp. v. Friend",
-
+      "Helicopteros Nacionales de Colombia, S.A. v. Hall",
       "Hess v. Pawloski",
-
-      "Hickman v. Taylor",
-
+      "Insurance Corp. of Ireland v. Compagnie des Bauxites de Guinée",
       "International Shoe Co. v. Washington",
-
       "J. McIntyre Machinery, Ltd. v. Nicastro",
-
-      "Jones v. Flowers",
-
-      "Klaxon Co. v. Stentor Electric Manufacturing Co.",
-
-      "Krupski v. Costa Crociere S.p.A.",
-
-      "Louisville & Nashville Railroad Co. v. Mottley",
-
-      "Mas v. Perry",
-
-      "Matsushita Electric Industrial Co. v. Zenith Radio Corp.",
-
+      "Keeton v. Hustler Magazine, Inc.",
+      "Mallory v. Norfolk Southern Railway Co.",
       "McGee v. International Life Insurance Co.",
-
-      "Mullane v. Central Hanover Bank & Trust Co.",
-
-      "Parklane Hosiery Co. v. Shore",
-
+      "Milliken v. Meyer",
+      "National Equipment Rental, Ltd. v. Szukhent",
       "Pennoyer v. Neff",
-
-      "Piper Aircraft Co. v. Reyno",
-
-      "Republic of Philippines v. Pimentel",
-
-      "Semtek International Inc. v. Lockheed Martin Corp.",
-
-      "Shady Grove Orthopedic Associates, P.A. v. Allstate Insurance Co.",
-
+      "Perkins v. Benguet Consolidated Mining Co.",
       "Shaffer v. Heitner",
-
-      "Sibbach v. Wilson & Co.",
-
-      "Swift v. Tyson",
-
-      "Taylor v. Sturgell",
-
-      "Temple v. Synthes Corp.",
-
-      "The Bremen v. Zapata Off-Shore Co.",
-
-      "United Mine Workers of America v. Gibbs",
-
       "Walden v. Fiore",
-
-      "Wal-Mart Stores, Inc. v. Dukes",
-
       "World-Wide Volkswagen Corp. v. Woodson"
+    ]
+  },
+
+
+  {
+    title: "Notice & Service of Process",
+    cases: [
+      "Greene v. Lindsey",
+      "Jones v. Flowers",
+      "Mennonite Board of Missions v. Adams",
+      "Mullane v. Central Hanover Bank & Trust Co.",
+      "National Development Co. v. Triad Holding Corp.",
+      "Rio Properties, Inc. v. Rio International Interlink"
+    ]
+  },
+
+
+  {
+    title: "Subject-Matter Jurisdiction — Diversity",
+    cases: [
+      "Grupo Dataflux v. Atlas Global Group, L.P.",
+      "Hertz Corp. v. Friend",
+      "Mas v. Perry",
+      "McNutt v. General Motors Acceptance Corp.",
+      "Mollan v. Torrance",
+      "Redner v. Sanders",
+      "St. Paul Mercury Indemnity Co. v. Red Cab Co.",
+      "Strawbridge v. Curtiss"
+    ]
+  },
+
+
+  {
+    title: "Federal-Question Jurisdiction",
+    cases: [
+      "American Well Works Co. v. Layne & Bowler Co.",
+      "Empire Healthchoice Assurance, Inc. v. McVeigh",
+      "Grable & Sons Metal Products, Inc. v. Darue Engineering & Manufacturing",
+      "Gunn v. Minton",
+      "Louisville & Nashville Railroad Co. v. Mottley",
+      "Merrell Dow Pharmaceuticals Inc. v. Thompson",
+      "Smith v. Kansas City Title & Trust Co."
+    ]
+  },
+
+
+  {
+    title: "Supplemental Jurisdiction",
+    cases: [
+      "Aldinger v. Howard",
+      "Exxon Mobil Corp. v. Allapattah Services, Inc.",
+      "Finley v. United States",
+      "Owen Equipment & Erection Co. v. Kroger",
+      "United Mine Workers of America v. Gibbs"
+    ]
+  },
+
+
+  {
+    title: "Removal & Remand",
+    cases: [
+      "Caterpillar Inc. v. Lewis",
+      "Home Depot U.S.A., Inc. v. Jackson",
+      "Lincoln Property Co. v. Roche",
+      "Martin v. Franklin Capital Corp.",
+      "Shamrock Oil & Gas Corp. v. Sheets"
+    ]
+  },
+
+
+  {
+    title: "Venue, Transfer & Forum Non Conveniens",
+    cases: [
+      "Atlantic Marine Construction Co. v. U.S. District Court",
+      "Bates v. C&S Adjusters, Inc.",
+      "Brunette Machine Works, Ltd. v. Kockum Industries, Inc.",
+      "Carnival Cruise Lines, Inc. v. Shute",
+      "Decker Coal Co. v. Commonwealth Edison Co.",
+      "Leroy v. Great Western United Corp.",
+      "Piper Aircraft Co. v. Reyno",
+      "Sinochem International Co. v. Malaysia International Shipping Corp.",
+      "The Bremen v. Zapata Off-Shore Co.",
+      "Van Dusen v. Barrack"
+    ]
+  },
+
+
+  {
+    title: "Erie Doctrine",
+    cases: [
+      "Black & White Taxicab & Transfer Co. v. Brown & Yellow Taxicab & Transfer Co.",
+      "Boyle v. United Technologies Corp.",
+      "Byrd v. Blue Ridge Rural Electric Cooperative, Inc.",
+      "Clearfield Trust Co. v. United States",
+      "Erie Railroad Co. v. Tompkins",
+      "Gasperini v. Center for Humanities, Inc.",
+      "Guaranty Trust Co. v. York",
+      "Hanna v. Plumer",
+      "Klaxon Co. v. Stentor Electric Manufacturing Co.",
+      "Ragan v. Merchants Transfer & Warehouse Co.",
+      "Semtek International Inc. v. Lockheed Martin Corp.",
+      "Shady Grove Orthopedic Associates, P.A. v. Allstate Insurance Co.",
+      "Sibbach v. Wilson & Co.",
+      "Swift v. Tyson",
+      "Walker v. Armco Steel Corp."
+    ]
+  },
+
+
+  {
+    title: "Pleading",
+    cases: [
+      "Ashcroft v. Iqbal",
+      "Bell Atlantic Corp. v. Twombly",
+      "Conley v. Gibson",
+      "David v. Crompton & Knowles Corp.",
+      "Dioguardi v. Durning",
+      "Erickson v. Pardus",
+      "Gillispie v. Goodyear Service Stores",
+      "Ingraham v. United States",
+      "Johnson v. City of Shelby",
+      "Layman v. Southwestern Bell Telephone Co.",
+      "McCormick v. Kopmann",
+      "Swanson v. Citibank, N.A.",
+      "United States v. Board of Harbor Commissioners",
+      "Zielinski v. Philadelphia Piers, Inc."
+    ]
+  },
+
+
+  {
+    title: "Rule 11 & Sanctions",
+    cases: [
+      "Business Guides, Inc. v. Chromatic Communications Enterprises, Inc.",
+      "Christian v. Mattel, Inc.",
+      "Hadges v. Yonkers Racing Corp.",
+      "Patsy's Brand, Inc. v. I.O.B. Realty, Inc.",
+      "Walker v. Norwest Corp."
+    ]
+  },
+
+
+  {
+    title: "Amendment of Pleadings",
+    cases: [
+      "Beeck v. Aquaslide 'N' Dive Corp.",
+      "Foman v. Davis",
+      "Krupski v. Costa Crociere S.p.A.",
+      "Moore v. Baker",
+      "Worthington v. Wilson"
+    ]
+  },
+
+
+  {
+    title: "Discovery",
+    cases: [
+      "Davis v. Precoat Metals",
+      "Hickman v. Taylor",
+      "Jaffee v. Redmond",
+      "National Hockey League v. Metropolitan Hockey Club",
+      "Qualcomm Inc. v. Broadcom Corp.",
+      "Seattle Times Co. v. Rhinehart",
+      "Stalnaker v. Kmart Corp.",
+      "Upjohn Co. v. United States",
+      "Zubulake v. UBS Warburg LLC (Zubulake I)",
+      "Zubulake v. UBS Warburg LLC (Zubulake III)",
+      "Zubulake v. UBS Warburg LLC (Zubulake IV)",
+      "Zubulake v. UBS Warburg LLC (Zubulake V)"
+    ]
+  },
+
+
+  {
+    title: "Summary Judgment",
+    cases: [
+      "Anderson v. Liberty Lobby, Inc.",
+      "Celotex Corp. v. Catrett",
+      "Matsushita Electric Industrial Co. v. Zenith Radio Corp.",
+      "Scott v. Harris",
+      "Tolan v. Cotton"
+    ]
+  },
+
+
+  {
+    title: "Judgment as a Matter of Law",
+    cases: [
+      "Galloway v. United States",
+      "Pennsylvania Railroad Co. v. Chamberlain",
+      "Reeves v. Sanderson Plumbing Products, Inc."
+    ]
+  },
+
+
+  {
+    title: "Default, Dismissal & Failure to Prosecute",
+    cases: [
+      "Henthorn v. Department of Navy",
+      "Link v. Wabash Railroad Co.",
+      "Peralta v. Heights Medical Center, Inc."
+    ]
+  },
+
+
+  {
+    title: "Joinder",
+    cases: [
+      "Mosley v. General Motors Corp.",
+      "Provident Tradesmens Bank & Trust Co. v. Patterson",
+      "Republic of Philippines v. Pimentel",
+      "Rush v. Sport Chalet, Inc.",
+      "State Farm Fire & Casualty Co. v. Tashire",
+      "Tanbro Fabrics Corp. v. Beaunit Mills, Inc.",
+      "Temple v. Synthes Corp."
+    ]
+  },
+
+
+  {
+    title: "Intervention",
+    cases: [
+      "Cascade Natural Gas Corp. v. El Paso Natural Gas Co.",
+      "Natural Resources Defense Council v. U.S. Nuclear Regulatory Commission",
+      "Smuck v. Hobson",
+      "Trbovich v. United Mine Workers"
+    ]
+  },
+
+
+  {
+    title: "Class Actions",
+    cases: [
+      "Amchem Products, Inc. v. Windsor",
+      "Amgen Inc. v. Connecticut Retirement Plans & Trust Funds",
+      "Comcast Corp. v. Behrend",
+      "Devlin v. Scardelletti",
+      "Frank v. Gaos",
+      "General Telephone Co. of Southwest v. Falcon",
+      "Hansberry v. Lee",
+      "Holland v. Steele",
+      "Ortiz v. Fibreboard Corp.",
+      "Phillips Petroleum Co. v. Shutts",
+      "Standard Fire Insurance Co. v. Knowles",
+      "Wal-Mart Stores, Inc. v. Dukes"
+    ]
+  },
+
+
+  {
+    title: "Jury Trial & Jury Selection",
+    cases: [
+      "Batson v. Kentucky",
+      "Beacon Theatres, Inc. v. Westover",
+      "Chauffeurs, Teamsters & Helpers Local No. 391 v. Terry",
+      "Dairy Queen, Inc. v. Wood",
+      "Dimick v. Schiedt",
+      "Edmonson v. Leesville Concrete Co.",
+      "J.E.B. v. Alabama ex rel. T.B.",
+      "Markman v. Westview Instruments, Inc."
+    ]
+  },
+
+
+  {
+    title: "New Trial",
+    cases: [
+      "Lind v. Schenley Industries, Inc."
+    ]
+  },
+
+
+  {
+    title: "Claim Preclusion",
+    cases: [
+      "Federated Department Stores, Inc. v. Moitie",
+      "Frier v. City of Vandalia",
+      "Lucky Brand Dungarees, Inc. v. Marcel Fashions Group, Inc.",
+      "Rush v. City of Maple Heights"
+    ]
+  },
+
+
+  {
+    title: "Issue Preclusion",
+    cases: [
+      "Blonder-Tongue Laboratories, Inc. v. University of Illinois Foundation",
+      "Cromwell v. County of Sac",
+      "Illinois Central Gulf Railroad Co. v. Parks",
+      "Kaufman v. Eli Lilly & Co.",
+      "Parklane Hosiery Co. v. Shore",
+      "Southern Pacific Railroad Co. v. United States"
+    ]
+  },
+
+
+  {
+    title: "Nonparty Preclusion",
+    cases: [
+      "Richards v. Jefferson County",
+      "Taylor v. Sturgell"
+    ]
+  },
+
+
+  {
+    title: "Appeals & Final Judgment",
+    cases: [
+      "Cohen v. Beneficial Industrial Loan Corp.",
+      "Digital Equipment Corp. v. Desktop Direct, Inc.",
+      "Liberty Mutual Insurance Co. v. Wetzel",
+      "Mohawk Industries, Inc. v. Carpenter"
+    ]
+  },
+
+
+  {
+    title: "Provisional Remedies & Procedural Due Process",
+    cases: [
+      "Connecticut v. Doehr",
+      "Fuentes v. Shevin",
+      "Goldberg v. Kelly",
+      "Grupo Mexicano de Desarrollo, S.A. v. Alliance Bond Fund, Inc.",
+      "Mathews v. Eldridge",
+      "Sniadach v. Family Finance Corp.",
+      "Winter v. Natural Resources Defense Council, Inc."
+    ]
+  }
+
+
+];
+
+
+
+/* =====================================================
+   AUDIO LIBRARY
+
+   Add Civ Pro recordings here as you make them.
+
+   Example:
+
+   "International Shoe Co. v. Washington":
+     "files/international-shoe.mp3",
+
+   "Erie Railroad Co. v. Tompkins":
+     "files/erie.mp3",
+
+   "Ashcroft v. Iqbal":
+     "files/iqbal.mp3"
+
+===================================================== */
+
+
+const audioLibrary = {
+
+};
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+
+const topicsContainer =
+  document.getElementById(
+    "topicsContainer"
+  );
+
+
+const caseSearch =
+  document.getElementById(
+    "caseSearch"
+  );
+
+
+const caseCount =
+  document.getElementById(
+    "caseCount"
+  );
+
+
+const noResults =
+  document.getElementById(
+    "noResults"
+  );
+
+
+const player =
+  document.getElementById(
+    "player"
+  );
 
-    ];
 
+const playerName =
+  document.getElementById(
+    "playerName"
+  );
 
 
-    /* ========================================
-       AUDIO LIBRARY
+const mainPlay =
+  document.getElementById(
+    "mainPlay"
+  );
 
-       ADD RECORDINGS HERE LATER.
 
-       Example:
+const closePlayer =
+  document.getElementById(
+    "closePlayer"
+  );
 
-       "Pennoyer v. Neff": {
 
-         audio:
-           "files/pennoyer-v-neff.mp3",
+const playerControls =
+  document.getElementById(
+    "playerControls"
+  );
 
-         chapters: [
 
-           {
-             title: "Majority Opinion",
-             time: 0
-           },
+const audioPlayer =
+  document.getElementById(
+    "audioPlayer"
+  );
 
-           {
-             title: "Dissenting Opinion",
-             time: 900
-           }
 
-         ],
+const progress =
+  document.getElementById(
+    "progress"
+  );
 
-         transcript:
-           `Paste the cleaned transcript here.`
 
-       }
-    ======================================== */
+const currentTime =
+  document.getElementById(
+    "currentTime"
+  );
 
-    const audioLibrary = {
 
-    };
+const duration =
+  document.getElementById(
+    "duration"
+  );
 
 
+const speedButton =
+  document.getElementById(
+    "speedButton"
+  );
 
-    /* ========================================
-       ELEMENTS
-    ======================================== */
 
-    const caseList =
-      document.getElementById(
-        "caseList"
-      );
 
+let currentHasAudio =
+  false;
 
-    const caseSearch =
-      document.getElementById(
-        "caseSearch"
-      );
 
+const playbackSpeeds = [
+  1,
+  1.25,
+  1.5,
+  1.75,
+  2,
+  0.75
+];
 
-    const noResults =
-      document.getElementById(
-        "noResults"
-      );
 
+let speedIndex =
+  0;
 
-    const caseCount =
-      document.getElementById(
-        "caseCount"
-      );
 
 
-    const playerOverlay =
-      document.getElementById(
-        "playerOverlay"
-      );
+/* =====================================================
+   TOTAL CASE COUNT
+===================================================== */
 
 
-    const expandedPlayer =
-      document.getElementById(
-        "expandedPlayer"
-      );
+function getTotalCases() {
 
+  return civProTopics.reduce(
 
-    const audioPlayer =
-      document.getElementById(
-        "audioPlayer"
-      );
+    (
+      total,
+      topic
+    ) =>
 
+      total +
+      topic.cases.length,
 
-    const playerCaseName =
-      document.getElementById(
-        "playerCaseName"
-      );
+    0
 
+  );
 
-    const mainPlayButton =
-      document.getElementById(
-        "mainPlayButton"
-      );
+}
 
 
-    const rewindButton =
-      document.getElementById(
-        "rewindButton"
-      );
 
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
-    const forwardButton =
-      document.getElementById(
-        "forwardButton"
-      );
 
+function escapeHtml(text) {
 
-    const playerProgress =
-      document.getElementById(
-        "playerProgress"
-      );
+  return text
 
+    .replace(
+      /&/g,
+      "&amp;"
+    )
 
-    const currentTimeDisplay =
-      document.getElementById(
-        "currentTime"
-      );
+    .replace(
+      /</g,
+      "&lt;"
+    )
 
+    .replace(
+      />/g,
+      "&gt;"
+    )
 
-    const durationDisplay =
-      document.getElementById(
-        "duration"
-      );
+    .replace(
+      /"/g,
+      "&quot;"
+    )
 
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
-    const speedButton =
-      document.getElementById(
-        "speedButton"
-      );
+}
 
 
-    const chaptersButton =
-      document.getElementById(
-        "chaptersButton"
-      );
 
+/* =====================================================
+   RENDER LIBRARY
+===================================================== */
 
-    const transcriptButton =
-      document.getElementById(
-        "transcriptButton"
-      );
 
+function renderLibrary(
+  query = ""
+) {
 
-    const chaptersPanel =
-      document.getElementById(
-        "chaptersPanel"
-      );
 
+  const normalizedQuery =
 
-    const transcriptPanel =
-      document.getElementById(
-        "transcriptPanel"
-      );
+    query
+      .trim()
+      .toLowerCase();
 
 
-    const chapterList =
-      document.getElementById(
-        "chapterList"
-      );
+  let visibleCases =
+    0;
 
 
-    const transcriptText =
-      document.getElementById(
-        "transcriptText"
-      );
+  let visibleTopics =
+    0;
 
 
-    const fullscreenButton =
-      document.getElementById(
-        "fullscreenButton"
-      );
+  let html =
+    "";
 
 
-    const closePlayer =
-      document.getElementById(
-        "closePlayer"
-      );
+  civProTopics.forEach(
+    (
+      topic,
+      topicIndex
+    ) => {
 
 
+      const matchingCases =
 
-    /* ========================================
-       RENDER CASES
-    ======================================== */
+        [...topic.cases]
 
-    function renderCases(
-      list
-    ) {
+          .sort(
+            (a,b) =>
+              a.localeCompare(b)
+          )
 
+          .filter(
+            caseName => {
 
-      caseList.innerHTML =
-        "";
 
+              const searchable =
 
-      list.forEach(
+                `${caseName} ${topic.title}`
+                  .toLowerCase();
 
-        (
-          caseName,
-          index
-        ) => {
+
+              return searchable.includes(
+                normalizedQuery
+              );
+
+            }
+          );
+
+
+      if (
+        matchingCases.length === 0
+      ) {
+
+        return;
+
+      }
+
+
+      visibleTopics++;
+
+      visibleCases +=
+        matchingCases.length;
+
+
+      html += `
+
+        <section class="topic-section">
+
+          <div class="topic-header">
+
+            <div class="topic-title-wrap">
+
+              <div class="topic-number">
+
+                ${String(
+                  topicIndex + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+              <h3>
+
+                ${escapeHtml(topic.title)}
+
+              </h3>
+
+            </div>
+
+
+            <div class="topic-case-count">
+
+              ${matchingCases.length}
+
+              ${
+                matchingCases.length === 1
+                  ? "case"
+                  : "cases"
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="case-list">
+
+      `;
+
+
+      matchingCases.forEach(
+        caseName => {
 
 
           const hasAudio =
+
             Boolean(
               audioLibrary[
                 caseName
@@ -2475,879 +2419,581 @@
             );
 
 
-          const card =
-            document.createElement(
-              "div"
-            );
+          html += `
+
+            <div class="case-card">
 
 
-          card.className =
-            "case-card";
+              <div class="case-content">
+
+                <div class="case-name">
+
+                  ${escapeHtml(caseName)}
+
+                </div>
 
 
-          card.dataset.case =
-            caseName;
+                <div class="case-meta">
 
+                  ${escapeHtml(topic.title)}
 
-          card.innerHTML = `
+                  ${
+                    hasAudio
+                      ? " · Audio available"
+                      : ""
+                  }
 
-            <div class="case-number">
-
-              ${String(index + 1).padStart(2, "0")}
-
-            </div>
-
-
-            <div class="case-content">
-
-              <div class="case-name">
-
-                ${caseName}
+                </div>
 
               </div>
 
 
-              <div class="case-meta">
-
-                Civil Procedure
+              <span
+                class="status ${
+                  hasAudio
+                    ? "available"
+                    : "soon"
+                }"
+              >
 
                 ${
                   hasAudio
-                    ? " · Audio available"
-                    : ""
+                    ? "Listen"
+                    : "Coming Soon"
                 }
 
-              </div>
+              </span>
+
+
+              <button
+                class="play-button"
+                data-case="${escapeHtml(caseName)}"
+                aria-label="Play ${escapeHtml(caseName)}"
+              >
+
+                ▶
+
+              </button>
+
 
             </div>
 
-
-            ${
-              hasAudio
-
-                ? `
-
-                  <button
-                    class="listen-button"
-                    data-case-name="${caseName.replace(/"/g, "&quot;")}"
-                  >
-                    ▶ Listen
-                  </button>
-
-                `
-
-                : `
-
-                  <span class="coming-soon">
-                    Coming Soon
-                  </span>
-
-                `
-            }
-
           `;
 
-
-          caseList.appendChild(
-            card
-          );
-
-
         }
-
       );
 
 
-      document
-        .querySelectorAll(
-          ".listen-button"
-        )
-        .forEach(
+      html += `
 
-          button => {
+          </div>
 
+        </section>
 
-            button.addEventListener(
-
-              "click",
-
-              () => {
+      `;
 
 
-                openPlayer(
-                  button.dataset.caseName
-                );
+    }
+  );
 
 
-              }
+  topicsContainer.innerHTML =
+    html;
 
+
+  noResults.style.display =
+
+    visibleTopics === 0
+      ? "block"
+      : "none";
+
+
+  caseCount.textContent =
+
+    normalizedQuery
+
+      ? `${visibleCases} ${
+          visibleCases === 1
+            ? "result"
+            : "results"
+        }`
+
+      : `${getTotalCases()} cases`;
+
+
+  attachPlayButtons();
+
+}
+
+
+
+/* =====================================================
+   PLAY BUTTON EVENTS
+===================================================== */
+
+
+function attachPlayButtons() {
+
+
+  document
+
+    .querySelectorAll(
+      ".play-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            playCase(
+              button.dataset.case
             );
 
-
           }
-
         );
 
+
+      }
+    );
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+
+caseSearch.addEventListener(
+  "input",
+  () => {
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   PLAY CASE
+===================================================== */
+
+
+function playCase(
+  caseName
+) {
+
+
+  playerName.textContent =
+    caseName;
+
+
+  player.classList.add(
+    "visible"
+  );
+
+
+  const audioFile =
+
+    audioLibrary[
+      caseName
+    ];
+
+
+  if (
+    !audioFile
+  ) {
+
+
+    currentHasAudio =
+      false;
+
+
+    audioPlayer.pause();
+
+
+    audioPlayer.removeAttribute(
+      "src"
+    );
+
+
+    playerControls.style.display =
+      "none";
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    alert(
+      "Audio for this case is coming soon."
+    );
+
+
+    return;
+
+  }
+
+
+
+  currentHasAudio =
+    true;
+
+
+  playerControls.style.display =
+    "flex";
+
+
+  if (
+
+    audioPlayer.getAttribute(
+      "src"
+    )
+
+    !==
+
+    audioFile
+
+  ) {
+
+
+    audioPlayer.src =
+      audioFile;
+
+
+    audioPlayer.load();
+
+
+    progress.value =
+      0;
+
+
+    currentTime.textContent =
+      "0:00";
+
+
+    speedIndex =
+      0;
+
+
+    audioPlayer.playbackRate =
+      1;
+
+
+    speedButton.textContent =
+      "1×";
+
+  }
+
+
+  audioPlayer.play();
+
+
+  mainPlay.textContent =
+    "❚❚";
+
+}
+
+
+
+/* =====================================================
+   PLAY / PAUSE
+===================================================== */
+
+
+mainPlay.addEventListener(
+  "click",
+  () => {
+
+
+    if (
+      !currentHasAudio
+    ) {
+
+
+      alert(
+        "Audio for this case is coming soon."
+      );
+
+
+      return;
 
     }
 
 
-
-    /* INITIAL RENDER */
-
-    renderCases(
-      cases
-    );
-
-
-
-    /* ========================================
-       SEARCH
-    ======================================== */
-
-    caseSearch.addEventListener(
-
-      "input",
-
-      () => {
-
-
-        const query =
-
-          caseSearch.value
-            .trim()
-            .toLowerCase();
-
-
-        const filtered =
-
-          cases.filter(
-
-            caseName =>
-
-              caseName
-                .toLowerCase()
-                .includes(
-                  query
-                )
-
-          );
-
-
-        renderCases(
-          filtered
-        );
-
-
-        noResults.style.display =
-
-          filtered.length === 0
-            ? "block"
-            : "none";
-
-
-        caseCount.textContent =
-
-          query
-
-            ? `${filtered.length} of 59 cases`
-
-            : "59 cases";
-
-
-      }
-
-    );
-
-
-
-    /* ========================================
-       OPEN PLAYER
-    ======================================== */
-
-    function openPlayer(
-      caseName
+    if (
+      audioPlayer.paused
     ) {
-
-
-      const caseData =
-        audioLibrary[
-          caseName
-        ];
-
-
-      if (!caseData) {
-
-        return;
-
-      }
-
-
-      playerCaseName.textContent =
-        caseName;
-
-
-      playerOverlay.classList.add(
-        "visible"
-      );
-
-
-      document.body.style.overflow =
-        "hidden";
-
-
-      chaptersPanel.classList.remove(
-        "visible"
-      );
-
-
-      transcriptPanel.classList.remove(
-        "visible"
-      );
-
-
-      chaptersButton.classList.remove(
-        "active"
-      );
-
-
-      transcriptButton.classList.remove(
-        "active"
-      );
-
-
-      if (
-        audioPlayer.getAttribute(
-          "src"
-        )
-        !==
-        caseData.audio
-      ) {
-
-
-        audioPlayer.src =
-          caseData.audio;
-
-
-        audioPlayer.load();
-
-
-        playerProgress.value =
-          0;
-
-
-        currentTimeDisplay.textContent =
-          "0:00";
-
-
-        audioPlayer.playbackRate =
-          1;
-
-
-        speedIndex =
-          1;
-
-
-        speedButton.textContent =
-          "1× Speed";
-
-
-      }
-
-
-      renderChapters(
-        caseData.chapters
-      );
-
-
-      transcriptText.textContent =
-
-        caseData.transcript ||
-        "Transcript coming soon.";
 
 
       audioPlayer.play();
 
 
-      mainPlayButton.textContent =
+      mainPlay.textContent =
         "❚❚";
 
 
+    } else {
+
+
+      audioPlayer.pause();
+
+
+      mainPlay.textContent =
+        "▶";
+
     }
 
 
+  }
+);
 
-    /* PLAY / PAUSE */
 
-    mainPlayButton.addEventListener(
 
-      "click",
+/* =====================================================
+   AUDIO METADATA
+===================================================== */
 
-      () => {
 
+audioPlayer.addEventListener(
+  "loadedmetadata",
+  () => {
 
-        if (
-          audioPlayer.paused
-        ) {
 
+    duration.textContent =
 
-          audioPlayer.play();
-
-
-          mainPlayButton.textContent =
-            "❚❚";
-
-
-        } else {
-
-
-          audioPlayer.pause();
-
-
-          mainPlayButton.textContent =
-            "▶";
-
-
-        }
-
-
-      }
-
-    );
-
-
-
-    /* REWIND 10 */
-
-    rewindButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        audioPlayer.currentTime =
-
-          Math.max(
-
-            0,
-
-            audioPlayer.currentTime - 10
-
-          );
-
-
-      }
-
-    );
-
-
-
-    /* FORWARD 10 */
-
-    forwardButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        if (
-          !audioPlayer.duration
-        ) {
-
-          return;
-
-        }
-
-
-        audioPlayer.currentTime =
-
-          Math.min(
-
-            audioPlayer.duration,
-
-            audioPlayer.currentTime + 10
-
-          );
-
-
-      }
-
-    );
-
-
-
-    /* AUDIO PROGRESS */
-
-    audioPlayer.addEventListener(
-
-      "loadedmetadata",
-
-      () => {
-
-
-        durationDisplay.textContent =
-
-          formatTime(
-            audioPlayer.duration
-          );
-
-
-      }
-
-    );
-
-
-    audioPlayer.addEventListener(
-
-      "timeupdate",
-
-      () => {
-
-
-        if (
-          !audioPlayer.duration
-        ) {
-
-          return;
-
-        }
-
-
-        playerProgress.value =
-
-          (
-            audioPlayer.currentTime
-            /
-            audioPlayer.duration
-          )
-
-          *
-          100;
-
-
-        currentTimeDisplay.textContent =
-
-          formatTime(
-            audioPlayer.currentTime
-          );
-
-
-      }
-
-    );
-
-
-    playerProgress.addEventListener(
-
-      "input",
-
-      () => {
-
-
-        if (
-          !audioPlayer.duration
-        ) {
-
-          return;
-
-        }
-
-
-        audioPlayer.currentTime =
-
-          (
-            playerProgress.value
-            /
-            100
-          )
-
-          *
-          audioPlayer.duration;
-
-
-      }
-
-    );
-
-
-    audioPlayer.addEventListener(
-
-      "ended",
-
-      () => {
-
-
-        mainPlayButton.textContent =
-          "▶";
-
-
-      }
-
-    );
-
-
-
-    /* SPEED */
-
-    const playbackSpeeds = [
-
-      0.75,
-      1,
-      1.25,
-      1.5,
-      1.75,
-      2
-
-    ];
-
-
-    let speedIndex =
-      1;
-
-
-    speedButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        speedIndex =
-
-          (
-            speedIndex + 1
-          )
-
-          %
-          playbackSpeeds.length;
-
-
-        const speed =
-
-          playbackSpeeds[
-            speedIndex
-          ];
-
-
-        audioPlayer.playbackRate =
-          speed;
-
-
-        speedButton.textContent =
-          `${speed}× Speed`;
-
-
-      }
-
-    );
-
-
-
-    /* CHAPTERS */
-
-    chaptersButton.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        transcriptPanel.classList.remove(
-          "visible"
-        );
-
-
-        transcriptButton.classList.remove(
-          "active"
-        );
-
-
-        chaptersPanel.classList.toggle(
-          "visible"
-        );
-
-
-        chaptersButton.classList.toggle(
-          "active"
-        );
-
-
-      }
-
-    );
-
-
-    function renderChapters(
-      chapters
-    ) {
-
-
-      chapterList.innerHTML =
-        "";
-
-
-      if (
-        !chapters ||
-        !chapters.length
-      ) {
-
-
-        chapterList.innerHTML =
-          "No chapters available.";
-
-
-        return;
-
-      }
-
-
-      chapters.forEach(
-
-        chapter => {
-
-
-          const button =
-
-            document.createElement(
-              "button"
-            );
-
-
-          button.className =
-            "chapter-button";
-
-
-          button.innerHTML = `
-
-            <span class="chapter-title">
-
-              ${chapter.title}
-
-            </span>
-
-            <span class="chapter-time">
-
-              ${formatTime(chapter.time)}
-
-            </span>
-
-          `;
-
-
-          button.addEventListener(
-
-            "click",
-
-            () => {
-
-
-              audioPlayer.currentTime =
-                chapter.time;
-
-
-              audioPlayer.play();
-
-
-              mainPlayButton.textContent =
-                "❚❚";
-
-
-            }
-
-          );
-
-
-          chapterList.appendChild(
-            button
-          );
-
-
-        }
-
+      formatTime(
+        audioPlayer.duration
       );
 
 
-    }
+  }
+);
 
 
 
-    /* TRANSCRIPT */
+/* =====================================================
+   AUDIO PROGRESS
+===================================================== */
 
-    transcriptButton.addEventListener(
 
-      "click",
+audioPlayer.addEventListener(
+  "timeupdate",
+  () => {
 
-      () => {
 
-
-        chaptersPanel.classList.remove(
-          "visible"
-        );
-
-
-        chaptersButton.classList.remove(
-          "active"
-        );
-
-
-        transcriptPanel.classList.toggle(
-          "visible"
-        );
-
-
-        transcriptButton.classList.toggle(
-          "active"
-        );
-
-
-      }
-
-    );
-
-
-
-    /* FULLSCREEN */
-
-    fullscreenButton.addEventListener(
-
-      "click",
-
-      async () => {
-
-
-        try {
-
-
-          if (
-            !document.fullscreenElement
-          ) {
-
-
-            await expandedPlayer
-              .requestFullscreen();
-
-
-          } else {
-
-
-            await document
-              .exitFullscreen();
-
-
-          }
-
-
-        } catch (
-          error
-        ) {
-
-
-          console.log(
-            "Fullscreen unavailable."
-          );
-
-
-        }
-
-
-      }
-
-    );
-
-
-
-    /* CLOSE */
-
-    closePlayer.addEventListener(
-
-      "click",
-
-      () => {
-
-
-        audioPlayer.pause();
-
-
-        mainPlayButton.textContent =
-          "▶";
-
-
-        playerOverlay.classList.remove(
-          "visible"
-        );
-
-
-        document.body.style.overflow =
-          "";
-
-
-        if (
-          document.fullscreenElement
-        ) {
-
-
-          document.exitFullscreen();
-
-
-        }
-
-
-      }
-
-    );
-
-
-
-    /* FORMAT TIME */
-
-    function formatTime(
-      seconds
+    if (
+      !audioPlayer.duration
     ) {
 
-
-      if (
-        !Number.isFinite(
-          seconds
-        )
-      ) {
-
-
-        return "0:00";
-
-
-      }
-
-
-      const minutes =
-
-        Math.floor(
-          seconds / 60
-        );
-
-
-      const remainingSeconds =
-
-        Math.floor(
-          seconds % 60
-        )
-
-        .toString()
-
-        .padStart(
-          2,
-          "0"
-        );
-
-
-      return `${minutes}:${remainingSeconds}`;
-
+      return;
 
     }
 
 
-  </script>
+    progress.value =
+
+      (
+        audioPlayer.currentTime
+        /
+        audioPlayer.duration
+      )
+
+      * 100;
+
+
+    currentTime.textContent =
+
+      formatTime(
+        audioPlayer.currentTime
+      );
+
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+
+    if (
+      !audioPlayer.duration
+    ) {
+
+      return;
+
+    }
+
+
+    audioPlayer.currentTime =
+
+      (
+        progress.value
+        /
+        100
+      )
+
+      *
+      audioPlayer.duration;
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "ended",
+  () => {
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+  }
+);
+
+
+
+/* =====================================================
+   PLAYBACK SPEED
+===================================================== */
+
+
+speedButton.addEventListener(
+  "click",
+  () => {
+
+
+    speedIndex =
+
+      (
+        speedIndex + 1
+      )
+
+      %
+      playbackSpeeds.length;
+
+
+    const speed =
+
+      playbackSpeeds[
+        speedIndex
+      ];
+
+
+    audioPlayer.playbackRate =
+      speed;
+
+
+    speedButton.textContent =
+      `${speed}×`;
+
+
+  }
+);
+
+
+
+/* =====================================================
+   CLOSE PLAYER
+===================================================== */
+
+
+closePlayer.addEventListener(
+  "click",
+  () => {
+
+
+    audioPlayer.pause();
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    player.classList.remove(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+/* =====================================================
+   FORMAT TIME
+===================================================== */
+
+
+function formatTime(
+  seconds
+) {
+
+
+  if (
+    !Number.isFinite(
+      seconds
+    )
+  ) {
+
+    return "0:00";
+
+  }
+
+
+  const minutes =
+
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const remainingSeconds =
+
+    Math.floor(
+      seconds % 60
+    )
+
+    .toString()
+
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  return `${minutes}:${remainingSeconds}`;
+
+}
+
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+
+renderLibrary();
+
+
+</script>
 
 
 </body>
