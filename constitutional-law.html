@@ -2673,10 +2673,12 @@ const conLawTopics = [
 
    Every case with audio can include:
    - audio: MP3 path
-   - transcript: transcript text (optional)
    - chapters: chapter list with time in seconds (optional)
 
-   Add future cases in this same format.
+   TRANSCRIPTS ARE AUTOMATIC:
+   If the MP3 is files/example-case.mp3, the page will automatically
+   look for files/example-case.txt. Uploading that TXT file is enough;
+   no transcript code change is needed.
 
 ===================================================== */
 
@@ -2685,8 +2687,6 @@ const audioLibrary = {
 
   "Brown v. Board of Education": {
     audio: "files/brown-v-board.mp3",
-
-    transcript: `Paste the clean Brown v. Board of Education transcript here.`,
 
     chapters: [
       { title: "Beginning", time: 0 }
@@ -3223,11 +3223,114 @@ caseSearch.addEventListener(
 
 
 /* =====================================================
+   AUTOMATIC TRANSCRIPTS
+
+   Transcript filenames are derived from the MP3 filename.
+   Example:
+     files/brown-v-board.mp3
+     files/brown-v-board.txt
+
+   This means you only need to upload the matching .txt file.
+===================================================== */
+
+
+const transcriptCache = {};
+
+
+function getTranscriptPath(audioFile) {
+
+  if (!audioFile) {
+    return "";
+  }
+
+  return audioFile.replace(/\.mp3(?:\?.*)?$/i, ".txt");
+
+}
+
+
+async function loadTranscriptForAudio(audioFile) {
+
+  const transcriptPath =
+    getTranscriptPath(audioFile);
+
+
+  if (!transcriptPath) {
+    return "";
+  }
+
+
+  if (
+    Object.prototype.hasOwnProperty.call(
+      transcriptCache,
+      transcriptPath
+    )
+  ) {
+
+    return transcriptCache[
+      transcriptPath
+    ];
+
+  }
+
+
+  try {
+
+    const response =
+      await fetch(
+        transcriptPath,
+        {
+          cache: "no-store"
+        }
+      );
+
+
+    if (!response.ok) {
+
+      transcriptCache[
+        transcriptPath
+      ] = "";
+
+      return "";
+
+    }
+
+
+    const text =
+      await response.text();
+
+
+    transcriptCache[
+      transcriptPath
+    ] = text;
+
+
+    return text;
+
+  } catch (error) {
+
+    console.warn(
+      `Could not load transcript: ${transcriptPath}`,
+      error
+    );
+
+
+    transcriptCache[
+      transcriptPath
+    ] = "";
+
+    return "";
+
+  }
+
+}
+
+
+/* =====================================================
    PLAY CASE
 ===================================================== */
 
 
-function playCase(
+async function playCase(
   caseName
 ) {
 
@@ -3275,11 +3378,8 @@ function playCase(
       : caseAudioData?.audio;
 
 
-  const transcript =
-
-    typeof caseAudioData === "object"
-      ? caseAudioData?.transcript
-      : "";
+  let transcript =
+    "";
 
 
   const chapters =
@@ -3354,10 +3454,11 @@ function playCase(
 
 
   transcriptButton.style.display =
+    "none";
 
-    transcript
-      ? "inline-block"
-      : "none";
+
+  transcriptText.textContent =
+    "Loading transcript…";
 
 
   chaptersButton.style.display =
@@ -3367,12 +3468,34 @@ function playCase(
       : "none";
 
 
-  transcriptText.textContent =
-    transcript || "";
-
-
   chaptersList.innerHTML =
     "";
+
+
+  transcript =
+    await loadTranscriptForAudio(
+      audioFile
+    );
+
+
+  if (transcript) {
+
+    transcriptText.textContent =
+      transcript;
+
+
+    transcriptButton.style.display =
+      "inline-block";
+
+  } else {
+
+    transcriptText.textContent =
+      "Transcript not available.";
+
+    transcriptButton.style.display =
+      "none";
+
+  }
 
 
   chapters.forEach(
