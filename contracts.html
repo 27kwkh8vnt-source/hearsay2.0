@@ -1,0 +1,2633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Contracts | HearSay</title>
+
+  <meta
+    name="description"
+    content="Listen to landmark Contracts cases with HearSay."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1746a2;
+      --blue-light: #eff6ff;
+      --blue-soft: #dbeafe;
+      --navy: #10213d;
+      --white: #ffffff;
+      --background: #f7faff;
+      --border: #e1e8f2;
+      --text: #172033;
+      --muted: #6b7485;
+      --shadow: 0 8px 30px rgba(26,55,100,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-image {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 9px 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: 0.18s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .course-hero {
+      padding: 60px 20px 55px;
+      background:
+        radial-gradient(circle at 10% 20%, #e6f0ff 0, transparent 32%),
+        radial-gradient(circle at 90% 10%, #eef5ff 0, transparent 28%),
+        var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .course-hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--blue);
+    }
+
+    .course-heading {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-icon {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-light);
+      font-size: 2rem;
+    }
+
+    .course-heading h1 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: clamp(2.4rem, 5vw, 3.7rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .course-heading p {
+      max-width: 800px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    main {
+      width: min(1000px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 50px 0 120px;
+    }
+
+    .library-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .library-top h2 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .library-top p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .case-count {
+      flex-shrink: 0;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 38px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    #caseSearch {
+      width: 100%;
+      height: 54px;
+      padding: 0 18px 0 46px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      outline: none;
+      background: var(--white);
+      color: var(--text);
+      box-shadow: 0 4px 16px rgba(30,58,95,0.04);
+      transition: 0.18s ease;
+    }
+
+    #caseSearch:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.07);
+    }
+
+    .topic-section {
+      margin-bottom: 42px;
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 13px;
+    }
+
+    .topic-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topic-number {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .topic-header h3 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.2rem;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .topic-case-count {
+      flex-shrink: 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .case-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 18px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 3px 14px rgba(30,58,95,0.035);
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-1px);
+      border-color: #c6d5e8;
+      box-shadow: var(--shadow);
+    }
+
+    .case-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .case-name {
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 650;
+      line-height: 1.4;
+    }
+
+    .case-meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .status {
+      flex-shrink: 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    .status.available {
+      color: var(--blue-dark);
+      background: var(--blue-light);
+    }
+
+    .status.soon {
+      color: var(--muted);
+      background: #f1f4f8;
+    }
+
+    .play-button {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--blue);
+      font-size: 0.82rem;
+      transition: 0.16s ease;
+    }
+
+    .play-button:hover {
+      transform: scale(1.06);
+      background: var(--blue-light);
+    }
+
+    .no-results {
+      display: none;
+      padding: 50px 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--white);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .no-results strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy);
+    }
+
+    .player {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 200;
+      width: min(820px, calc(100% - 28px));
+      padding: 16px 18px;
+      display: none;
+      background: rgba(16,33,61,0.98);
+      color: white;
+      border-radius: 18px;
+      box-shadow: 0 18px 48px rgba(6,23,49,0.24);
+    }
+
+    .player.visible {
+      display: block;
+    }
+
+    .player-top-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .main-play {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: white;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .player-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .player-label {
+      margin-bottom: 4px;
+      color: #aebed5;
+      font-size: 0.66rem;
+      letter-spacing: 0.05em;
+    }
+
+    .player-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .close-player {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .player-controls {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .player-controls.visible {
+      display: block;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-time {
+      flex-shrink: 0;
+      color: #aebed5;
+      font-size: 0.68rem;
+    }
+
+    .player-progress {
+      flex: 1;
+      accent-color: white;
+    }
+
+    .player-button-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .player-option {
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .player-panel {
+      display: none;
+      margin-top: 14px;
+      padding-top: 13px;
+      border-top: 1px solid rgba(255,255,255,0.13);
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .player-panel.visible {
+      display: block;
+    }
+
+    .panel-heading {
+      margin-bottom: 8px;
+      color: #aebed5;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .chapter-button {
+      width: 100%;
+      padding: 9px 7px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    .transcript-text {
+      color: #d7e2f1;
+      font-family: "Libre Baskerville", serif;
+      line-height: 1.75;
+      font-size: 0.8rem;
+      white-space: pre-line;
+    }
+
+    footer {
+      padding: 30px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 620px) {
+
+      .nav-link.library-link {
+        display: none;
+      }
+
+      .course-heading {
+        align-items: flex-start;
+      }
+
+      .hero-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+      }
+
+      .course-heading h1 {
+        font-size: 2.3rem;
+      }
+
+      main {
+        width: calc(100% - 22px);
+      }
+
+      .status {
+        display: none;
+      }
+
+      .player {
+        bottom: 10px;
+      }
+
+      .player-button-row {
+        justify-content: flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a href="index.html" class="logo">
+
+      <img
+        src="hearsay-logo.png"
+        alt="HearSay"
+        class="logo-image"
+      >
+
+      <div>
+        Hear<span>Say</span>
+      </div>
+
+    </a>
+
+
+    <nav class="header-nav">
+
+      <a
+        href="1l.html"
+        class="nav-link library-link"
+      >
+        1L Courses
+      </a>
+
+      <a
+        href="index.html"
+        class="nav-link"
+      >
+        Home
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<section class="course-hero">
+
+  <div class="course-hero-inner">
+
+    <div class="breadcrumb">
+
+      <a href="index.html">
+        HearSay
+      </a>
+
+      <span>›</span>
+
+      <a href="1l.html">
+        1L Courses
+      </a>
+
+      <span>›</span>
+
+      <span>
+        Contracts
+      </span>
+
+    </div>
+
+
+    <div class="course-heading">
+
+      <div class="hero-icon">
+        ✒️
+      </div>
+
+
+      <div>
+
+        <h1>
+          Contracts
+        </h1>
+
+        <p>
+          Formation, consideration, reliance, interpretation, defenses,
+          performance, breach, remedies, third-party rights,
+          and modern commercial contracting.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<main>
+
+
+  <div class="library-top">
+
+    <div>
+
+      <h2>
+        Case Library
+      </h2>
+
+      <p>
+        Browse by doctrine or search the complete Contracts collection.
+      </p>
+
+    </div>
+
+
+    <div
+      class="case-count"
+      id="caseCount"
+    >
+      0 cases
+    </div>
+
+  </div>
+
+
+
+  <div class="search-wrapper">
+
+    <span class="search-icon">
+      ⌕
+    </span>
+
+    <input
+      id="caseSearch"
+      type="search"
+      placeholder="Search Contracts cases..."
+      autocomplete="off"
+    >
+
+  </div>
+
+
+
+  <div id="topicsContainer"></div>
+
+
+
+  <div
+    class="no-results"
+    id="noResults"
+  >
+
+    <strong>
+      No Contracts cases found
+    </strong>
+
+    Try searching for another case or doctrine.
+
+  </div>
+
+
+</main>
+
+
+
+<div
+  class="player"
+  id="player"
+>
+
+  <div class="player-top-row">
+
+    <button
+      class="main-play"
+      id="mainPlay"
+      aria-label="Play or pause"
+    >
+      ▶
+    </button>
+
+
+    <div class="player-info">
+
+      <div class="player-label">
+        NOW PLAYING
+      </div>
+
+      <div
+        class="player-name"
+        id="playerName"
+      >
+        Case Name
+      </div>
+
+    </div>
+
+
+    <button
+      class="close-player"
+      id="closePlayer"
+      aria-label="Close player"
+    >
+      ✕
+    </button>
+
+  </div>
+
+
+
+  <div
+    class="player-controls"
+    id="playerControls"
+  >
+
+    <div class="progress-row">
+
+      <span
+        class="player-time"
+        id="currentTime"
+      >
+        0:00
+      </span>
+
+
+      <input
+        class="player-progress"
+        id="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      >
+
+
+      <span
+        class="player-time"
+        id="duration"
+      >
+        0:00
+      </span>
+
+    </div>
+
+
+
+    <div class="player-button-row">
+
+      <button
+        class="player-option"
+        id="rewindButton"
+      >
+        ↶ 10
+      </button>
+
+      <button
+        class="player-option"
+        id="forwardButton"
+      >
+        10 ↷
+      </button>
+
+      <button
+        class="player-option"
+        id="speedButton"
+      >
+        1×
+      </button>
+
+      <button
+        class="player-option"
+        id="chaptersButton"
+      >
+        Chapters
+      </button>
+
+      <button
+        class="player-option"
+        id="transcriptButton"
+      >
+        Transcript
+      </button>
+
+    </div>
+
+
+    <div
+      class="player-panel"
+      id="chaptersPanel"
+    ></div>
+
+
+    <div
+      class="player-panel"
+      id="transcriptPanel"
+    ></div>
+
+  </div>
+
+
+  <audio
+    id="audioPlayer"
+    preload="metadata"
+  ></audio>
+
+</div>
+
+
+
+<footer>
+  © 2026 HearSay · Law school cases, made listenable.
+</footer>
+
+
+
+<script>
+
+
+const contractsTopics = [
+
+
+  {
+    title: "Contract Formation — Objective Theory of Assent",
+    cases: [
+      "Embry v. Hargadine, McKittrick Dry Goods Co.",
+      "Lucy v. Zehmer",
+      "Ray v. William G. Eurice & Bros., Inc."
+    ]
+  },
+
+
+  {
+    title: "Offers",
+    cases: [
+      "Fairmount Glass Works v. Crunden-Martin Woodenware Co.",
+      "Lefkowitz v. Great Minneapolis Surplus Store, Inc.",
+      "Lonergan v. Scolnick",
+      "Nebraska Seed Co. v. Harsh"
+    ]
+  },
+
+
+  {
+    title: "Preliminary Negotiations & Agreements to Agree",
+    cases: [
+      "Arnold Palmer Golf Co. v. Fuqua Industries, Inc.",
+      "Empro Manufacturing Co. v. Ball-Co Manufacturing, Inc.",
+      "Joseph Martin, Jr., Delicatessen, Inc. v. Schumacher",
+      "Quake Construction, Inc. v. American Airlines, Inc.",
+      "Teachers Insurance & Annuity Association of America v. Tribune Co."
+    ]
+  },
+
+
+  {
+    title: "Termination & Revocation of Offers",
+    cases: [
+      "Dickinson v. Dodds",
+      "Petterson v. Pattberg"
+    ]
+  },
+
+
+  {
+    title: "Acceptance",
+    cases: [
+      "Ever-Tite Roofing Corp. v. Green",
+      "International Filter Co. v. Conroe Gin, Ice & Light Co.",
+      "White v. Corlies & Tift"
+    ]
+  },
+
+
+  {
+    title: "Acceptance by Silence or Conduct",
+    cases: [
+      "Hobbs v. Massasoit Whip Co.",
+      "Russell v. Texas Co."
+    ]
+  },
+
+
+  {
+    title: "Mailbox Rule & Acceptance by Correspondence",
+    cases: [
+      "Adams v. Lindsell",
+      "Morrison v. Thoelke"
+    ]
+  },
+
+
+  {
+    title: "Unilateral Contracts & Acceptance by Performance",
+    cases: [
+      "Brackenbury v. Hodgkin",
+      "Carlill v. Carbolic Smoke Ball Co.",
+      "Cook v. Coldwell Banker/Frank Laiben Realty Co.",
+      "Marchiondo v. Scheck"
+    ]
+  },
+
+
+  {
+    title: "Indefiniteness & Missing Terms",
+    cases: [
+      "Academy Chicago Publishers v. Cheever",
+      "Oglebay Norton Co. v. Armco, Inc.",
+      "Sun Printing & Publishing Ass'n v. Remington Paper & Power Co.",
+      "Varney v. Ditmars"
+    ]
+  },
+
+
+  {
+    title: "Consideration — Bargained-for Exchange",
+    cases: [
+      "Hamer v. Sidway",
+      "Kirksey v. Kirksey",
+      "Pennsy Supply, Inc. v. American Ash Recycling Corp."
+    ]
+  },
+
+
+  {
+    title: "Adequacy of Consideration",
+    cases: [
+      "Batsakis v. Demotsis",
+      "Dyer v. National By-Products, Inc.",
+      "Fiege v. Boehm"
+    ]
+  },
+
+
+  {
+    title: "Past Consideration & Moral Obligation",
+    cases: [
+      "Harrington v. Taylor",
+      "Mills v. Wyman",
+      "Webb v. McGowin"
+    ]
+  },
+
+
+  {
+    title: "Preexisting Duty Rule",
+    cases: [
+      "Alaska Packers' Association v. Domenico",
+      "Angel v. Murray",
+      "Lingenfelder v. Wainwright Brewery Co."
+    ]
+  },
+
+
+  {
+    title: "Contract Modification",
+    cases: [
+      "Brookside Farms v. Mama Rizzo's, Inc.",
+      "Kelsey-Hayes Co. v. Galtaco Redlaw Castings Corp.",
+      "Schwartzreich v. Bauman-Basch, Inc."
+    ]
+  },
+
+
+  {
+    title: "Illusory Promises & Mutuality",
+    cases: [
+      "Mattei v. Hopper",
+      "Miami Coca-Cola Bottling Co. v. Orange Crush Co.",
+      "Wood v. Lucy, Lady Duff-Gordon"
+    ]
+  },
+
+
+  {
+    title: "Promissory Estoppel — Foundations",
+    cases: [
+      "Allegheny College v. National Chautauqua County Bank",
+      "Feinberg v. Pfeiffer Co.",
+      "Ricketts v. Scothorn"
+    ]
+  },
+
+
+  {
+    title: "Promissory Estoppel — Reliance in Commercial Settings",
+    cases: [
+      "D & G Stout, Inc. v. Bacardi Imports, Inc.",
+      "Hoffman v. Red Owl Stores, Inc.",
+      "Pop's Cones, Inc. v. Resorts International Hotel, Inc."
+    ]
+  },
+
+
+  {
+    title: "Promissory Estoppel — Construction Bids",
+    cases: [
+      "Baird Co. v. Gimbel Bros., Inc.",
+      "Drennan v. Star Paving Co."
+    ]
+  },
+
+
+  {
+    title: "Restitution & Promissory Restitution",
+    cases: [
+      "Bailey v. West",
+      "Credit Bureau Enterprises, Inc. v. Pelo",
+      "Nursing Care Services, Inc. v. Dobos",
+      "Watts v. Watts"
+    ]
+  },
+
+
+  {
+    title: "Statute of Frauds — Scope",
+    cases: [
+      "Crabtree v. Elizabeth Arden Sales Corp.",
+      "McIntosh v. Murphy",
+      "Monarco v. Lo Greco"
+    ]
+  },
+
+
+  {
+    title: "Statute of Frauds — Sufficient Writing",
+    cases: [
+      "Beaver v. Brumlow",
+      "Crabtree v. Elizabeth Arden Sales Corp.",
+      "Schwedes v. Romain"
+    ]
+  },
+
+
+  {
+    title: "Statute of Frauds — Electronic Agreements",
+    cases: [
+      "Cloud Corp. v. Hasbro, Inc.",
+      "St. John's Holdings, LLC v. Two Electronics, LLC"
+    ]
+  },
+
+
+  {
+    title: "UCC Contract Formation — Battle of the Forms",
+    cases: [
+      "Brown Machine, Inc. v. Hercules, Inc.",
+      "Dorton v. Collins & Aikman Corp.",
+      "Ionics, Inc. v. Elmwood Sensors, Inc.",
+      "Step-Saver Data Systems, Inc. v. Wyse Technology",
+      "Textile Unlimited, Inc. v. A..BMH & Co."
+    ]
+  },
+
+
+  {
+    title: "Shrinkwrap, Clickwrap & Online Contracting",
+    cases: [
+      "Meyer v. Uber Technologies, Inc.",
+      "Nguyen v. Barnes & Noble Inc.",
+      "ProCD, Inc. v. Zeidenberg",
+      "Register.com, Inc. v. Verio, Inc.",
+      "Specht v. Netscape Communications Corp."
+    ]
+  },
+
+
+  {
+    title: "Parol Evidence Rule",
+    cases: [
+      "Gianni v. R. Russell & Co.",
+      "Masterson v. Sine",
+      "Mitchill v. Lath",
+      "Pacific Gas & Electric Co. v. G.W. Thomas Drayage & Rigging Co.",
+      "Thompson v. Libbey"
+    ]
+  },
+
+
+  {
+    title: "Contract Interpretation",
+    cases: [
+      "Frigaliment Importing Co. v. B.N.S. International Sales Corp.",
+      "Joyner v. Adams",
+      "Raffles v. Wichelhaus",
+      "Trident Center v. Connecticut General Life Insurance Co."
+    ]
+  },
+
+
+  {
+    title: "Course of Performance, Course of Dealing & Trade Usage",
+    cases: [
+      "Columbia Nitrogen Corp. v. Royster Co.",
+      "Nanakuli Paving & Rock Co. v. Shell Oil Co."
+    ]
+  },
+
+
+  {
+    title: "Implied Duty of Good Faith",
+    cases: [
+      "Centronics Corp. v. Genicom Corp.",
+      "Eastern Air Lines, Inc. v. Gulf Oil Corp.",
+      "Market Street Associates Ltd. Partnership v. Frey",
+      "Seidenberg v. Summit Bank",
+      "Sons of Thunder, Inc. v. Borden, Inc."
+    ]
+  },
+
+
+  {
+    title: "Implied Terms",
+    cases: [
+      "Dalton v. Educational Testing Service",
+      "Wood v. Lucy, Lady Duff-Gordon"
+    ]
+  },
+
+
+  {
+    title: "Warranties — Express Warranties",
+    cases: [
+      "CBS Inc. v. Ziff-Davis Publishing Co.",
+      "Royal Business Machines, Inc. v. Lorraine Corp."
+    ]
+  },
+
+
+  {
+    title: "Implied Warranties",
+    cases: [
+      "Henningsen v. Bloomfield Motors, Inc.",
+      "Webster v. Blue Ship Tea Room, Inc."
+    ]
+  },
+
+
+  {
+    title: "Unconscionability",
+    cases: [
+      "Jones v. Star Credit Corp.",
+      "Williams v. Walker-Thomas Furniture Co."
+    ]
+  },
+
+
+  {
+    title: "Adhesion Contracts & Standard Forms",
+    cases: [
+      "Carnival Cruise Lines, Inc. v. Shute",
+      "Graham v. Scissor-Tail, Inc.",
+      "Henningsen v. Bloomfield Motors, Inc."
+    ]
+  },
+
+
+  {
+    title: "Public Policy & Illegality",
+    cases: [
+      "Bovard v. American Horse Enterprises, Inc.",
+      "Sinnar v. Le Roy",
+      "Watts v. Malatesta"
+    ]
+  },
+
+
+  {
+    title: "Capacity — Minors",
+    cases: [
+      "Dodson v. Shrader",
+      "Halbman v. Lemke",
+      "Kiefer v. Fred Howe Motors, Inc."
+    ]
+  },
+
+
+  {
+    title: "Mental Incapacity",
+    cases: [
+      "Hauer v. Union State Bank of Wautoma",
+      "Ortelere v. Teachers' Retirement Board"
+    ]
+  },
+
+
+  {
+    title: "Duress",
+    cases: [
+      "Austin Instrument, Inc. v. Loral Corp.",
+      "Hackley v. Headley",
+      "Totem Marine Tug & Barge, Inc. v. Alyeska Pipeline Service Co."
+    ]
+  },
+
+
+  {
+    title: "Undue Influence",
+    cases: [
+      "Odorizzi v. Bloomfield School District"
+    ]
+  },
+
+
+  {
+    title: "Misrepresentation & Fraud",
+    cases: [
+      "Hill v. Jones",
+      "Laidlaw v. Organ",
+      "Syester v. Banta"
+    ]
+  },
+
+
+  {
+    title: "Duty to Disclose",
+    cases: [
+      "Obde v. Schlemeyer",
+      "Reed v. King",
+      "Stambovsky v. Ackley"
+    ]
+  },
+
+
+  {
+    title: "Mistake — Mutual Mistake",
+    cases: [
+      "Beachcomber Coins, Inc. v. Boskett",
+      "Lenawee County Board of Health v. Messerly",
+      "Sherwood v. Walker"
+    ]
+  },
+
+
+  {
+    title: "Mistake — Unilateral Mistake",
+    cases: [
+      "Elsinore Union Elementary School District v. Kastorff",
+      "Wil-Fred's, Inc. v. Metropolitan Sanitary District"
+    ]
+  },
+
+
+  {
+    title: "Changed Circumstances — Impossibility",
+    cases: [
+      "Taylor v. Caldwell"
+    ]
+  },
+
+
+  {
+    title: "Impracticability",
+    cases: [
+      "Mineral Park Land Co. v. Howard",
+      "Transatlantic Financing Corp. v. United States"
+    ]
+  },
+
+
+  {
+    title: "Frustration of Purpose",
+    cases: [
+      "Chase Precast Corp. v. John J. Paonessa Co.",
+      "Krell v. Henry",
+      "Lloyd v. Murphy"
+    ]
+  },
+
+
+  {
+    title: "Conditions",
+    cases: [
+      "Howard v. Federal Crop Insurance Corp.",
+      "Kingston v. Preston",
+      "Luttinger v. Rosen",
+      "Merritt Hill Vineyards Inc. v. Windy Heights Vineyard, Inc."
+    ]
+  },
+
+
+  {
+    title: "Constructive Conditions & Order of Performance",
+    cases: [
+      "Jacob & Youngs, Inc. v. Kent",
+      "Stewart v. Newbury"
+    ]
+  },
+
+
+  {
+    title: "Material Breach",
+    cases: [
+      "K&G Construction Co. v. Harris",
+      "Walker & Co. v. Harrison"
+    ]
+  },
+
+
+  {
+    title: "Substantial Performance",
+    cases: [
+      "Jacob & Youngs, Inc. v. Kent",
+      "Plante v. Jacobs"
+    ]
+  },
+
+
+  {
+    title: "Perfect Tender Rule & UCC Performance",
+    cases: [
+      "Ramirez v. Autosport",
+      "Zabriskie Chevrolet, Inc. v. Smith"
+    ]
+  },
+
+
+  {
+    title: "Anticipatory Repudiation",
+    cases: [
+      "Hochster v. De La Tour",
+      "Truman L. Flatt & Sons Co. v. Schupf"
+    ]
+  },
+
+
+  {
+    title: "Adequate Assurances",
+    cases: [
+      "AMF, Inc. v. McDonald's Corp.",
+      "Pittsburgh-Des Moines Steel Co. v. Brookhaven Manor Water Co."
+    ]
+  },
+
+
+  {
+    title: "Expectation Damages — Foundations",
+    cases: [
+      "Hawkins v. McGee",
+      "Sullivan v. O'Connor"
+    ]
+  },
+
+
+  {
+    title: "Cost of Completion vs. Diminution in Value",
+    cases: [
+      "American Standard, Inc. v. Schectman",
+      "Groves v. John Wunder Co.",
+      "Peevyhouse v. Garland Coal & Mining Co."
+    ]
+  },
+
+
+  {
+    title: "Foreseeability of Damages",
+    cases: [
+      "Hadley v. Baxendale",
+      "Hector Martinez & Co. v. Southern Pacific Transportation Co."
+    ]
+  },
+
+
+  {
+    title: "Certainty of Damages",
+    cases: [
+      "Chicago Coliseum Club v. Dempsey",
+      "Fera v. Village Plaza, Inc."
+    ]
+  },
+
+
+  {
+    title: "Mitigation / Avoidable Consequences",
+    cases: [
+      "Parker v. Twentieth Century-Fox Film Corp.",
+      "Rockingham County v. Luten Bridge Co."
+    ]
+  },
+
+
+  {
+    title: "Lost Volume Sellers & UCC Damages",
+    cases: [
+      "Neri v. Retail Marine Corp.",
+      "R.E. Davis Chemical Corp. v. Diasonics, Inc."
+    ]
+  },
+
+
+  {
+    title: "Reliance Damages",
+    cases: [
+      "Anglia Television Ltd. v. Reed",
+      "Security Stove & Manufacturing Co. v. American Railway Express Co."
+    ]
+  },
+
+
+  {
+    title: "Restitution as a Contract Remedy",
+    cases: [
+      "Britton v. Turner",
+      "United States v. Algernon Blair, Inc."
+    ]
+  },
+
+
+  {
+    title: "Liquidated Damages & Penalties",
+    cases: [
+      "Kemble v. Farren",
+      "Lake River Corp. v. Carborundum Co.",
+      "Wassenaar v. Panos"
+    ]
+  },
+
+
+  {
+    title: "Specific Performance",
+    cases: [
+      "Curtice Brothers Co. v. Catts",
+      "Laclede Gas Co. v. Amoco Oil Co.",
+      "Van Wagner Advertising Corp. v. S & M Enterprises"
+    ]
+  },
+
+
+  {
+    title: "Third-Party Beneficiaries",
+    cases: [
+      "Lawrence v. Fox",
+      "Martinez v. Socoma Companies, Inc.",
+      "Seaver v. Ransom",
+      "Sisters of St. Joseph of Peace, Health & Hospital Services v. Russell"
+    ]
+  },
+
+
+  {
+    title: "Assignment & Delegation",
+    cases: [
+      "Macke Co. v. Pizza of Gaithersburg, Inc.",
+      "Sally Beauty Co. v. Nexxus Products Co."
+    ]
+  },
+
+
+  {
+    title: "Contract Modification & Waiver Under the UCC",
+    cases: [
+      "Wisconsin Knife Works v. National Metal Crafters"
+    ]
+  },
+
+
+  {
+    title: "Election of Remedies / Efficient Breach",
+    cases: [
+      "Acme Mills & Elevator Co. v. Johnson"
+    ]
+  }
+
+
+];
+
+
+
+const audioLibrary = {
+
+};
+
+
+
+const chapterLibrary = {
+
+};
+
+
+
+const transcriptLibrary = {
+
+};
+
+
+
+const topicsContainer =
+  document.getElementById("topicsContainer");
+
+const caseSearch =
+  document.getElementById("caseSearch");
+
+const caseCount =
+  document.getElementById("caseCount");
+
+const noResults =
+  document.getElementById("noResults");
+
+const player =
+  document.getElementById("player");
+
+const playerName =
+  document.getElementById("playerName");
+
+const mainPlay =
+  document.getElementById("mainPlay");
+
+const closePlayer =
+  document.getElementById("closePlayer");
+
+const playerControls =
+  document.getElementById("playerControls");
+
+const audioPlayer =
+  document.getElementById("audioPlayer");
+
+const progress =
+  document.getElementById("progress");
+
+const currentTime =
+  document.getElementById("currentTime");
+
+const duration =
+  document.getElementById("duration");
+
+const speedButton =
+  document.getElementById("speedButton");
+
+const rewindButton =
+  document.getElementById("rewindButton");
+
+const forwardButton =
+  document.getElementById("forwardButton");
+
+const chaptersButton =
+  document.getElementById("chaptersButton");
+
+const transcriptButton =
+  document.getElementById("transcriptButton");
+
+const chaptersPanel =
+  document.getElementById("chaptersPanel");
+
+const transcriptPanel =
+  document.getElementById("transcriptPanel");
+
+
+
+let currentHasAudio = false;
+
+
+const playbackSpeeds = [
+  1,
+  1.25,
+  1.5,
+  1.75,
+  2,
+  0.75
+];
+
+
+let speedIndex = 0;
+
+
+
+function buildUniqueLibrary() {
+
+  const seen = new Set();
+
+
+  return contractsTopics
+
+    .map(
+      topic => {
+
+
+        const uniqueCases =
+
+          topic.cases.filter(
+            caseName => {
+
+
+              if (seen.has(caseName)) {
+                return false;
+              }
+
+
+              seen.add(caseName);
+
+              return true;
+
+
+            }
+          );
+
+
+        return {
+          title: topic.title,
+          cases: uniqueCases
+        };
+
+
+      }
+    )
+
+    .filter(
+      topic =>
+        topic.cases.length > 0
+    );
+
+}
+
+
+
+const uniqueContractsTopics =
+  buildUniqueLibrary();
+
+
+
+function getTotalCases() {
+
+  return uniqueContractsTopics.reduce(
+
+    (total, topic) =>
+      total + topic.cases.length,
+
+    0
+
+  );
+
+}
+
+
+
+function escapeHtml(text) {
+
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+
+function renderLibrary(query = "") {
+
+
+  const normalizedQuery =
+    query.trim().toLowerCase();
+
+
+  let visibleCases = 0;
+
+  let visibleTopics = 0;
+
+  let html = "";
+
+
+  uniqueContractsTopics.forEach(
+    (topic, topicIndex) => {
+
+
+      const matchingCases =
+
+        [...topic.cases]
+
+          .sort(
+            (a,b) =>
+              a.localeCompare(b)
+          )
+
+          .filter(
+            caseName => {
+
+
+              const searchable =
+
+                `${caseName} ${topic.title}`
+                  .toLowerCase();
+
+
+              return searchable.includes(
+                normalizedQuery
+              );
+
+            }
+          );
+
+
+      if (matchingCases.length === 0) {
+        return;
+      }
+
+
+      visibleTopics++;
+
+      visibleCases += matchingCases.length;
+
+
+      html += `
+
+        <section class="topic-section">
+
+          <div class="topic-header">
+
+            <div class="topic-title-wrap">
+
+              <div class="topic-number">
+
+                ${String(
+                  topicIndex + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+              <h3>
+                ${escapeHtml(topic.title)}
+              </h3>
+
+            </div>
+
+
+            <div class="topic-case-count">
+
+              ${matchingCases.length}
+
+              ${
+                matchingCases.length === 1
+                  ? "case"
+                  : "cases"
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="case-list">
+
+      `;
+
+
+      matchingCases.forEach(
+        caseName => {
+
+
+          const hasAudio =
+            Boolean(audioLibrary[caseName]);
+
+
+          html += `
+
+            <div class="case-card">
+
+              <div class="case-content">
+
+                <div class="case-name">
+                  ${escapeHtml(caseName)}
+                </div>
+
+                <div class="case-meta">
+
+                  ${escapeHtml(topic.title)}
+
+                  ${
+                    hasAudio
+                      ? " · Audio available"
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="status ${
+                  hasAudio
+                    ? "available"
+                    : "soon"
+                }"
+              >
+
+                ${
+                  hasAudio
+                    ? "Listen"
+                    : "Coming Soon"
+                }
+
+              </span>
+
+
+              <button
+                class="play-button"
+                data-case="${escapeHtml(caseName)}"
+                aria-label="Play ${escapeHtml(caseName)}"
+              >
+                ▶
+              </button>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+
+      html += `
+
+          </div>
+
+        </section>
+
+      `;
+
+
+    }
+  );
+
+
+  topicsContainer.innerHTML =
+    html;
+
+
+  noResults.style.display =
+    visibleTopics === 0
+      ? "block"
+      : "none";
+
+
+  caseCount.textContent =
+
+    normalizedQuery
+
+      ? `${visibleCases} ${
+          visibleCases === 1
+            ? "result"
+            : "results"
+        }`
+
+      : `${getTotalCases()} cases`;
+
+
+  attachPlayButtons();
+
+}
+
+
+
+function attachPlayButtons() {
+
+  document
+
+    .querySelectorAll(
+      ".play-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            playCase(
+              button.dataset.case
+            );
+
+
+          }
+        );
+
+
+      }
+    );
+
+}
+
+
+
+caseSearch.addEventListener(
+  "input",
+  () => {
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+
+  }
+);
+
+
+
+function playCase(caseName) {
+
+
+  playerName.textContent =
+    caseName;
+
+
+  player.classList.add(
+    "visible"
+  );
+
+
+  chaptersPanel.classList.remove(
+    "visible"
+  );
+
+
+  transcriptPanel.classList.remove(
+    "visible"
+  );
+
+
+  loadChapters(caseName);
+
+  loadTranscript(caseName);
+
+
+  const audioFile =
+    audioLibrary[caseName];
+
+
+  if (!audioFile) {
+
+
+    currentHasAudio =
+      false;
+
+
+    audioPlayer.pause();
+
+
+    audioPlayer.removeAttribute(
+      "src"
+    );
+
+
+    playerControls.classList.remove(
+      "visible"
+    );
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    alert(
+      "Audio for this case is coming soon."
+    );
+
+
+    return;
+
+  }
+
+
+
+  currentHasAudio =
+    true;
+
+
+  playerControls.classList.add(
+    "visible"
+  );
+
+
+  if (
+    audioPlayer.getAttribute("src")
+    !==
+    audioFile
+  ) {
+
+
+    audioPlayer.src =
+      audioFile;
+
+
+    audioPlayer.load();
+
+
+    progress.value =
+      0;
+
+
+    currentTime.textContent =
+      "0:00";
+
+
+    duration.textContent =
+      "0:00";
+
+
+    speedIndex =
+      0;
+
+
+    audioPlayer.playbackRate =
+      1;
+
+
+    speedButton.textContent =
+      "1×";
+
+  }
+
+
+  audioPlayer.play()
+
+    .then(
+      () => {
+
+
+        mainPlay.textContent =
+          "❚❚";
+
+
+      }
+    )
+
+    .catch(
+      error => {
+
+
+        console.error(
+          "HearSay playback error:",
+          error
+        );
+
+
+        mainPlay.textContent =
+          "▶";
+
+
+        alert(
+          "HearSay found this recording, but the browser could not play it. Check that the MP3 filename and path are correct."
+        );
+
+
+      }
+    );
+
+}
+
+
+
+mainPlay.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    if (audioPlayer.paused) {
+
+
+      audioPlayer.play();
+
+
+      mainPlay.textContent =
+        "❚❚";
+
+
+    } else {
+
+
+      audioPlayer.pause();
+
+
+      mainPlay.textContent =
+        "▶";
+
+
+    }
+
+
+  }
+);
+
+
+
+rewindButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.max(
+        0,
+        audioPlayer.currentTime - 10
+      );
+
+
+  }
+);
+
+
+
+forwardButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.min(
+        audioPlayer.duration || Infinity,
+        audioPlayer.currentTime + 10
+      );
+
+
+  }
+);
+
+
+
+chaptersButton.addEventListener(
+  "click",
+  () => {
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    chaptersPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+transcriptButton.addEventListener(
+  "click",
+  () => {
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+function loadChapters(caseName) {
+
+
+  const chapters =
+    chapterLibrary[caseName] || [];
+
+
+  if (chapters.length === 0) {
+
+
+    chaptersPanel.innerHTML = `
+
+      <div class="panel-heading">
+        Chapters
+      </div>
+
+      <div class="transcript-text">
+        Chapters coming soon.
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="panel-heading">
+      Chapters
+    </div>
+
+  `;
+
+
+  chapters.forEach(
+    chapter => {
+
+
+      html += `
+
+        <button
+          class="chapter-button"
+          data-time="${chapter.time}"
+        >
+
+          ${escapeHtml(chapter.title)}
+          ·
+          ${formatTime(chapter.time)}
+
+        </button>
+
+      `;
+
+
+    }
+  );
+
+
+  chaptersPanel.innerHTML =
+    html;
+
+
+  chaptersPanel
+
+    .querySelectorAll(
+      ".chapter-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            if (!currentHasAudio) {
+              return;
+            }
+
+
+            audioPlayer.currentTime =
+
+              Number(
+                button.dataset.time
+              );
+
+
+            audioPlayer.play();
+
+
+            mainPlay.textContent =
+              "❚❚";
+
+
+          }
+        );
+
+
+      }
+    );
+
+}
+
+
+
+function loadTranscript(caseName) {
+
+
+  const transcript =
+    transcriptLibrary[caseName];
+
+
+  transcriptPanel.innerHTML = `
+
+    <div class="panel-heading">
+      Transcript
+    </div>
+
+    <div class="transcript-text">
+
+      ${
+        transcript
+          ? escapeHtml(transcript)
+          : "Transcript coming soon."
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+
+audioPlayer.addEventListener(
+  "loadedmetadata",
+  () => {
+
+
+    duration.textContent =
+
+      formatTime(
+        audioPlayer.duration
+      );
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "timeupdate",
+  () => {
+
+
+    if (!audioPlayer.duration) {
+      return;
+    }
+
+
+    progress.value =
+
+      (
+        audioPlayer.currentTime
+        /
+        audioPlayer.duration
+      )
+
+      * 100;
+
+
+    currentTime.textContent =
+
+      formatTime(
+        audioPlayer.currentTime
+      );
+
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+
+    if (!audioPlayer.duration) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      (
+        progress.value
+        /
+        100
+      )
+
+      *
+      audioPlayer.duration;
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "ended",
+  () => {
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+  }
+);
+
+
+
+speedButton.addEventListener(
+  "click",
+  () => {
+
+
+    speedIndex =
+
+      (
+        speedIndex + 1
+      )
+
+      %
+      playbackSpeeds.length;
+
+
+    const speed =
+      playbackSpeeds[speedIndex];
+
+
+    audioPlayer.playbackRate =
+      speed;
+
+
+    speedButton.textContent =
+      `${speed}×`;
+
+
+  }
+);
+
+
+
+closePlayer.addEventListener(
+  "click",
+  () => {
+
+
+    audioPlayer.pause();
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    player.classList.remove(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+function formatTime(seconds) {
+
+
+  if (!Number.isFinite(seconds)) {
+    return "0:00";
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  const remainingSeconds =
+
+    Math.floor(
+      seconds % 60
+    )
+
+    .toString()
+
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  return `${minutes}:${remainingSeconds}`;
+
+}
+
+
+
+renderLibrary();
+
+
+</script>
+
+
+</body>
+
+</html>
