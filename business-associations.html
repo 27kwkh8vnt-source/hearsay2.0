@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Business Associations | HearSay</title>
+
+  <meta
+    name="description"
+    content="Listen to landmark Business Associations cases with HearSay."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1746a2;
+      --blue-light: #eff6ff;
+      --blue-soft: #dbeafe;
+      --navy: #10213d;
+      --white: #ffffff;
+      --background: #f7faff;
+      --border: #e1e8f2;
+      --text: #172033;
+      --muted: #6b7485;
+      --shadow: 0 8px 30px rgba(26,55,100,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-image {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 9px 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: 0.18s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .course-hero {
+      padding: 60px 20px 55px;
+      background:
+        radial-gradient(circle at 10% 20%, #e6f0ff 0, transparent 32%),
+        radial-gradient(circle at 90% 10%, #eef5ff 0, transparent 28%),
+        var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .course-hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--blue);
+    }
+
+    .course-heading {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-icon {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-light);
+      font-size: 2rem;
+    }
+
+    .course-heading h1 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: clamp(2.4rem, 5vw, 3.7rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .course-heading p {
+      max-width: 800px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    main {
+      width: min(1000px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 50px 0 120px;
+    }
+
+    .library-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .library-top h2 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .library-top p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .case-count {
+      flex-shrink: 0;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 38px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    #caseSearch {
+      width: 100%;
+      height: 54px;
+      padding: 0 18px 0 46px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      outline: none;
+      background: var(--white);
+      color: var(--text);
+      box-shadow: 0 4px 16px rgba(30,58,95,0.04);
+      transition: 0.18s ease;
+    }
+
+    #caseSearch:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.07);
+    }
+
+    .topic-section {
+      margin-bottom: 42px;
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 13px;
+    }
+
+    .topic-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topic-number {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .topic-header h3 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.2rem;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .topic-case-count {
+      flex-shrink: 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .case-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 18px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 3px 14px rgba(30,58,95,0.035);
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-1px);
+      border-color: #c6d5e8;
+      box-shadow: var(--shadow);
+    }
+
+    .case-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .case-name {
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 650;
+      line-height: 1.4;
+    }
+
+    .case-meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .status {
+      flex-shrink: 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    .status.available {
+      color: var(--blue-dark);
+      background: var(--blue-light);
+    }
+
+    .status.soon {
+      color: var(--muted);
+      background: #f1f4f8;
+    }
+
+    .play-button {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--blue);
+      font-size: 0.82rem;
+      transition: 0.16s ease;
+    }
+
+    .play-button:hover {
+      transform: scale(1.06);
+      background: var(--blue-light);
+    }
+
+    .no-results {
+      display: none;
+      padding: 50px 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--white);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .no-results strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy);
+    }
+
+    .player {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 200;
+      width: min(820px, calc(100% - 28px));
+      padding: 16px 18px;
+      display: none;
+      background: rgba(16,33,61,0.98);
+      color: white;
+      border-radius: 18px;
+      box-shadow: 0 18px 48px rgba(6,23,49,0.24);
+    }
+
+    .player.visible {
+      display: block;
+    }
+
+    .player-top-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .main-play {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: white;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .player-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .player-label {
+      margin-bottom: 4px;
+      color: #aebed5;
+      font-size: 0.66rem;
+      letter-spacing: 0.05em;
+    }
+
+    .player-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .close-player {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .player-controls {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .player-controls.visible {
+      display: block;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-time {
+      flex-shrink: 0;
+      color: #aebed5;
+      font-size: 0.68rem;
+    }
+
+    .player-progress {
+      flex: 1;
+      accent-color: white;
+    }
+
+    .player-button-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .player-option {
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .player-panel {
+      display: none;
+      margin-top: 14px;
+      padding-top: 13px;
+      border-top: 1px solid rgba(255,255,255,0.13);
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .player-panel.visible {
+      display: block;
+    }
+
+    .panel-heading {
+      margin-bottom: 8px;
+      color: #aebed5;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .chapter-button {
+      width: 100%;
+      padding: 9px 7px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    .transcript-text {
+      color: #d7e2f1;
+      font-family: "Libre Baskerville", serif;
+      line-height: 1.75;
+      font-size: 0.8rem;
+      white-space: pre-line;
+    }
+
+    footer {
+      padding: 30px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 620px) {
+
+      .nav-link.library-link {
+        display: none;
+      }
+
+      .course-heading {
+        align-items: flex-start;
+      }
+
+      .hero-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+      }
+
+      .course-heading h1 {
+        font-size: 2.15rem;
+      }
+
+      main {
+        width: calc(100% - 22px);
+      }
+
+      .status {
+        display: none;
+      }
+
+      .player {
+        bottom: 10px;
+      }
+
+      .player-button-row {
+        justify-content: flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a href="index.html" class="logo">
+
+      <img
+        src="hearsay-logo.png"
+        alt="HearSay"
+        class="logo-image"
+      >
+
+      <div>
+        Hear<span>Say</span>
+      </div>
+
+    </a>
+
+
+    <nav class="header-nav">
+
+      <a
+        href="upper-level.html"
+        class="nav-link library-link"
+      >
+        Upper-Level
+      </a>
+
+      <a
+        href="index.html"
+        class="nav-link"
+      >
+        Home
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<section class="course-hero">
+
+  <div class="course-hero-inner">
+
+
+    <div class="breadcrumb">
+
+      <a href="index.html">
+        HearSay
+      </a>
+
+      <span>›</span>
+
+      <a href="upper-level.html">
+        Upper-Level
+      </a>
+
+      <span>›</span>
+
+      <span>
+        Business Associations
+      </span>
+
+    </div>
+
+
+    <div class="course-heading">
+
+      <div class="hero-icon">
+        💼
+      </div>
+
+
+      <div>
+
+        <h1>
+          Business Associations
+        </h1>
+
+        <p>
+          Agency, partnerships, LLCs, corporations, fiduciary duties,
+          shareholder litigation, securities regulation, corporate control,
+          mergers, and acquisitions.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<main>
+
+
+  <div class="library-top">
+
+
+    <div>
+
+      <h2>
+        Case Library
+      </h2>
+
+      <p>
+        Browse by doctrine or search the complete Business Associations collection.
+      </p>
+
+    </div>
+
+
+    <div
+      class="case-count"
+      id="caseCount"
+    >
+      0 cases
+    </div>
+
+
+  </div>
+
+
+
+  <div class="search-wrapper">
+
+    <span class="search-icon">
+      ⌕
+    </span>
+
+    <input
+      id="caseSearch"
+      type="search"
+      placeholder="Search Business Associations cases..."
+      autocomplete="off"
+    >
+
+  </div>
+
+
+
+  <div id="topicsContainer"></div>
+
+
+
+  <div
+    class="no-results"
+    id="noResults"
+  >
+
+    <strong>
+      No Business Associations cases found
+    </strong>
+
+    Try searching for another case or doctrine.
+
+  </div>
+
+
+</main>
+
+
+
+<div
+  class="player"
+  id="player"
+>
+
+
+  <div class="player-top-row">
+
+
+    <button
+      class="main-play"
+      id="mainPlay"
+    >
+      ▶
+    </button>
+
+
+    <div class="player-info">
+
+      <div class="player-label">
+        NOW PLAYING
+      </div>
+
+      <div
+        class="player-name"
+        id="playerName"
+      >
+        Case Name
+      </div>
+
+    </div>
+
+
+    <button
+      class="close-player"
+      id="closePlayer"
+    >
+      ✕
+    </button>
+
+
+  </div>
+
+
+
+  <div
+    class="player-controls"
+    id="playerControls"
+  >
+
+
+    <div class="progress-row">
+
+      <span
+        class="player-time"
+        id="currentTime"
+      >
+        0:00
+      </span>
+
+
+      <input
+        class="player-progress"
+        id="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      >
+
+
+      <span
+        class="player-time"
+        id="duration"
+      >
+        0:00
+      </span>
+
+    </div>
+
+
+
+    <div class="player-button-row">
+
+
+      <button
+        class="player-option"
+        id="rewindButton"
+      >
+        ↶ 10
+      </button>
+
+
+      <button
+        class="player-option"
+        id="forwardButton"
+      >
+        10 ↷
+      </button>
+
+
+      <button
+        class="player-option"
+        id="speedButton"
+      >
+        1×
+      </button>
+
+
+      <button
+        class="player-option"
+        id="chaptersButton"
+      >
+        Chapters
+      </button>
+
+
+      <button
+        class="player-option"
+        id="transcriptButton"
+      >
+        Transcript
+      </button>
+
+
+    </div>
+
+
+
+    <div
+      class="player-panel"
+      id="chaptersPanel"
+    ></div>
+
+
+    <div
+      class="player-panel"
+      id="transcriptPanel"
+    ></div>
+
+
+  </div>
+
+
+
+  <audio
+    id="audioPlayer"
+    preload="metadata"
+  ></audio>
+
+
+</div>
+
+
+
+<footer>
+
+  © 2026 HearSay · Law school cases, made listenable.
+
+</footer>
+
+
+
+<script>
+
+
+const businessAssociationTopics = [
+
+
+  {
+    title: "Agency — Formation & Control",
+    cases: [
+      "A. Gay Jenson Farms Co. v. Cargill, Inc.",
+      "Basile v. H&R Block, Inc.",
+      "Botticello v. Stefanovicz",
+      "Gorton v. Doty",
+      "Jenson v. Eveleth Taconite Co."
+    ]
+  },
+
+
+  {
+    title: "Agency — Actual & Apparent Authority",
+    cases: [
+      "370 Leasing Corp. v. Ampex Corp.",
+      "Gallant Insurance Co. v. Isaac",
+      "Hoddeson v. Koos Bros.",
+      "Lind v. Schenley Industries, Inc.",
+      "Mill Street Church of Christ v. Hogan",
+      "Watteau v. Fenwick"
+    ]
+  },
+
+
+  {
+    title: "Agency — Ratification & Estoppel",
+    cases: [
+      "Botticello v. Stefanovicz",
+      "Hoddeson v. Koos Bros.",
+      "National Biscuit Co. v. Stroud"
+    ]
+  },
+
+
+  {
+    title: "Agency — Employee vs. Independent Contractor / Vicarious Liability",
+    cases: [
+      "Hoover v. Sun Oil Co.",
+      "Humble Oil & Refining Co. v. Martin",
+      "Kerl v. Dennis Rasmussen, Inc.",
+      "Miller v. McDonald's Corp.",
+      "Murphy v. Holiday Inns, Inc."
+    ]
+  },
+
+
+  {
+    title: "Agency — Fiduciary Duties",
+    cases: [
+      "Food Lion, Inc. v. Capital Cities/ABC, Inc.",
+      "General Automotive Manufacturing Co. v. Singer",
+      "Rash v. J.V. Intermediate, Ltd.",
+      "Reading v. Regem",
+      "Tarnowski v. Resop",
+      "Town & Country House & Home Service, Inc. v. Newbery"
+    ]
+  },
+
+
+  {
+    title: "Partnership — Formation",
+    cases: [
+      "Fenwick v. Unemployment Compensation Commission",
+      "Holmes v. Lerner",
+      "Martin v. Peyton",
+      "Southex Exhibitions, Inc. v. Rhode Island Builders Association, Inc."
+    ]
+  },
+
+
+  {
+    title: "Partnership — Authority & Liability",
+    cases: [
+      "Kansallis Finance Ltd. v. Fern",
+      "Roach v. Mead",
+      "Smith v. Kelley"
+    ]
+  },
+
+
+  {
+    title: "Partnership — Fiduciary Duties",
+    cases: [
+      "Bane v. Ferguson",
+      "Day v. Sidley & Austin",
+      "Lawlis v. Kightlinger & Gray",
+      "Meehan v. Shaughnessy",
+      "Meinhard v. Salmon"
+    ]
+  },
+
+
+  {
+    title: "Partnership — Dissociation, Dissolution & Winding Up",
+    cases: [
+      "Adams v. Jarvis",
+      "Collins v. Lewis",
+      "G&S Investments v. Belman",
+      "Page v. Page",
+      "Pav-Saver Corp. v. Vasso Corp."
+    ]
+  },
+
+
+  {
+    title: "Limited Partnerships",
+    cases: [
+      "Frigidaire Sales Corp. v. Union Properties, Inc.",
+      "Gateway Potato Sales v. G.B. Investment Co.",
+      "In re El Paso Pipeline Partners, L.P. Derivative Litigation"
+    ]
+  },
+
+
+  {
+    title: "LLCs — Formation, Governance & Contractual Freedom",
+    cases: [
+      "Elf Atochem North America, Inc. v. Jaffari",
+      "Fisk Ventures, LLC v. Segal",
+      "McConnell v. Hunt Sports Enterprises",
+      "Racing Investment Fund 2000, LLC v. Clay Ward Agency, Inc."
+    ]
+  },
+
+
+  {
+    title: "LLCs — Fiduciary Duties & Veil Piercing",
+    cases: [
+      "In re Carlisle Etcetera LLC",
+      "NetJets Aviation, Inc. v. LHC Communications, LLC",
+      "New Horizons Supply Cooperative v. Haack",
+      "VGS, Inc. v. Castiel"
+    ]
+  },
+
+
+  {
+    title: "Corporate Formation & Promoter Liability",
+    cases: [
+      "How & Associates, Inc. v. Boss",
+      "Kelner v. Baxter",
+      "Southern-Gulf Marine Co. No. 9, Inc. v. Camcraft, Inc."
+    ]
+  },
+
+
+  {
+    title: "Piercing the Corporate Veil / Limited Liability",
+    cases: [
+      "Kinney Shoe Corp. v. Polan",
+      "Sea-Land Services, Inc. v. Pepper Source",
+      "Walkovszky v. Carlton"
+    ]
+  },
+
+
+  {
+    title: "Corporate Purpose & Shareholder Primacy",
+    cases: [
+      "A.P. Smith Manufacturing Co. v. Barlow",
+      "Dodge v. Ford Motor Co.",
+      "Shlensky v. Wrigley"
+    ]
+  },
+
+
+  {
+    title: "Board Authority & Corporate Governance",
+    cases: [
+      "Charlestown Boot & Shoe Co. v. Dunsmore",
+      "Lee v. Jenkins Bros.",
+      "People ex rel. Manice v. Powell"
+    ]
+  },
+
+
+  {
+    title: "Shareholder Voting & Voting Agreements",
+    cases: [
+      "Clark v. Dodge",
+      "Galler v. Galler",
+      "McQuade v. Stoneham",
+      "Ringling Bros.-Barnum & Bailey Combined Shows, Inc. v. Ringling"
+    ]
+  },
+
+
+  {
+    title: "Business Judgment Rule",
+    cases: [
+      "Aronson v. Lewis",
+      "Brehm v. Eisner",
+      "Kamin v. American Express Co."
+    ]
+  },
+
+
+  {
+    title: "Duty of Care",
+    cases: [
+      "Francis v. United Jersey Bank",
+      "Smith v. Van Gorkom"
+    ]
+  },
+
+
+  {
+    title: "Duty of Loyalty — Interested Transactions",
+    cases: [
+      "Bayer v. Beran",
+      "Benihana of Tokyo, Inc. v. Benihana, Inc.",
+      "Fliegler v. Lawrence",
+      "Marciano v. Nakash",
+      "Valeant Pharmaceuticals International v. Jerney"
+    ]
+  },
+
+
+  {
+    title: "Corporate Opportunity Doctrine",
+    cases: [
+      "Broz v. Cellular Information Systems, Inc.",
+      "Guth v. Loft, Inc.",
+      "In re eBay, Inc. Shareholders Litigation"
+    ]
+  },
+
+
+  {
+    title: "Good Faith & Oversight — Caremark",
+    cases: [
+      "In re Caremark International Inc. Derivative Litigation",
+      "In re Citigroup Inc. Shareholder Derivative Litigation",
+      "In re Massey Energy Co. Derivative & Class Action Litigation",
+      "In re Walt Disney Co. Derivative Litigation",
+      "Marchand v. Barnhill",
+      "Stone v. Ritter"
+    ]
+  },
+
+
+  {
+    title: "Controlling Shareholders & Entire Fairness",
+    cases: [
+      "Kahn v. Lynch Communication Systems, Inc.",
+      "Kahn v. M & F Worldwide Corp.",
+      "Sinclair Oil Corp. v. Levien",
+      "Weinberger v. UOP, Inc.",
+      "Zahn v. Transamerica Corp."
+    ]
+  },
+
+
+  {
+    title: "Cleansing & Stockholder Approval",
+    cases: [
+      "Corwin v. KKR Financial Holdings LLC",
+      "In re Match Group, Inc. Derivative Litigation"
+    ]
+  },
+
+
+  {
+    title: "Derivative Litigation — Direct vs. Derivative Claims",
+    cases: [
+      "Gentile v. Rossette",
+      "Tooley v. Donaldson, Lufkin & Jenrette, Inc."
+    ]
+  },
+
+
+  {
+    title: "Derivative Litigation — Demand & Demand Futility",
+    cases: [
+      "Grimes v. Donald",
+      "Rales v. Blasband",
+      "United Food & Commercial Workers Union v. Zuckerberg"
+    ]
+  },
+
+
+  {
+    title: "Special Litigation Committees",
+    cases: [
+      "Auerbach v. Bennett",
+      "Zapata Corp. v. Maldonado"
+    ]
+  },
+
+
+  {
+    title: "Shareholder Inspection / Books & Records",
+    cases: [
+      "AmerisourceBergen Corp. v. Lebanon County Employees' Retirement Fund",
+      "Saito v. McKesson HBOC, Inc."
+    ]
+  },
+
+
+  {
+    title: "Close Corporations & Minority Shareholders",
+    cases: [
+      "Donahue v. Rodd Electrotype Co. of New England",
+      "Ingle v. Glamore Motor Sales, Inc.",
+      "Nixon v. Blackwell",
+      "Smith v. Atlantic Properties, Inc.",
+      "Wilkes v. Springside Nursing Home, Inc."
+    ]
+  },
+
+
+  {
+    title: "Shareholder Oppression",
+    cases: [
+      "Brodie v. Jordan",
+      "Gimpel v. Bolstein",
+      "Pedro v. Pedro",
+      "Sugarman v. Sugarman"
+    ]
+  },
+
+
+  {
+    title: "Corporate Disclosure & Securities Fraud — Rule 10b-5",
+    cases: [
+      "Basic Inc. v. Levinson",
+      "Dura Pharmaceuticals, Inc. v. Broudo",
+      "Halliburton Co. v. Erica P. John Fund, Inc.",
+      "Matrixx Initiatives, Inc. v. Siracusano",
+      "Santa Fe Industries, Inc. v. Green",
+      "Stoneridge Investment Partners, LLC v. Scientific-Atlanta, Inc."
+    ]
+  },
+
+
+  {
+    title: "Section 11 / Securities Offerings",
+    cases: [
+      "Escott v. BarChris Construction Corp.",
+      "Omnicare, Inc. v. Laborers District Council Construction Industry Pension Fund"
+    ]
+  },
+
+
+  {
+    title: "Insider Trading",
+    cases: [
+      "Dirks v. SEC",
+      "Goodwin v. Agassiz",
+      "Salman v. United States",
+      "SEC v. Texas Gulf Sulphur Co.",
+      "United States v. O'Hagan"
+    ]
+  },
+
+
+  {
+    title: "Shareholder Control & Sales of Control",
+    cases: [
+      "Essex Universal Corp. v. Yates",
+      "Perlman v. Feldmann",
+      "Zetlin v. Hanson Holdings, Inc."
+    ]
+  },
+
+
+  {
+    title: "Mergers & Appraisal",
+    cases: [
+      "Cede & Co. v. Technicolor, Inc.",
+      "Hariton v. Arco Electronics, Inc.",
+      "Rauch v. RCA Corp.",
+      "Weinberger v. UOP, Inc."
+    ]
+  },
+
+
+  {
+    title: "Hostile Takeovers — Defensive Measures",
+    cases: [
+      "Air Products & Chemicals, Inc. v. Airgas, Inc.",
+      "Cheff v. Mathes",
+      "Unocal Corp. v. Mesa Petroleum Co.",
+      "Unitrin, Inc. v. American General Corp."
+    ]
+  },
+
+
+  {
+    title: "Revlon Duties / Sale of Control",
+    cases: [
+      "Lyondell Chemical Co. v. Ryan",
+      "Paramount Communications Inc. v. QVC Network Inc.",
+      "Revlon, Inc. v. MacAndrews & Forbes Holdings, Inc."
+    ]
+  },
+
+
+  {
+    title: "Corporate Control & Board Interference with Voting",
+    cases: [
+      "Blasius Industries, Inc. v. Atlas Corp.",
+      "Coster v. UIP Companies, Inc."
+    ]
+  },
+
+
+  {
+    title: "Strategic M&A / Time-Warner Doctrine",
+    cases: [
+      "Paramount Communications, Inc. v. Time Inc."
+    ]
+  },
+
+
+  {
+    title: "Deal Protection",
+    cases: [
+      "Omnicare, Inc. v. NCS Healthcare, Inc."
+    ]
+  },
+
+
+  {
+    title: "Corporate Bylaws & Forum Selection",
+    cases: [
+      "Boilermakers Local 154 Retirement Fund v. Chevron Corp.",
+      "Salzberg v. Sciabacucchi"
+    ]
+  },
+
+
+  {
+    title: "Corporate Political / Social Expenditures",
+    cases: [
+      "Citizens United v. FEC"
+    ]
+  },
+
+
+  {
+    title: "Corporate Officers' Fiduciary Duties",
+    cases: [
+      "Gantler v. Stephens"
+    ]
+  },
+
+
+  {
+    title: "Modern Corporate Purpose / Board Decisionmaking",
+    cases: [
+      "McRitchie v. Zuckerberg"
+    ]
+  }
+
+
+];
+
+
+
+const audioLibrary = {
+
+};
+
+
+
+const chapterLibrary = {
+
+};
+
+
+
+const transcriptLibrary = {
+
+};
+
+
+
+const topicsContainer =
+  document.getElementById("topicsContainer");
+
+const caseSearch =
+  document.getElementById("caseSearch");
+
+const caseCount =
+  document.getElementById("caseCount");
+
+const noResults =
+  document.getElementById("noResults");
+
+const player =
+  document.getElementById("player");
+
+const playerName =
+  document.getElementById("playerName");
+
+const mainPlay =
+  document.getElementById("mainPlay");
+
+const closePlayer =
+  document.getElementById("closePlayer");
+
+const playerControls =
+  document.getElementById("playerControls");
+
+const audioPlayer =
+  document.getElementById("audioPlayer");
+
+const progress =
+  document.getElementById("progress");
+
+const currentTime =
+  document.getElementById("currentTime");
+
+const duration =
+  document.getElementById("duration");
+
+const speedButton =
+  document.getElementById("speedButton");
+
+const rewindButton =
+  document.getElementById("rewindButton");
+
+const forwardButton =
+  document.getElementById("forwardButton");
+
+const chaptersButton =
+  document.getElementById("chaptersButton");
+
+const transcriptButton =
+  document.getElementById("transcriptButton");
+
+const chaptersPanel =
+  document.getElementById("chaptersPanel");
+
+const transcriptPanel =
+  document.getElementById("transcriptPanel");
+
+
+
+let currentHasAudio = false;
+
+
+const playbackSpeeds = [
+  1,
+  1.25,
+  1.5,
+  1.75,
+  2,
+  0.75
+];
+
+
+let speedIndex = 0;
+
+
+
+function buildUniqueLibrary() {
+
+  const seen = new Set();
+
+
+  return businessAssociationTopics
+
+    .map(
+      topic => {
+
+
+        const uniqueCases =
+
+          topic.cases.filter(
+            caseName => {
+
+
+              if (seen.has(caseName)) {
+                return false;
+              }
+
+
+              seen.add(caseName);
+
+              return true;
+
+
+            }
+          );
+
+
+        return {
+          title: topic.title,
+          cases: uniqueCases
+        };
+
+
+      }
+    )
+
+    .filter(
+      topic =>
+        topic.cases.length > 0
+    );
+
+}
+
+
+
+const uniqueBusinessAssociationTopics =
+  buildUniqueLibrary();
+
+
+
+function getTotalCases() {
+
+  return uniqueBusinessAssociationTopics.reduce(
+
+    (total, topic) =>
+      total + topic.cases.length,
+
+    0
+
+  );
+
+}
+
+
+
+function escapeHtml(text) {
+
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+
+function renderLibrary(query = "") {
+
+
+  const normalizedQuery =
+    query.trim().toLowerCase();
+
+
+  let visibleCases = 0;
+
+  let visibleTopics = 0;
+
+  let html = "";
+
+
+  uniqueBusinessAssociationTopics.forEach(
+    (topic, topicIndex) => {
+
+
+      const matchingCases =
+
+        [...topic.cases]
+
+          .sort(
+            (a,b) =>
+              a.localeCompare(b)
+          )
+
+          .filter(
+            caseName => {
+
+
+              const searchable =
+
+                `${caseName} ${topic.title}`
+                  .toLowerCase();
+
+
+              return searchable.includes(
+                normalizedQuery
+              );
+
+            }
+          );
+
+
+      if (matchingCases.length === 0) {
+        return;
+      }
+
+
+      visibleTopics++;
+
+      visibleCases += matchingCases.length;
+
+
+      html += `
+
+        <section class="topic-section">
+
+          <div class="topic-header">
+
+            <div class="topic-title-wrap">
+
+              <div class="topic-number">
+
+                ${String(
+                  topicIndex + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+              <h3>
+                ${escapeHtml(topic.title)}
+              </h3>
+
+            </div>
+
+
+            <div class="topic-case-count">
+
+              ${matchingCases.length}
+
+              ${
+                matchingCases.length === 1
+                  ? "case"
+                  : "cases"
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="case-list">
+
+      `;
+
+
+      matchingCases.forEach(
+        caseName => {
+
+
+          const hasAudio =
+            Boolean(audioLibrary[caseName]);
+
+
+          html += `
+
+            <div class="case-card">
+
+              <div class="case-content">
+
+                <div class="case-name">
+                  ${escapeHtml(caseName)}
+                </div>
+
+                <div class="case-meta">
+
+                  ${escapeHtml(topic.title)}
+
+                  ${
+                    hasAudio
+                      ? " · Audio available"
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="status ${
+                  hasAudio
+                    ? "available"
+                    : "soon"
+                }"
+              >
+
+                ${
+                  hasAudio
+                    ? "Listen"
+                    : "Coming Soon"
+                }
+
+              </span>
+
+
+              <button
+                class="play-button"
+                data-case="${escapeHtml(caseName)}"
+              >
+                ▶
+              </button>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+
+      html += `
+
+          </div>
+
+        </section>
+
+      `;
+
+
+    }
+  );
+
+
+  topicsContainer.innerHTML = html;
+
+
+  noResults.style.display =
+    visibleTopics === 0
+      ? "block"
+      : "none";
+
+
+  caseCount.textContent =
+
+    normalizedQuery
+
+      ? `${visibleCases} ${
+          visibleCases === 1
+            ? "result"
+            : "results"
+        }`
+
+      : `${getTotalCases()} cases`;
+
+
+  attachPlayButtons();
+
+}
+
+
+
+function attachPlayButtons() {
+
+  document
+
+    .querySelectorAll(
+      ".play-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            playCase(
+              button.dataset.case
+            );
+
+
+          }
+        );
+
+
+      }
+    );
+
+}
+
+
+
+caseSearch.addEventListener(
+  "input",
+  () => {
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+
+  }
+);
+
+
+
+function playCase(caseName) {
+
+
+  playerName.textContent = caseName;
+
+
+  player.classList.add(
+    "visible"
+  );
+
+
+  chaptersPanel.classList.remove(
+    "visible"
+  );
+
+
+  transcriptPanel.classList.remove(
+    "visible"
+  );
+
+
+  loadChapters(caseName);
+
+  loadTranscript(caseName);
+
+
+  const audioFile =
+    audioLibrary[caseName];
+
+
+  if (!audioFile) {
+
+
+    currentHasAudio = false;
+
+
+    audioPlayer.pause();
+
+
+    audioPlayer.removeAttribute(
+      "src"
+    );
+
+
+    playerControls.classList.remove(
+      "visible"
+    );
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    alert(
+      "Audio for this case is coming soon."
+    );
+
+
+    return;
+
+  }
+
+
+
+  currentHasAudio = true;
+
+
+  playerControls.classList.add(
+    "visible"
+  );
+
+
+  if (
+    audioPlayer.getAttribute("src")
+    !==
+    audioFile
+  ) {
+
+
+    audioPlayer.src =
+      audioFile;
+
+
+    audioPlayer.load();
+
+
+    progress.value = 0;
+
+
+    currentTime.textContent =
+      "0:00";
+
+
+    duration.textContent =
+      "0:00";
+
+
+    speedIndex = 0;
+
+
+    audioPlayer.playbackRate = 1;
+
+
+    speedButton.textContent =
+      "1×";
+
+  }
+
+
+  audioPlayer.play()
+
+    .then(
+      () => {
+
+        mainPlay.textContent =
+          "❚❚";
+
+      }
+    )
+
+    .catch(
+      error => {
+
+
+        console.error(
+          "HearSay playback error:",
+          error
+        );
+
+
+        mainPlay.textContent =
+          "▶";
+
+
+        alert(
+          "HearSay found this recording, but the browser could not play it. Check that the MP3 filename and path are correct."
+        );
+
+
+      }
+    );
+
+}
+
+
+
+mainPlay.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    if (audioPlayer.paused) {
+
+
+      audioPlayer.play();
+
+
+      mainPlay.textContent =
+        "❚❚";
+
+
+    } else {
+
+
+      audioPlayer.pause();
+
+
+      mainPlay.textContent =
+        "▶";
+
+
+    }
+
+
+  }
+);
+
+
+
+rewindButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.max(
+        0,
+        audioPlayer.currentTime - 10
+      );
+
+
+  }
+);
+
+
+
+forwardButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.min(
+        audioPlayer.duration || Infinity,
+        audioPlayer.currentTime + 10
+      );
+
+
+  }
+);
+
+
+
+chaptersButton.addEventListener(
+  "click",
+  () => {
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    chaptersPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+transcriptButton.addEventListener(
+  "click",
+  () => {
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+function loadChapters(caseName) {
+
+
+  const chapters =
+    chapterLibrary[caseName] || [];
+
+
+  if (chapters.length === 0) {
+
+
+    chaptersPanel.innerHTML = `
+
+      <div class="panel-heading">
+        Chapters
+      </div>
+
+      <div class="transcript-text">
+        Chapters coming soon.
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="panel-heading">
+      Chapters
+    </div>
+
+  `;
+
+
+  chapters.forEach(
+    chapter => {
+
+
+      html += `
+
+        <button
+          class="chapter-button"
+          data-time="${chapter.time}"
+        >
+
+          ${escapeHtml(chapter.title)}
+          ·
+          ${formatTime(chapter.time)}
+
+        </button>
+
+      `;
+
+
+    }
+  );
+
+
+  chaptersPanel.innerHTML = html;
+
+
+  chaptersPanel
+
+    .querySelectorAll(
+      ".chapter-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            if (!currentHasAudio) {
+              return;
+            }
+
+
+            audioPlayer.currentTime =
+
+              Number(
+                button.dataset.time
+              );
+
+
+            audioPlayer.play();
+
+
+            mainPlay.textContent =
+              "❚❚";
+
+
+          }
+        );
+
+
+      }
+    );
+
+}
+
+
+
+function loadTranscript(caseName) {
+
+
+  const transcript =
+    transcriptLibrary[caseName];
+
+
+  transcriptPanel.innerHTML = `
+
+    <div class="panel-heading">
+      Transcript
+    </div>
+
+    <div class="transcript-text">
+
+      ${
+        transcript
+          ? escapeHtml(transcript)
+          : "Transcript coming soon."
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+
+audioPlayer.addEventListener(
+  "loadedmetadata",
+  () => {
+
+
+    duration.textContent =
+
+      formatTime(
+        audioPlayer.duration
+      );
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "timeupdate",
+  () => {
+
+
+    if (!audioPlayer.duration) {
+      return;
+    }
+
+
+    progress.value =
+
+      (
+        audioPlayer.currentTime
+        /
+        audioPlayer.duration
+      )
+
+      * 100;
+
+
+    currentTime.textContent =
+
+      formatTime(
+        audioPlayer.currentTime
+      );
+
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+
+    if (!audioPlayer.duration) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      (
+        progress.value
+        /
+        100
+      )
+
+      *
+      audioPlayer.duration;
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "ended",
+  () => {
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+  }
+);
+
+
+
+speedButton.addEventListener(
+  "click",
+  () => {
+
+
+    speedIndex =
+
+      (
+        speedIndex + 1
+      )
+
+      %
+      playbackSpeeds.length;
+
+
+    const speed =
+      playbackSpeeds[speedIndex];
+
+
+    audioPlayer.playbackRate =
+      speed;
+
+
+    speedButton.textContent =
+      `${speed}×`;
+
+
+  }
+);
+
+
+
+closePlayer.addEventListener(
+  "click",
+  () => {
+
+
+    audioPlayer.pause();
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    player.classList.remove(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+function formatTime(seconds) {
+
+
+  if (!Number.isFinite(seconds)) {
+    return "0:00";
+  }
+
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+
+  const remainingSeconds =
+
+    Math.floor(seconds % 60)
+
+      .toString()
+
+      .padStart(
+        2,
+        "0"
+      );
+
+
+  return `${minutes}:${remainingSeconds}`;
+
+}
+
+
+
+renderLibrary();
+
+
+</script>
+
+
+</body>
+
+</html>
