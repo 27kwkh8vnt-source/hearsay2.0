@@ -10,11 +10,11 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Criminal Procedure Bar Prep | HearSay</title>
+  <title>Criminal Law & Procedure Bar Prep | HearSay</title>
 
   <meta
     name="description"
-    content="Review high-yield Criminal Procedure cases for bar preparation with HearSay."
+    content="Review high-yield Criminal Law and Criminal Procedure cases for bar preparation with HearSay."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,7 +180,7 @@
     .course-heading h1 {
       font-family: "Libre Baskerville", serif;
       color: var(--navy);
-      font-size: clamp(2.4rem, 5vw, 3.7rem);
+      font-size: clamp(2.2rem, 5vw, 3.55rem);
       line-height: 1.1;
       letter-spacing: -0.04em;
       margin-bottom: 8px;
@@ -240,6 +240,16 @@
       color: var(--blue);
       font-size: 0.78rem;
       font-weight: 700;
+    }
+
+    .section-label {
+      margin: 0 0 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
     }
 
     .search-wrapper {
@@ -600,7 +610,7 @@
       }
 
       .course-heading h1 {
-        font-size: 2.05rem;
+        font-size: 1.95rem;
       }
 
       main {
@@ -692,7 +702,7 @@
       <span>›</span>
 
       <span>
-        Criminal Procedure
+        Criminal Law & Procedure
       </span>
 
     </div>
@@ -708,14 +718,14 @@
       <div>
 
         <h1>
-          Criminal Procedure
+          Criminal Law & Procedure
         </h1>
 
         <p>
-          High-yield Criminal Procedure cases covering searches and seizures,
-          warrants, Terry stops, Miranda, confessions, identification,
-          right to counsel, Brady obligations, trial rights,
-          confrontation, and double jeopardy.
+          High-yield Criminal Law and Criminal Procedure cases covering
+          constitutional investigation, searches and seizures, Miranda,
+          confessions, right to counsel, prosecutorial disclosure,
+          trial rights, confrontation, and double jeopardy.
         </p>
 
         <div class="bar-badge">
@@ -745,7 +755,7 @@
       </h2>
 
       <p>
-        Review the cases most useful for Criminal Procedure bar preparation.
+        Review the cases most useful for Criminal Law & Procedure bar preparation.
       </p>
 
     </div>
@@ -771,12 +781,16 @@
     <input
       id="caseSearch"
       type="search"
-      placeholder="Search Criminal Procedure bar prep cases..."
+      placeholder="Search Criminal Law & Procedure bar prep cases..."
       autocomplete="off"
     >
 
   </div>
 
+
+  <div class="section-label">
+    Criminal Procedure
+  </div>
 
 
   <div id="topicsContainer"></div>
@@ -789,7 +803,7 @@
   >
 
     <strong>
-      No Criminal Procedure cases found
+      No Criminal Law & Procedure cases found
     </strong>
 
     Try searching for another case or doctrine.
@@ -959,7 +973,7 @@
 <script>
 
 
-const barCriminalProcedureTopics = [
+const barCriminalLawProcedureTopics = [
 
 
   {
@@ -1430,11 +1444,6 @@ const transcriptLibrary = {
 
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-
 const topicsContainer =
   document.getElementById("topicsContainer");
 
@@ -1514,14 +1523,9 @@ let speedIndex = 0;
 
 
 
-/* =====================================================
-   COUNT
-===================================================== */
-
-
 function getTotalCases() {
 
-  return barCriminalProcedureTopics.reduce(
+  return barCriminalLawProcedureTopics.reduce(
 
     (total, topic) =>
       total + topic.cases.length,
@@ -1532,11 +1536,6 @@ function getTotalCases() {
 
 }
 
-
-
-/* =====================================================
-   ESCAPE
-===================================================== */
 
 
 function escapeHtml(text) {
@@ -1552,18 +1551,11 @@ function escapeHtml(text) {
 
 
 
-/* =====================================================
-   RENDER
-===================================================== */
-
-
 function renderLibrary(query = "") {
 
 
   const normalizedQuery =
-    query
-      .trim()
-      .toLowerCase();
+    query.trim().toLowerCase();
 
 
   let visibleCases = 0;
@@ -1573,7 +1565,7 @@ function renderLibrary(query = "") {
   let html = "";
 
 
-  barCriminalProcedureTopics.forEach(
+  barCriminalLawProcedureTopics.forEach(
     (topic, topicIndex) => {
 
 
@@ -1605,19 +1597,14 @@ function renderLibrary(query = "") {
           );
 
 
-      if (
-        matchingCases.length === 0
-      ) {
-
+      if (matchingCases.length === 0) {
         return;
-
       }
 
 
       visibleTopics++;
 
-      visibleCases +=
-        matchingCases.length;
+      visibleCases += matchingCases.length;
 
 
       html += `
@@ -1635,7 +1622,6 @@ function renderLibrary(query = "") {
                 ).padStart(2,"0")}
 
               </div>
-
 
               <h3>
                 ${escapeHtml(topic.title)}
@@ -1669,11 +1655,8 @@ function renderLibrary(query = "") {
 
 
           const hasAudio =
-
             Boolean(
-              audioLibrary[
-                caseItem.name
-              ]
+              audioLibrary[caseItem.name]
             );
 
 
@@ -1681,13 +1664,11 @@ function renderLibrary(query = "") {
 
             <div class="case-card">
 
-
               <div class="case-content">
 
                 <div class="case-name">
                   ${escapeHtml(caseItem.name)}
                 </div>
-
 
                 <div class="case-meta">
                   ${escapeHtml(caseItem.description)}
@@ -1721,11 +1702,9 @@ function renderLibrary(query = "") {
                 ▶
               </button>
 
-
             </div>
 
           `;
-
 
         }
       );
@@ -1749,7 +1728,6 @@ function renderLibrary(query = "") {
 
 
   noResults.style.display =
-
     visibleTopics === 0
       ? "block"
       : "none";
@@ -1770,18 +1748,11 @@ function renderLibrary(query = "") {
 
   attachPlayButtons();
 
-
 }
 
 
 
-/* =====================================================
-   PLAY BUTTONS
-===================================================== */
-
-
 function attachPlayButtons() {
-
 
   document
 
@@ -1810,14 +1781,8 @@ function attachPlayButtons() {
       }
     );
 
-
 }
 
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
 
 
 caseSearch.addEventListener(
@@ -1833,11 +1798,6 @@ caseSearch.addEventListener(
   }
 );
 
-
-
-/* =====================================================
-   PLAY CASE
-===================================================== */
 
 
 function playCase(caseName) {
@@ -1873,15 +1833,10 @@ function playCase(caseName) {
 
 
   const audioFile =
-
-    audioLibrary[
-      caseName
-    ];
+    audioLibrary[caseName];
 
 
-  if (
-    !audioFile
-  ) {
+  if (!audioFile) {
 
 
     currentHasAudio =
@@ -1926,15 +1881,9 @@ function playCase(caseName) {
 
 
   if (
-
-    audioPlayer.getAttribute(
-      "src"
-    )
-
+    audioPlayer.getAttribute("src")
     !==
-
     audioFile
-
   ) {
 
 
@@ -1969,7 +1918,6 @@ function playCase(caseName) {
       "1×";
 
   }
-
 
 
   audioPlayer.play()
@@ -2007,14 +1955,8 @@ function playCase(caseName) {
       }
     );
 
-
 }
 
-
-
-/* =====================================================
-   PLAY / PAUSE
-===================================================== */
 
 
 mainPlay.addEventListener(
@@ -2055,11 +1997,6 @@ mainPlay.addEventListener(
 
 
 
-/* =====================================================
-   REWIND
-===================================================== */
-
-
 rewindButton.addEventListener(
   "click",
   () => {
@@ -2081,11 +2018,6 @@ rewindButton.addEventListener(
   }
 );
 
-
-
-/* =====================================================
-   FORWARD
-===================================================== */
 
 
 forwardButton.addEventListener(
@@ -2111,11 +2043,6 @@ forwardButton.addEventListener(
 
 
 
-/* =====================================================
-   CHAPTERS
-===================================================== */
-
-
 chaptersButton.addEventListener(
   "click",
   () => {
@@ -2134,11 +2061,6 @@ chaptersButton.addEventListener(
   }
 );
 
-
-
-/* =====================================================
-   TRANSCRIPT
-===================================================== */
 
 
 transcriptButton.addEventListener(
@@ -2161,11 +2083,6 @@ transcriptButton.addEventListener(
 
 
 
-/* =====================================================
-   LOAD CHAPTERS
-===================================================== */
-
-
 function loadChapters(caseName) {
 
 
@@ -2173,9 +2090,7 @@ function loadChapters(caseName) {
     chapterLibrary[caseName] || [];
 
 
-  if (
-    chapters.length === 0
-  ) {
+  if (chapters.length === 0) {
 
 
     chaptersPanel.innerHTML = `
@@ -2274,14 +2189,8 @@ function loadChapters(caseName) {
       }
     );
 
-
 }
 
-
-
-/* =====================================================
-   LOAD TRANSCRIPT
-===================================================== */
 
 
 function loadTranscript(caseName) {
@@ -2309,14 +2218,8 @@ function loadTranscript(caseName) {
 
   `;
 
-
 }
 
-
-
-/* =====================================================
-   METADATA
-===================================================== */
 
 
 audioPlayer.addEventListener(
@@ -2334,11 +2237,6 @@ audioPlayer.addEventListener(
   }
 );
 
-
-
-/* =====================================================
-   PROGRESS
-===================================================== */
 
 
 audioPlayer.addEventListener(
@@ -2415,11 +2313,6 @@ audioPlayer.addEventListener(
 
 
 
-/* =====================================================
-   SPEED
-===================================================== */
-
-
 speedButton.addEventListener(
   "click",
   () => {
@@ -2436,10 +2329,7 @@ speedButton.addEventListener(
 
 
     const speed =
-
-      playbackSpeeds[
-        speedIndex
-      ];
+      playbackSpeeds[speedIndex];
 
 
     audioPlayer.playbackRate =
@@ -2453,11 +2343,6 @@ speedButton.addEventListener(
   }
 );
 
-
-
-/* =====================================================
-   CLOSE
-===================================================== */
 
 
 closePlayer.addEventListener(
@@ -2492,11 +2377,6 @@ closePlayer.addEventListener(
 
 
 
-/* =====================================================
-   TIME FORMAT
-===================================================== */
-
-
 function formatTime(seconds) {
 
 
@@ -2506,7 +2386,6 @@ function formatTime(seconds) {
 
 
   const minutes =
-
     Math.floor(
       seconds / 60
     );
@@ -2528,14 +2407,8 @@ function formatTime(seconds) {
 
   return `${minutes}:${remainingSeconds}`;
 
-
 }
 
-
-
-/* =====================================================
-   INITIAL LOAD
-===================================================== */
 
 
 renderLibrary();
