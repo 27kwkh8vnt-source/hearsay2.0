@@ -1,0 +1,2849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Criminal Procedure | HearSay</title>
+
+  <meta
+    name="description"
+    content="Listen to landmark Criminal Procedure cases with HearSay."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1746a2;
+      --blue-light: #eff6ff;
+      --blue-soft: #dbeafe;
+      --navy: #10213d;
+      --white: #ffffff;
+      --background: #f7faff;
+      --border: #e1e8f2;
+      --text: #172033;
+      --muted: #6b7485;
+      --shadow: 0 8px 30px rgba(26,55,100,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-image {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 9px 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: 0.18s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .course-hero {
+      padding: 60px 20px 55px;
+      background:
+        radial-gradient(circle at 10% 20%, #e6f0ff 0, transparent 32%),
+        radial-gradient(circle at 90% 10%, #eef5ff 0, transparent 28%),
+        var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .course-hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--blue);
+    }
+
+    .course-heading {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-icon {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-light);
+      font-size: 2rem;
+    }
+
+    .course-heading h1 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: clamp(2.4rem, 5vw, 3.7rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .course-heading p {
+      max-width: 800px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    main {
+      width: min(1000px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 50px 0 120px;
+    }
+
+    .library-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .library-top h2 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .library-top p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .case-count {
+      flex-shrink: 0;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    #caseSearch {
+      width: 100%;
+      height: 54px;
+      padding: 0 18px 0 46px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      outline: none;
+      background: var(--white);
+      color: var(--text);
+      box-shadow: 0 4px 16px rgba(30,58,95,0.04);
+      transition: 0.18s ease;
+    }
+
+    #caseSearch:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.07);
+    }
+
+    .division-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 38px;
+    }
+
+    .division-tab {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 13px;
+      background: var(--white);
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .division-tab.active {
+      border-color: var(--blue);
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .division-heading {
+      margin: 8px 0 26px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .topic-section {
+      margin-bottom: 42px;
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 13px;
+    }
+
+    .topic-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topic-number {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .topic-header h3 {
+      font-family: "Libre Baskerville", serif;
+      color: var(--navy);
+      font-size: 1.2rem;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .topic-case-count {
+      flex-shrink: 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .case-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 18px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 3px 14px rgba(30,58,95,0.035);
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-1px);
+      border-color: #c6d5e8;
+      box-shadow: var(--shadow);
+    }
+
+    .case-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .case-name {
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 650;
+      line-height: 1.4;
+    }
+
+    .case-meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .status {
+      flex-shrink: 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    .status.available {
+      color: var(--blue-dark);
+      background: var(--blue-light);
+    }
+
+    .status.soon {
+      color: var(--muted);
+      background: #f1f4f8;
+    }
+
+    .play-button {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--blue);
+      font-size: 0.82rem;
+      transition: 0.16s ease;
+    }
+
+    .play-button:hover {
+      transform: scale(1.06);
+      background: var(--blue-light);
+    }
+
+    .no-results {
+      display: none;
+      padding: 50px 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--white);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .no-results strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy);
+    }
+
+    .player {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 200;
+      width: min(820px, calc(100% - 28px));
+      padding: 16px 18px;
+      display: none;
+      background: rgba(16,33,61,0.98);
+      color: white;
+      border-radius: 18px;
+      box-shadow: 0 18px 48px rgba(6,23,49,0.24);
+    }
+
+    .player.visible {
+      display: block;
+    }
+
+    .player-top-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .main-play {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: white;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .player-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .player-label {
+      margin-bottom: 4px;
+      color: #aebed5;
+      font-size: 0.66rem;
+      letter-spacing: 0.05em;
+    }
+
+    .player-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .close-player {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .player-controls {
+      display: none;
+      margin-top: 14px;
+    }
+
+    .player-controls.visible {
+      display: block;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-time {
+      flex-shrink: 0;
+      color: #aebed5;
+      font-size: 0.68rem;
+    }
+
+    .player-progress {
+      flex: 1;
+      accent-color: white;
+    }
+
+    .player-button-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .player-option {
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .player-panel {
+      display: none;
+      margin-top: 14px;
+      padding-top: 13px;
+      border-top: 1px solid rgba(255,255,255,0.13);
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .player-panel.visible {
+      display: block;
+    }
+
+    .panel-heading {
+      margin-bottom: 8px;
+      color: #aebed5;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .chapter-button {
+      width: 100%;
+      padding: 9px 7px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: white;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    .transcript-text {
+      color: #d7e2f1;
+      font-family: "Libre Baskerville", serif;
+      line-height: 1.75;
+      font-size: 0.8rem;
+      white-space: pre-line;
+    }
+
+    footer {
+      padding: 30px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 620px) {
+
+      .nav-link.library-link {
+        display: none;
+      }
+
+      .course-heading {
+        align-items: flex-start;
+      }
+
+      .hero-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+      }
+
+      .course-heading h1 {
+        font-size: 2.15rem;
+      }
+
+      main {
+        width: calc(100% - 22px);
+      }
+
+      .status {
+        display: none;
+      }
+
+      .player {
+        bottom: 10px;
+      }
+
+      .player-button-row {
+        justify-content: flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+    <a href="index.html" class="logo">
+
+      <img
+        src="hearsay-logo.png"
+        alt="HearSay"
+        class="logo-image"
+      >
+
+      <div>
+        Hear<span>Say</span>
+      </div>
+
+    </a>
+
+
+    <nav class="header-nav">
+
+      <a
+        href="upper-level.html"
+        class="nav-link library-link"
+      >
+        Upper-Level
+      </a>
+
+      <a
+        href="index.html"
+        class="nav-link"
+      >
+        Home
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<section class="course-hero">
+
+  <div class="course-hero-inner">
+
+
+    <div class="breadcrumb">
+
+      <a href="index.html">
+        HearSay
+      </a>
+
+      <span>›</span>
+
+      <a href="upper-level.html">
+        Upper-Level
+      </a>
+
+      <span>›</span>
+
+      <span>
+        Criminal Procedure
+      </span>
+
+    </div>
+
+
+    <div class="course-heading">
+
+      <div class="hero-icon">
+        🚨
+      </div>
+
+
+      <div>
+
+        <h1>
+          Criminal Procedure
+        </h1>
+
+        <p>
+          Search and seizure, interrogation, exclusion, counsel,
+          prosecution, plea bargaining, trial rights, sentencing,
+          and postconviction review.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<main>
+
+
+  <div class="library-top">
+
+    <div>
+
+      <h2>
+        Case Library
+      </h2>
+
+      <p>
+        Browse by doctrine or search the complete Criminal Procedure collection.
+      </p>
+
+    </div>
+
+
+    <div
+      class="case-count"
+      id="caseCount"
+    >
+      0 cases
+    </div>
+
+  </div>
+
+
+
+  <div class="search-wrapper">
+
+    <span class="search-icon">
+      ⌕
+    </span>
+
+    <input
+      id="caseSearch"
+      type="search"
+      placeholder="Search Criminal Procedure cases..."
+      autocomplete="off"
+    >
+
+  </div>
+
+
+
+  <div class="division-tabs">
+
+    <button
+      class="division-tab active"
+      data-division="all"
+    >
+      All
+    </button>
+
+    <button
+      class="division-tab"
+      data-division="Investigation"
+    >
+      Investigation
+    </button>
+
+    <button
+      class="division-tab"
+      data-division="Adjudication"
+    >
+      Adjudication
+    </button>
+
+  </div>
+
+
+
+  <div id="topicsContainer"></div>
+
+
+
+  <div
+    class="no-results"
+    id="noResults"
+  >
+
+    <strong>
+      No Criminal Procedure cases found
+    </strong>
+
+    Try searching for another case or doctrine.
+
+  </div>
+
+
+</main>
+
+
+
+<div
+  class="player"
+  id="player"
+>
+
+
+  <div class="player-top-row">
+
+
+    <button
+      class="main-play"
+      id="mainPlay"
+    >
+      ▶
+    </button>
+
+
+    <div class="player-info">
+
+      <div class="player-label">
+        NOW PLAYING
+      </div>
+
+      <div
+        class="player-name"
+        id="playerName"
+      >
+        Case Name
+      </div>
+
+    </div>
+
+
+    <button
+      class="close-player"
+      id="closePlayer"
+    >
+      ✕
+    </button>
+
+
+  </div>
+
+
+
+  <div
+    class="player-controls"
+    id="playerControls"
+  >
+
+
+    <div class="progress-row">
+
+      <span
+        class="player-time"
+        id="currentTime"
+      >
+        0:00
+      </span>
+
+
+      <input
+        class="player-progress"
+        id="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+      >
+
+
+      <span
+        class="player-time"
+        id="duration"
+      >
+        0:00
+      </span>
+
+    </div>
+
+
+
+    <div class="player-button-row">
+
+      <button
+        class="player-option"
+        id="rewindButton"
+      >
+        ↶ 10
+      </button>
+
+      <button
+        class="player-option"
+        id="forwardButton"
+      >
+        10 ↷
+      </button>
+
+      <button
+        class="player-option"
+        id="speedButton"
+      >
+        1×
+      </button>
+
+      <button
+        class="player-option"
+        id="chaptersButton"
+      >
+        Chapters
+      </button>
+
+      <button
+        class="player-option"
+        id="transcriptButton"
+      >
+        Transcript
+      </button>
+
+    </div>
+
+
+
+    <div
+      class="player-panel"
+      id="chaptersPanel"
+    ></div>
+
+
+    <div
+      class="player-panel"
+      id="transcriptPanel"
+    ></div>
+
+
+  </div>
+
+
+
+  <audio
+    id="audioPlayer"
+    preload="metadata"
+  ></audio>
+
+
+</div>
+
+
+
+<footer>
+  © 2026 HearSay · Law school cases, made listenable.
+</footer>
+
+
+
+<script>
+
+
+const criminalProcedureTopics = [
+
+
+  {
+    division: "Investigation",
+    title: "Fourth Amendment — What Is a Search?",
+    cases: [
+      "Bond v. United States",
+      "California v. Ciraolo",
+      "California v. Greenwood",
+      "Florida v. Jardines",
+      "Katz v. United States",
+      "Kyllo v. United States",
+      "Oliver v. United States",
+      "Smith v. Maryland",
+      "United States v. Dunn",
+      "United States v. Jones"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Digital Privacy & Modern Fourth Amendment Searches",
+    cases: [
+      "Carpenter v. United States",
+      "City of Ontario v. Quon",
+      "Riley v. California",
+      "United States v. Warshak"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Probable Cause",
+    cases: [
+      "Draper v. United States",
+      "Illinois v. Gates",
+      "Maryland v. Pringle",
+      "Spinelli v. United States",
+      "United States v. Harris",
+      "Whiteley v. Warden"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Warrants & the Warrant Requirement",
+    cases: [
+      "Andresen v. Maryland",
+      "Dalia v. United States",
+      "Groh v. Ramirez",
+      "Maryland v. Garrison",
+      "Richards v. Wisconsin",
+      "United States v. Grubbs",
+      "Wilson v. Arkansas"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Arrests & Seizures of Persons",
+    cases: [
+      "Atwater v. City of Lago Vista",
+      "California v. Hodari D.",
+      "Payton v. New York",
+      "United States v. Mendenhall",
+      "United States v. Watson"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Stop and Frisk — Terry Doctrine",
+    cases: [
+      "Adams v. Williams",
+      "Arizona v. Johnson",
+      "Florida v. J.L.",
+      "Illinois v. Wardlow",
+      "Navarette v. California",
+      "Terry v. Ohio",
+      "United States v. Arvizu"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Traffic Stops",
+    cases: [
+      "Heien v. North Carolina",
+      "Rodriguez v. United States",
+      "Whren v. United States"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Search Incident to Arrest",
+    cases: [
+      "Arizona v. Gant",
+      "Birchfield v. North Dakota",
+      "Chimel v. California",
+      "Riley v. California",
+      "United States v. Robinson"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Automobile Exception",
+    cases: [
+      "California v. Acevedo",
+      "California v. Carney",
+      "Carroll v. United States",
+      "Collins v. Virginia",
+      "United States v. Ross"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Plain View",
+    cases: [
+      "Arizona v. Hicks",
+      "Coolidge v. New Hampshire",
+      "Horton v. California"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Consent Searches",
+    cases: [
+      "Florida v. Jimeno",
+      "Georgia v. Randolph",
+      "Illinois v. Rodriguez",
+      "Schneckloth v. Bustamonte",
+      "United States v. Matlock"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Exigent Circumstances & Emergency Aid",
+    cases: [
+      "Brigham City v. Stuart",
+      "Kentucky v. King",
+      "Lange v. California",
+      "Michigan v. Fisher",
+      "Missouri v. McNeely",
+      "Mitchell v. Wisconsin"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Special Needs & Administrative Searches",
+    cases: [
+      "Board of Education v. Earls",
+      "Camara v. Municipal Court",
+      "City of Indianapolis v. Edmond",
+      "Ferguson v. City of Charleston",
+      "Michigan Department of State Police v. Sitz",
+      "New Jersey v. T.L.O.",
+      "Skinner v. Railway Labor Executives' Association",
+      "Vernonia School District 47J v. Acton"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Border & Immigration Searches",
+    cases: [
+      "United States v. Flores-Montano",
+      "United States v. Montoya de Hernandez"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Inventory Searches",
+    cases: [
+      "Colorado v. Bertine",
+      "Florida v. Wells",
+      "South Dakota v. Opperman"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Excessive Force",
+    cases: [
+      "Barnes v. Felix",
+      "Graham v. Connor",
+      "Scott v. Harris",
+      "Tennessee v. Garner"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Exclusionary Rule — Foundations",
+    cases: [
+      "Herring v. United States",
+      "Hudson v. Michigan",
+      "Mapp v. Ohio",
+      "United States v. Calandra",
+      "United States v. Leon",
+      "Weeks v. United States"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Fruit of the Poisonous Tree",
+    cases: [
+      "Brown v. Illinois",
+      "Kaupp v. Texas",
+      "Murray v. United States",
+      "Nardone v. United States",
+      "New York v. Harris",
+      "Nix v. Williams",
+      "Segura v. United States",
+      "Utah v. Strieff",
+      "Wong Sun v. United States"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Standing to Invoke the Exclusionary Rule",
+    cases: [
+      "Minnesota v. Carter",
+      "Minnesota v. Olson",
+      "Rakas v. Illinois",
+      "Rawlings v. Kentucky"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Fifth Amendment — Voluntariness of Confessions",
+    cases: [
+      "Arizona v. Fulminante",
+      "Ashcraft v. Tennessee",
+      "Brown v. Mississippi",
+      "Colorado v. Connelly",
+      "Spano v. New York"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Miranda — Foundations & Custody",
+    cases: [
+      "Berkemer v. McCarty",
+      "Howes v. Fields",
+      "J.D.B. v. North Carolina",
+      "Miranda v. Arizona",
+      "Oregon v. Mathiason",
+      "Stansbury v. California"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Miranda — Interrogation",
+    cases: [
+      "Arizona v. Mauro",
+      "Illinois v. Perkins",
+      "Rhode Island v. Innis"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Miranda — Waiver",
+    cases: [
+      "Berghuis v. Thompkins",
+      "Colorado v. Spring",
+      "Moran v. Burbine",
+      "North Carolina v. Butler"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Miranda — Invocation of Silence",
+    cases: [
+      "Michigan v. Mosley"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Miranda — Right to Counsel",
+    cases: [
+      "Davis v. United States",
+      "Edwards v. Arizona",
+      "Maryland v. Shatzer",
+      "Minnick v. Mississippi"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Miranda — Exceptions & Consequences",
+    cases: [
+      "Harris v. New York",
+      "Michigan v. Tucker",
+      "Missouri v. Seibert",
+      "New York v. Quarles",
+      "Oregon v. Elstad",
+      "United States v. Patane",
+      "Vega v. Tekoh"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Fifth Amendment — Self-Incrimination",
+    cases: [
+      "Doe v. United States",
+      "Fisher v. United States",
+      "Hiibel v. Sixth Judicial District Court",
+      "Schmerber v. California",
+      "United States v. Hubbell",
+      "United States v. Wade"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Sixth Amendment — Attachment of Right to Counsel",
+    cases: [
+      "Brewer v. Williams",
+      "Massiah v. United States",
+      "McNeil v. Wisconsin",
+      "Montejo v. Louisiana",
+      "Rothgery v. Gillespie County"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Sixth Amendment — Deliberate Elicitation",
+    cases: [
+      "Fellers v. United States",
+      "Kuhlmann v. Wilson",
+      "Maine v. Moulton",
+      "United States v. Henry"
+    ]
+  },
+
+
+  {
+    division: "Investigation",
+    title: "Identification Procedures",
+    cases: [
+      "Kirby v. Illinois",
+      "Manson v. Brathwaite",
+      "Neil v. Biggers",
+      "Perry v. New Hampshire",
+      "Stovall v. Denno",
+      "United States v. Wade"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Right to Counsel — Indigent Defendants",
+    cases: [
+      "Argersinger v. Hamlin",
+      "Gideon v. Wainwright",
+      "Scott v. Illinois",
+      "United States v. Gonzalez-Lopez"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Effective Assistance of Counsel",
+    cases: [
+      "Cuyler v. Sullivan",
+      "Holloway v. Arkansas",
+      "Strickland v. Washington",
+      "United States v. Cronic"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Ineffective Assistance During Plea Bargaining",
+    cases: [
+      "Hill v. Lockhart",
+      "Lafler v. Cooper",
+      "Missouri v. Frye",
+      "Padilla v. Kentucky"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Prosecutorial Discretion",
+    cases: [
+      "Bordenkircher v. Hayes",
+      "United States v. Armstrong",
+      "Wayte v. United States"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Bail & Pretrial Detention",
+    cases: [
+      "Stack v. Boyle",
+      "United States v. Salerno"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Grand Jury",
+    cases: [
+      "Costello v. United States",
+      "United States v. Calandra",
+      "United States v. R. Enterprises, Inc.",
+      "United States v. Williams"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Brady & Prosecutorial Disclosure",
+    cases: [
+      "Brady v. Maryland",
+      "Giglio v. United States",
+      "Kyles v. Whitley",
+      "Strickler v. Greene",
+      "United States v. Bagley"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Speedy Trial",
+    cases: [
+      "Barker v. Wingo",
+      "Doggett v. United States",
+      "United States v. Marion"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Competency to Stand Trial",
+    cases: [
+      "Cooper v. Oklahoma",
+      "Dusky v. United States",
+      "Indiana v. Edwards",
+      "Medina v. California"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Guilty Pleas",
+    cases: [
+      "Boykin v. Alabama",
+      "Brady v. United States",
+      "McCarthy v. United States",
+      "North Carolina v. Alford"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Plea Bargaining",
+    cases: [
+      "Mabry v. Johnson",
+      "Ricketts v. Adamson",
+      "Santobello v. New York",
+      "United States v. Mezzanatto"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Jury Trial Right",
+    cases: [
+      "Blanton v. City of North Las Vegas",
+      "Duncan v. Louisiana",
+      "Lewis v. United States"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Jury Size & Unanimity",
+    cases: [
+      "Ballew v. Georgia",
+      "Ramos v. Louisiana",
+      "Williams v. Florida"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Jury Selection — Race & Sex",
+    cases: [
+      "Batson v. Kentucky",
+      "Flowers v. Mississippi",
+      "Foster v. Chatman",
+      "J.E.B. v. Alabama ex rel. T.B.",
+      "Powers v. Ohio",
+      "Strauder v. West Virginia"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Fair Cross-Section Requirement",
+    cases: [
+      "Duren v. Missouri",
+      "Taylor v. Louisiana"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Public Trial",
+    cases: [
+      "Presley v. Georgia",
+      "Waller v. Georgia"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Confrontation Clause",
+    cases: [
+      "Barber v. Page",
+      "Bullcoming v. New Mexico",
+      "Crawford v. Washington",
+      "Davis v. Washington",
+      "Hemphill v. New York",
+      "Melendez-Diaz v. Massachusetts",
+      "Michigan v. Bryant",
+      "Ohio v. Clark",
+      "Smith v. Arizona",
+      "Williams v. Illinois"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Compulsory Process & Right to Present a Defense",
+    cases: [
+      "Chambers v. Mississippi",
+      "Crane v. Kentucky",
+      "Holmes v. South Carolina",
+      "Rock v. Arkansas",
+      "Washington v. Texas"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Double Jeopardy — When Jeopardy Attaches",
+    cases: [
+      "Crist v. Bretz",
+      "Serfass v. United States"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Double Jeopardy — Same Offense",
+    cases: [
+      "Blockburger v. United States",
+      "Brown v. Ohio",
+      "United States v. Dixon"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Double Jeopardy — Retrial & Mistrial",
+    cases: [
+      "Arizona v. Washington",
+      "Burks v. United States",
+      "Oregon v. Kennedy",
+      "United States v. Dinitz"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Double Jeopardy — Multiple Sovereigns",
+    cases: [
+      "Gamble v. United States",
+      "Heath v. Alabama"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Sentencing — Constitutional Foundations",
+    cases: [
+      "Apprendi v. New Jersey",
+      "Blakely v. Washington",
+      "United States v. Booker"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Capital Sentencing",
+    cases: [
+      "Atkins v. Virginia",
+      "Furman v. Georgia",
+      "Gregg v. Georgia",
+      "Lockett v. Ohio",
+      "Roper v. Simmons"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Eighth Amendment — Proportionality",
+    cases: [
+      "Ewing v. California",
+      "Graham v. Florida",
+      "Harmelin v. Michigan",
+      "Miller v. Alabama",
+      "Solem v. Helm"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Appeals & Right to Counsel on Appeal",
+    cases: [
+      "Anders v. California",
+      "Douglas v. California",
+      "Griffin v. Illinois",
+      "Ross v. Moffitt"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Habeas Corpus & Postconviction Review",
+    cases: [
+      "Brown v. Allen",
+      "Coleman v. Thompson",
+      "Stone v. Powell",
+      "Teague v. Lane"
+    ]
+  },
+
+
+  {
+    division: "Adjudication",
+    title: "Actual Innocence & Postconviction Claims",
+    cases: [
+      "Herrera v. Collins",
+      "Schlup v. Delo"
+    ]
+  }
+
+
+];
+
+
+
+const audioLibrary = {
+
+};
+
+
+
+const chapterLibrary = {
+
+};
+
+
+
+const transcriptLibrary = {
+
+};
+
+
+
+const topicsContainer =
+  document.getElementById("topicsContainer");
+
+const caseSearch =
+  document.getElementById("caseSearch");
+
+const caseCount =
+  document.getElementById("caseCount");
+
+const noResults =
+  document.getElementById("noResults");
+
+const player =
+  document.getElementById("player");
+
+const playerName =
+  document.getElementById("playerName");
+
+const mainPlay =
+  document.getElementById("mainPlay");
+
+const closePlayer =
+  document.getElementById("closePlayer");
+
+const playerControls =
+  document.getElementById("playerControls");
+
+const audioPlayer =
+  document.getElementById("audioPlayer");
+
+const progress =
+  document.getElementById("progress");
+
+const currentTime =
+  document.getElementById("currentTime");
+
+const duration =
+  document.getElementById("duration");
+
+const speedButton =
+  document.getElementById("speedButton");
+
+const rewindButton =
+  document.getElementById("rewindButton");
+
+const forwardButton =
+  document.getElementById("forwardButton");
+
+const chaptersButton =
+  document.getElementById("chaptersButton");
+
+const transcriptButton =
+  document.getElementById("transcriptButton");
+
+const chaptersPanel =
+  document.getElementById("chaptersPanel");
+
+const transcriptPanel =
+  document.getElementById("transcriptPanel");
+
+const divisionTabs =
+  document.querySelectorAll(".division-tab");
+
+
+
+let currentHasAudio = false;
+
+let activeDivision = "all";
+
+
+const playbackSpeeds = [
+  1,
+  1.25,
+  1.5,
+  1.75,
+  2,
+  0.75
+];
+
+
+let speedIndex = 0;
+
+
+
+function buildUniqueLibrary() {
+
+  const seen = new Set();
+
+
+  return criminalProcedureTopics
+
+    .map(
+      topic => {
+
+
+        const uniqueCases =
+
+          topic.cases.filter(
+            caseName => {
+
+
+              if (seen.has(caseName)) {
+                return false;
+              }
+
+
+              seen.add(caseName);
+
+              return true;
+
+
+            }
+          );
+
+
+        return {
+          division: topic.division,
+          title: topic.title,
+          cases: uniqueCases
+        };
+
+
+      }
+    )
+
+    .filter(
+      topic =>
+        topic.cases.length > 0
+    );
+
+}
+
+
+
+const uniqueCriminalProcedureTopics =
+  buildUniqueLibrary();
+
+
+
+function getTotalCases() {
+
+  return uniqueCriminalProcedureTopics.reduce(
+    (total, topic) =>
+      total + topic.cases.length,
+    0
+  );
+
+}
+
+
+
+function escapeHtml(text) {
+
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+
+function renderLibrary(query = "") {
+
+
+  const normalizedQuery =
+    query.trim().toLowerCase();
+
+
+  let visibleCases = 0;
+
+  let visibleTopics = 0;
+
+  let html = "";
+
+  let lastDivision = null;
+
+
+  uniqueCriminalProcedureTopics.forEach(
+    (topic, topicIndex) => {
+
+
+      if (
+        activeDivision !== "all"
+        &&
+        topic.division !== activeDivision
+      ) {
+        return;
+      }
+
+
+      const matchingCases =
+
+        [...topic.cases]
+
+          .sort(
+            (a,b) =>
+              a.localeCompare(b)
+          )
+
+          .filter(
+            caseName => {
+
+
+              const searchable =
+
+                `${caseName} ${topic.title} ${topic.division}`
+                  .toLowerCase();
+
+
+              return searchable.includes(
+                normalizedQuery
+              );
+
+            }
+          );
+
+
+      if (matchingCases.length === 0) {
+        return;
+      }
+
+
+      if (
+        activeDivision === "all"
+        &&
+        topic.division !== lastDivision
+      ) {
+
+
+        html += `
+
+          <div class="division-heading">
+            ${escapeHtml(topic.division)}
+          </div>
+
+        `;
+
+
+        lastDivision = topic.division;
+
+      }
+
+
+      visibleTopics++;
+
+      visibleCases += matchingCases.length;
+
+
+      html += `
+
+        <section class="topic-section">
+
+          <div class="topic-header">
+
+            <div class="topic-title-wrap">
+
+              <div class="topic-number">
+
+                ${String(
+                  topicIndex + 1
+                ).padStart(2,"0")}
+
+              </div>
+
+              <h3>
+                ${escapeHtml(topic.title)}
+              </h3>
+
+            </div>
+
+
+            <div class="topic-case-count">
+
+              ${matchingCases.length}
+
+              ${
+                matchingCases.length === 1
+                  ? "case"
+                  : "cases"
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="case-list">
+
+      `;
+
+
+      matchingCases.forEach(
+        caseName => {
+
+
+          const hasAudio =
+            Boolean(audioLibrary[caseName]);
+
+
+          html += `
+
+            <div class="case-card">
+
+              <div class="case-content">
+
+                <div class="case-name">
+                  ${escapeHtml(caseName)}
+                </div>
+
+                <div class="case-meta">
+
+                  ${escapeHtml(topic.title)}
+
+                  ${
+                    hasAudio
+                      ? " · Audio available"
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+
+              <span
+                class="status ${
+                  hasAudio
+                    ? "available"
+                    : "soon"
+                }"
+              >
+
+                ${
+                  hasAudio
+                    ? "Listen"
+                    : "Coming Soon"
+                }
+
+              </span>
+
+
+              <button
+                class="play-button"
+                data-case="${escapeHtml(caseName)}"
+              >
+                ▶
+              </button>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+
+      html += `
+
+          </div>
+
+        </section>
+
+      `;
+
+
+    }
+  );
+
+
+  topicsContainer.innerHTML = html;
+
+
+  noResults.style.display =
+    visibleTopics === 0
+      ? "block"
+      : "none";
+
+
+  if (
+    normalizedQuery
+    ||
+    activeDivision !== "all"
+  ) {
+
+    caseCount.textContent =
+      `${visibleCases} ${
+        visibleCases === 1
+          ? "case"
+          : "cases"
+      }`;
+
+  } else {
+
+    caseCount.textContent =
+      `${getTotalCases()} cases`;
+
+  }
+
+
+  attachPlayButtons();
+
+}
+
+
+
+divisionTabs.forEach(
+  tab => {
+
+
+    tab.addEventListener(
+      "click",
+      () => {
+
+
+        activeDivision =
+          tab.dataset.division;
+
+
+        divisionTabs.forEach(
+          button =>
+            button.classList.remove(
+              "active"
+            )
+        );
+
+
+        tab.classList.add(
+          "active"
+        );
+
+
+        renderLibrary(
+          caseSearch.value
+        );
+
+
+      }
+    );
+
+
+  }
+);
+
+
+
+function attachPlayButtons() {
+
+  document
+
+    .querySelectorAll(
+      ".play-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            playCase(
+              button.dataset.case
+            );
+
+
+          }
+        );
+
+
+      }
+    );
+
+}
+
+
+
+caseSearch.addEventListener(
+  "input",
+  () => {
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+
+  }
+);
+
+
+
+function playCase(caseName) {
+
+
+  playerName.textContent = caseName;
+
+
+  player.classList.add(
+    "visible"
+  );
+
+
+  chaptersPanel.classList.remove(
+    "visible"
+  );
+
+
+  transcriptPanel.classList.remove(
+    "visible"
+  );
+
+
+  loadChapters(caseName);
+
+  loadTranscript(caseName);
+
+
+  const audioFile =
+    audioLibrary[caseName];
+
+
+  if (!audioFile) {
+
+
+    currentHasAudio = false;
+
+
+    audioPlayer.pause();
+
+
+    audioPlayer.removeAttribute(
+      "src"
+    );
+
+
+    playerControls.classList.remove(
+      "visible"
+    );
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    alert(
+      "Audio for this case is coming soon."
+    );
+
+
+    return;
+
+  }
+
+
+
+  currentHasAudio = true;
+
+
+  playerControls.classList.add(
+    "visible"
+  );
+
+
+  if (
+    audioPlayer.getAttribute("src")
+    !==
+    audioFile
+  ) {
+
+
+    audioPlayer.src =
+      audioFile;
+
+
+    audioPlayer.load();
+
+
+    progress.value = 0;
+
+
+    currentTime.textContent =
+      "0:00";
+
+
+    duration.textContent =
+      "0:00";
+
+
+    speedIndex = 0;
+
+
+    audioPlayer.playbackRate = 1;
+
+
+    speedButton.textContent =
+      "1×";
+
+  }
+
+
+  audioPlayer.play()
+
+    .then(
+      () => {
+
+        mainPlay.textContent =
+          "❚❚";
+
+      }
+    )
+
+    .catch(
+      error => {
+
+
+        console.error(
+          "HearSay playback error:",
+          error
+        );
+
+
+        mainPlay.textContent =
+          "▶";
+
+
+        alert(
+          "HearSay found this recording, but the browser could not play it. Check that the MP3 filename and path are correct."
+        );
+
+
+      }
+    );
+
+}
+
+
+
+mainPlay.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    if (audioPlayer.paused) {
+
+
+      audioPlayer.play();
+
+
+      mainPlay.textContent =
+        "❚❚";
+
+
+    } else {
+
+
+      audioPlayer.pause();
+
+
+      mainPlay.textContent =
+        "▶";
+
+
+    }
+
+
+  }
+);
+
+
+
+rewindButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.max(
+        0,
+        audioPlayer.currentTime - 10
+      );
+
+
+  }
+);
+
+
+
+forwardButton.addEventListener(
+  "click",
+  () => {
+
+
+    if (!currentHasAudio) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      Math.min(
+        audioPlayer.duration || Infinity,
+        audioPlayer.currentTime + 10
+      );
+
+
+  }
+);
+
+
+
+chaptersButton.addEventListener(
+  "click",
+  () => {
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    chaptersPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+transcriptButton.addEventListener(
+  "click",
+  () => {
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.toggle(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+function loadChapters(caseName) {
+
+
+  const chapters =
+    chapterLibrary[caseName] || [];
+
+
+  if (chapters.length === 0) {
+
+
+    chaptersPanel.innerHTML = `
+
+      <div class="panel-heading">
+        Chapters
+      </div>
+
+      <div class="transcript-text">
+        Chapters coming soon.
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="panel-heading">
+      Chapters
+    </div>
+
+  `;
+
+
+  chapters.forEach(
+    chapter => {
+
+
+      html += `
+
+        <button
+          class="chapter-button"
+          data-time="${chapter.time}"
+        >
+
+          ${escapeHtml(chapter.title)}
+          ·
+          ${formatTime(chapter.time)}
+
+        </button>
+
+      `;
+
+
+    }
+  );
+
+
+  chaptersPanel.innerHTML = html;
+
+
+  chaptersPanel
+
+    .querySelectorAll(
+      ".chapter-button"
+    )
+
+    .forEach(
+      button => {
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+
+            if (!currentHasAudio) {
+              return;
+            }
+
+
+            audioPlayer.currentTime =
+
+              Number(
+                button.dataset.time
+              );
+
+
+            audioPlayer.play();
+
+
+            mainPlay.textContent =
+              "❚❚";
+
+
+          }
+        );
+
+
+      }
+    );
+
+}
+
+
+
+function loadTranscript(caseName) {
+
+
+  const transcript =
+    transcriptLibrary[caseName];
+
+
+  transcriptPanel.innerHTML = `
+
+    <div class="panel-heading">
+      Transcript
+    </div>
+
+    <div class="transcript-text">
+
+      ${
+        transcript
+          ? escapeHtml(transcript)
+          : "Transcript coming soon."
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+
+audioPlayer.addEventListener(
+  "loadedmetadata",
+  () => {
+
+
+    duration.textContent =
+
+      formatTime(
+        audioPlayer.duration
+      );
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "timeupdate",
+  () => {
+
+
+    if (!audioPlayer.duration) {
+      return;
+    }
+
+
+    progress.value =
+
+      (
+        audioPlayer.currentTime
+        /
+        audioPlayer.duration
+      )
+
+      * 100;
+
+
+    currentTime.textContent =
+
+      formatTime(
+        audioPlayer.currentTime
+      );
+
+
+  }
+);
+
+
+
+progress.addEventListener(
+  "input",
+  () => {
+
+
+    if (!audioPlayer.duration) {
+      return;
+    }
+
+
+    audioPlayer.currentTime =
+
+      (
+        progress.value
+        /
+        100
+      )
+
+      *
+      audioPlayer.duration;
+
+
+  }
+);
+
+
+
+audioPlayer.addEventListener(
+  "ended",
+  () => {
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+  }
+);
+
+
+
+speedButton.addEventListener(
+  "click",
+  () => {
+
+
+    speedIndex =
+
+      (
+        speedIndex + 1
+      )
+
+      %
+      playbackSpeeds.length;
+
+
+    const speed =
+      playbackSpeeds[speedIndex];
+
+
+    audioPlayer.playbackRate =
+      speed;
+
+
+    speedButton.textContent =
+      `${speed}×`;
+
+
+  }
+);
+
+
+
+closePlayer.addEventListener(
+  "click",
+  () => {
+
+
+    audioPlayer.pause();
+
+
+    mainPlay.textContent =
+      "▶";
+
+
+    chaptersPanel.classList.remove(
+      "visible"
+    );
+
+
+    transcriptPanel.classList.remove(
+      "visible"
+    );
+
+
+    player.classList.remove(
+      "visible"
+    );
+
+
+  }
+);
+
+
+
+function formatTime(seconds) {
+
+
+  if (!Number.isFinite(seconds)) {
+    return "0:00";
+  }
+
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+
+  const remainingSeconds =
+
+    Math.floor(seconds % 60)
+
+      .toString()
+
+      .padStart(
+        2,
+        "0"
+      );
+
+
+  return `${minutes}:${remainingSeconds}`;
+
+}
+
+
+
+renderLibrary();
+
+
+</script>
+
+
+</body>
+
+</html>
