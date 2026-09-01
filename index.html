@@ -111,9 +111,16 @@
     }
 
 
-    button {
+    button,
+    input {
 
       font: inherit;
+
+    }
+
+
+    button {
+
       cursor: pointer;
 
     }
@@ -526,7 +533,7 @@
         center;
 
       margin-bottom:
-        36px;
+        28px;
 
     }
 
@@ -586,6 +593,9 @@
       position:
         relative;
 
+      z-index:
+        50;
+
     }
 
 
@@ -602,8 +612,11 @@
       width:
         100%;
 
+      height:
+        56px;
+
       padding:
-        16px 52px 16px 18px;
+        0 54px 0 20px;
 
       border:
         1px solid
@@ -612,29 +625,37 @@
       border-radius:
         14px;
 
+      outline:
+        none;
+
       background:
         var(--white);
 
       color:
         var(--text);
 
-      font-family:
-        "DM Sans",
-        sans-serif;
-
-      font-size:
-        0.95rem;
-
-      outline:
-        none;
-
       box-shadow:
         0 5px 20px
         rgba(30,58,95,0.045);
 
+      font-size:
+        0.95rem;
+
       transition:
         border-color 0.18s ease,
         box-shadow 0.18s ease;
+
+    }
+
+
+    .global-search-input:focus {
+
+      border-color:
+        var(--blue);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(37,99,235,0.07);
 
     }
 
@@ -647,28 +668,16 @@
     }
 
 
-    .global-search-input:focus {
-
-      border-color:
-        var(--blue);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(37, 99, 235, 0.10);
-
-    }
-
-
     .global-search-icon {
 
       position:
         absolute;
 
+      right:
+        19px;
+
       top:
         50%;
-
-      right:
-        18px;
 
       transform:
         translateY(-50%);
@@ -678,9 +687,6 @@
 
       pointer-events:
         none;
-
-      font-size:
-        1rem;
 
     }
 
@@ -702,11 +708,8 @@
       right:
         0;
 
-      z-index:
-        75;
-
       max-height:
-        380px;
+        420px;
 
       overflow-y:
         auto;
@@ -722,7 +725,8 @@
         14px;
 
       box-shadow:
-        var(--shadow);
+        0 18px 45px
+        rgba(26,55,100,0.15);
 
     }
 
@@ -741,23 +745,14 @@
         block;
 
       padding:
-        13px 16px;
+        14px 17px;
 
       border-bottom:
         1px solid
         var(--border);
 
-      color:
-        var(--navy);
-
-      font-size:
-        0.9rem;
-
-      font-weight:
-        600;
-
-      line-height:
-        1.45;
+      transition:
+        background 0.15s ease;
 
     }
 
@@ -765,7 +760,7 @@
     .global-search-result:last-child {
 
       border-bottom:
-        none;
+        0;
 
     }
 
@@ -775,8 +770,45 @@
       background:
         var(--blue-light);
 
+    }
+
+
+    .global-result-name {
+
+      color:
+        var(--navy);
+
+      font-size:
+        0.9rem;
+
+      font-weight:
+        700;
+
+      line-height:
+        1.4;
+
+    }
+
+
+    .global-search-result:hover
+    .global-result-name {
+
       color:
         var(--blue);
+
+    }
+
+
+    .global-result-course {
+
+      margin-top:
+        3px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.72rem;
 
     }
 
@@ -784,7 +816,7 @@
     .global-search-message {
 
       padding:
-        14px 16px;
+        16px 17px;
 
       color:
         var(--muted);
@@ -1328,7 +1360,9 @@
 
 
 
-      <!-- GLOBAL CASE SEARCH -->
+      <!-- ========================================
+           GLOBAL CASE SEARCH
+      ========================================= -->
 
       <div class="global-search">
 
@@ -1348,6 +1382,7 @@
           </span>
 
         </div>
+
 
         <div
           id="globalCaseSearchResults"
@@ -1528,123 +1563,123 @@
 
 
   <!-- ========================================
-       GLOBAL CASE SEARCH FUNCTION
+       REAL GLOBAL CASE SEARCH
   ========================================= -->
 
   <script>
 
     const globalCaseSearch =
-      document.getElementById("globalCaseSearch");
+      document.getElementById(
+        "globalCaseSearch"
+      );
+
 
     const globalCaseSearchResults =
-      document.getElementById("globalCaseSearchResults");
+      document.getElementById(
+        "globalCaseSearchResults"
+      );
 
 
-    const startingPages = [
+    /*
+      These are the three navigation pages.
+
+      The script reads the links from these pages
+      to discover all individual course pages.
+    */
+
+    const libraryPages = [
+
       "1l.html",
       "upper-level.html",
       "bar-prep.html"
+
     ];
 
 
-    const caseIndex = [];
+    let globalCaseDatabase =
+      [];
 
-    const pagesAlreadyVisited =
-      new Set();
 
-    let searchIndexReady =
+    let searchReady =
       false;
 
 
 
-    function cleanText(text) {
+    /* ========================================
+       HELPERS
+    ======================================== */
 
-      return text
-        .replace(/\s+/g, " ")
+    function cleanText(
+      text
+    ) {
+
+      return String(
+        text || ""
+      )
+        .replace(
+          /\s+/g,
+          " "
+        )
         .trim();
 
     }
 
 
 
-    function looksLikeCaseName(text) {
+    function escapeHtml(
+      text
+    ) {
 
-      const name =
-        cleanText(text);
+      return String(
+        text
+      )
 
-      return (
+        .replace(
+          /&/g,
+          "&amp;"
+        )
 
-        /\bv\.?\s+/i.test(name) ||
+        .replace(
+          /</g,
+          "&lt;"
+        )
 
-        /^in re\b/i.test(name) ||
+        .replace(
+          />/g,
+          "&gt;"
+        )
 
-        /^matter of\b/i.test(name) ||
+        .replace(
+          /"/g,
+          "&quot;"
+        )
 
-        /^ex parte\b/i.test(name)
-
-      );
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
 
 
-    function addCase(name, href) {
-
-      const cleanName =
-        cleanText(name);
-
-
-      if (
-        !cleanName ||
-        !href ||
-        !looksLikeCaseName(cleanName)
-      ) {
-
-        return;
-
-      }
-
-
-      let absoluteHref;
-
+    function normalizeUrl(
+      href,
+      base
+    ) {
 
       try {
 
-        absoluteHref =
-          new URL(
-            href,
-            window.location.href
-          ).href;
+        return new URL(
+          href,
+          base
+        ).href;
 
       }
 
       catch {
 
-        return;
-
-      }
-
-
-      const duplicate =
-        caseIndex.some(
-          item =>
-            item.name.toLowerCase() ===
-              cleanName.toLowerCase() &&
-            item.href === absoluteHref
-        );
-
-
-      if (!duplicate) {
-
-        caseIndex.push({
-
-          name:
-            cleanName,
-
-          href:
-            absoluteHref
-
-        });
+        return "";
 
       }
 
@@ -1652,25 +1687,30 @@
 
 
 
-    function isLocalHtmlPage(url) {
+    function isLocalHtmlPage(
+      url
+    ) {
 
       try {
 
         const parsed =
           new URL(
-            url,
-            window.location.href
+            url
           );
 
 
         return (
 
           parsed.origin ===
-            window.location.origin &&
+            window.location.origin
+
+          &&
 
           parsed.pathname
             .toLowerCase()
-            .endsWith(".html")
+            .endsWith(
+              ".html"
+            )
 
         );
 
@@ -1686,128 +1726,646 @@
 
 
 
-    async function fetchDocument(pageUrl) {
+    /* ========================================
+       FIND COURSE PAGE LINKS
+    ======================================== */
 
-      try {
+    async function discoverCoursePages() {
 
-        const response =
-          await fetch(
-            pageUrl,
-            {
-              cache: "no-store"
-            }
-          );
+      const coursePages =
+        new Set();
 
 
-        if (!response.ok) {
+      for (
+        const libraryPage
+        of libraryPages
+      ) {
 
-          return null;
+        try {
 
-        }
-
-
-        const html =
-          await response.text();
-
-
-        return new DOMParser()
-          .parseFromString(
-            html,
-            "text/html"
-          );
-
-      }
-
-      catch {
-
-        return null;
-
-      }
-
-    }
-
-
-
-    function indexCasesFromDocument(
-      doc,
-      pageUrl
-    ) {
-
-      const links =
-        doc.querySelectorAll(
-          "a[href]"
-        );
-
-
-      links.forEach(link => {
-
-        const text =
-          cleanText(
-            link.textContent
-          );
-
-
-        if (
-          looksLikeCaseName(text)
-        ) {
-
-          addCase(
-            text,
-            new URL(
-              link.getAttribute("href"),
-              pageUrl
-            ).href
-          );
-
-        }
-
-      });
-
-
-
-      const possibleCaseElements =
-        doc.querySelectorAll(
-          ".case-card, .case-item, .case-row, .case-title, .case-name, [data-case]"
-        );
-
-
-      possibleCaseElements.forEach(
-        element => {
-
-          const text =
-            cleanText(
-              element.textContent
+          const response =
+            await fetch(
+              libraryPage,
+              {
+                cache:
+                  "no-store"
+              }
             );
 
 
           if (
-            !looksLikeCaseName(text)
+            !response.ok
           ) {
 
-            return;
+            continue;
 
           }
 
 
-          const link =
-            element.matches("a[href]")
-              ? element
-              : element.querySelector(
-                  "a[href]"
-                ) ||
-                element.closest(
-                  "a[href]"
+          const html =
+            await response.text();
+
+
+          const documentCopy =
+            new DOMParser()
+              .parseFromString(
+                html,
+                "text/html"
+              );
+
+
+          const links =
+            documentCopy
+              .querySelectorAll(
+                "a[href]"
+              );
+
+
+          links.forEach(
+            link => {
+
+              const absoluteUrl =
+                normalizeUrl(
+                  link.getAttribute(
+                    "href"
+                  ),
+                  new URL(
+                    libraryPage,
+                    window.location.href
+                  )
                 );
 
 
-          if (link) {
+              if (
+                !absoluteUrl
+              ) {
 
-            addCase(
-              text,
-              new URL(
-                link.getAttribute("href"),
-                pageUrl
-              ).href
+                return;
+
+              }
+
+
+              if (
+                !isLocalHtmlPage(
+                  absoluteUrl
+                )
+              ) {
+
+                return;
+
+              }
+
+
+              const fileName =
+                new URL(
+                  absoluteUrl
+                )
+                  .pathname
+                  .split("/")
+                  .pop()
+                  .toLowerCase();
+
+
+              /*
+                Don't index the navigation pages themselves,
+                home, login, or signup pages.
+              */
+
+              const excludedPages =
+                [
+
+                  "index.html",
+                  "1l.html",
+                  "upper-level.html",
+                  "bar-prep.html",
+                  "login.html",
+                  "signup.html"
+
+                ];
+
+
+              if (
+                excludedPages.includes(
+                  fileName
+                )
+              ) {
+
+                return;
+
+              }
+
+
+              coursePages.add(
+                absoluteUrl
+              );
+
+            }
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          console.warn(
+            "Could not read library page:",
+            libraryPage
+          );
+
+        }
+
+      }
+
+
+      return [
+        ...coursePages
+      ];
+
+    }
+
+
+
+    /* ========================================
+       LOAD A COURSE PAGE FOR REAL
+
+       This is the important part.
+
+       Your course pages create their case cards
+       with JavaScript. Fetching their raw HTML
+       isn't enough.
+
+       So this loads each course page invisibly,
+       allows its JavaScript database to render,
+       and then reads the rendered cases.
+    ======================================== */
+
+    function loadCourseCases(
+      coursePageUrl
+    ) {
+
+      return new Promise(
+        resolve => {
+
+
+          const iframe =
+            document.createElement(
+              "iframe"
+            );
+
+
+          iframe.style.position =
+            "fixed";
+
+
+          iframe.style.width =
+            "1px";
+
+
+          iframe.style.height =
+            "1px";
+
+
+          iframe.style.opacity =
+            "0";
+
+
+          iframe.style.pointerEvents =
+            "none";
+
+
+          iframe.style.left =
+            "-9999px";
+
+
+          iframe.style.top =
+            "-9999px";
+
+
+          iframe.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+
+          let finished =
+            false;
+
+
+
+          function finish(
+            cases
+          ) {
+
+            if (
+              finished
+            ) {
+
+              return;
+
+            }
+
+
+            finished =
+              true;
+
+
+            clearTimeout(
+              timeout
+            );
+
+
+            iframe.remove();
+
+
+            resolve(
+              cases
+            );
+
+          }
+
+
+
+          const timeout =
+            setTimeout(
+              () => {
+
+                finish(
+                  []
+                );
+
+              },
+              7000
+            );
+
+
+
+          iframe.onload =
+            () => {
+
+
+              /*
+                Give the course page's JavaScript
+                a moment to render its case list.
+              */
+
+              setTimeout(
+                () => {
+
+
+                  try {
+
+                    const doc =
+                      iframe
+                        .contentDocument;
+
+
+                    if (
+                      !doc
+                    ) {
+
+                      finish(
+                        []
+                      );
+
+                      return;
+
+                    }
+
+
+
+                    /* ------------------------------
+                       GET COURSE NAME
+                    ------------------------------ */
+
+                    const courseNameElement =
+
+                      doc.querySelector(
+                        ".course-heading h1"
+                      )
+
+                      ||
+
+                      doc.querySelector(
+                        "h1"
+                      );
+
+
+                    const courseName =
+                      cleanText(
+                        courseNameElement
+                          ?.textContent
+                      )
+
+                      ||
+
+                      cleanText(
+                        doc.title
+                          .split("|")[0]
+                      );
+
+
+
+                    /* ------------------------------
+                       GET RENDERED CASE CARDS
+                    ------------------------------ */
+
+                    const foundCases =
+                      [];
+
+
+                    const cards =
+                      doc.querySelectorAll(
+                        ".case-card"
+                      );
+
+
+                    cards.forEach(
+                      card => {
+
+
+                        const dataCase =
+                          cleanText(
+                            card.getAttribute(
+                              "data-case"
+                            )
+                          );
+
+
+                        const caseNameElement =
+                          card.querySelector(
+                            ".case-name"
+                          );
+
+
+                        const visibleCaseName =
+                          cleanText(
+                            caseNameElement
+                              ?.textContent
+                          );
+
+
+                        const caseName =
+                          dataCase
+                          ||
+                          visibleCaseName;
+
+
+                        if (
+                          !caseName
+                        ) {
+
+                          return;
+
+                        }
+
+
+
+                        const topicElement =
+                          card.querySelector(
+                            ".case-meta"
+                          );
+
+
+                        const topic =
+                          cleanText(
+                            topicElement
+                              ?.textContent
+                          )
+                            .replace(
+                              /\s*·\s*Audio available\s*/gi,
+                              ""
+                            );
+
+
+                        foundCases.push(
+                          {
+
+                            name:
+                              caseName,
+
+                            course:
+                              courseName,
+
+                            topic:
+                              topic,
+
+                            page:
+                              coursePageUrl
+
+                          }
+                        );
+
+                      }
+                    );
+
+
+
+                    /*
+                      Fallback for a page that has
+                      .case-name elements but not
+                      .case-card data attributes.
+                    */
+
+                    if (
+                      foundCases.length === 0
+                    ) {
+
+
+                      doc
+                        .querySelectorAll(
+                          ".case-name"
+                        )
+                        .forEach(
+                          element => {
+
+
+                            const caseName =
+                              cleanText(
+                                element.textContent
+                              );
+
+
+                            if (
+                              !caseName
+                            ) {
+
+                              return;
+
+                            }
+
+
+                            foundCases.push(
+                              {
+
+                                name:
+                                  caseName,
+
+                                course:
+                                  courseName,
+
+                                topic:
+                                  "",
+
+                                page:
+                                  coursePageUrl
+
+                              }
+                            );
+
+                          }
+                        );
+
+                    }
+
+
+
+                    finish(
+                      foundCases
+                    );
+
+                  }
+
+                  catch (
+                    error
+                  ) {
+
+                    console.warn(
+                      "Could not index course page:",
+                      coursePageUrl,
+                      error
+                    );
+
+
+                    finish(
+                      []
+                    );
+
+                  }
+
+                },
+                600
+              );
+
+            };
+
+
+
+          iframe.onerror =
+            () => {
+
+              finish(
+                []
+              );
+
+            };
+
+
+          iframe.src =
+            coursePageUrl;
+
+
+          document.body
+            .appendChild(
+              iframe
+            );
+
+        }
+      );
+
+    }
+
+
+
+    /* ========================================
+       BUILD MASTER CASE DATABASE
+    ======================================== */
+
+    async function buildGlobalDatabase() {
+
+      const coursePages =
+        await discoverCoursePages();
+
+
+      const allCases =
+        [];
+
+
+      /*
+        Load pages a few at a time instead of
+        hammering the browser with every course
+        simultaneously.
+      */
+
+      const batchSize =
+        4;
+
+
+      for (
+        let i = 0;
+        i < coursePages.length;
+        i += batchSize
+      ) {
+
+        const batch =
+          coursePages.slice(
+            i,
+            i + batchSize
+          );
+
+
+        const batchResults =
+          await Promise.all(
+            batch.map(
+              page =>
+                loadCourseCases(
+                  page
+                )
+            )
+          );
+
+
+        batchResults
+          .flat()
+          .forEach(
+            caseItem => {
+
+              allCases.push(
+                caseItem
+              );
+
+            }
+          );
+
+      }
+
+
+
+      /* ------------------------------
+         REMOVE DUPLICATES
+      ------------------------------ */
+
+      const unique =
+        new Map();
+
+
+      allCases.forEach(
+        caseItem => {
+
+
+          const key =
+            `${caseItem.name.toLowerCase()}|${caseItem.course.toLowerCase()}`;
+
+
+          if (
+            !unique.has(
+              key
+            )
+          ) {
+
+            unique.set(
+              key,
+              caseItem
             );
 
           }
@@ -1815,190 +2373,35 @@
         }
       );
 
-    }
 
-
-
-    function getLinkedHtmlPages(
-      doc,
-      pageUrl
-    ) {
-
-      const links =
+      globalCaseDatabase =
         Array.from(
-          doc.querySelectorAll(
-            "a[href]"
-          )
-        );
-
-
-      const pages =
-        [];
-
-
-      links.forEach(link => {
-
-        const href =
-          link.getAttribute(
-            "href"
-          );
-
-
-        if (!href) {
-
-          return;
-
-        }
-
-
-        let absoluteUrl;
-
-
-        try {
-
-          absoluteUrl =
-            new URL(
-              href,
-              pageUrl
-            ).href;
-
-        }
-
-        catch {
-
-          return;
-
-        }
-
-
-        if (
-          isLocalHtmlPage(
-            absoluteUrl
-          )
-        ) {
-
-          pages.push(
-            absoluteUrl
-          );
-
-        }
-
-      });
-
-
-      return pages;
-
-    }
-
-
-
-    async function crawlPage(
-      pageUrl,
-      depth = 0
-    ) {
-
-      const absolutePageUrl =
-        new URL(
-          pageUrl,
-          window.location.href
-        ).href;
-
-
-      if (
-        pagesAlreadyVisited.has(
-          absolutePageUrl
+          unique.values()
         )
-      ) {
-
-        return;
-
-      }
-
-
-      if (
-        depth > 3
-      ) {
-
-        return;
-
-      }
+          .sort(
+            (
+              a,
+              b
+            ) =>
+              a.name.localeCompare(
+                b.name
+              )
+          );
 
 
-      pagesAlreadyVisited.add(
-        absolutePageUrl
-      );
-
-
-      const doc =
-        await fetchDocument(
-          absolutePageUrl
-        );
-
-
-      if (!doc) {
-
-        return;
-
-      }
-
-
-      indexCasesFromDocument(
-        doc,
-        absolutePageUrl
-      );
-
-
-      const linkedPages =
-        getLinkedHtmlPages(
-          doc,
-          absolutePageUrl
-        );
-
-
-      for (
-        const linkedPage
-        of linkedPages
-      ) {
-
-        await crawlPage(
-          linkedPage,
-          depth + 1
-        );
-
-      }
-
-    }
-
-
-
-    async function buildGlobalCaseIndex() {
-
-      for (
-        const startingPage
-        of startingPages
-      ) {
-
-        await crawlPage(
-          startingPage
-        );
-
-      }
-
-
-      caseIndex.sort(
-        (a, b) =>
-          a.name.localeCompare(
-            b.name
-          )
-      );
-
-
-      searchIndexReady =
+      searchReady =
         true;
 
 
+      /*
+        If the user already started typing
+        while the index was loading, immediately
+        show those results.
+      */
+
       if (
-        globalCaseSearch.value
+        globalCaseSearch
+          .value
           .trim()
       ) {
 
@@ -2008,36 +2411,33 @@
 
       }
 
-    }
 
-
-
-    function escapeHtml(text) {
-
-      const div =
-        document.createElement(
-          "div"
-        );
-
-      div.textContent =
-        text;
-
-      return div.innerHTML;
+      console.log(
+        `HearSay global search indexed ${globalCaseDatabase.length} cases.`
+      );
 
     }
 
 
+
+    /* ========================================
+       SEARCH RESULTS
+    ======================================== */
 
     function showSearchResults(
       query
     ) {
 
-      const searchTerm =
-        cleanText(query)
+      const normalizedQuery =
+        cleanText(
+          query
+        )
           .toLowerCase();
 
 
-      if (!searchTerm) {
+      if (
+        !normalizedQuery
+      ) {
 
         globalCaseSearchResults
           .classList
@@ -2045,13 +2445,16 @@
             "active"
           );
 
+
         globalCaseSearchResults
           .innerHTML =
             "";
 
+
         return;
 
       }
+
 
 
       globalCaseSearchResults
@@ -2061,84 +2464,212 @@
         );
 
 
-      if (!searchIndexReady) {
+
+      if (
+        !searchReady
+      ) {
 
         globalCaseSearchResults
           .innerHTML =
             `
+
               <div class="global-search-message">
-                Loading case library...
+
+                Loading HearSay case library...
+
               </div>
+
             `;
+
 
         return;
 
       }
 
 
-      const matchingCases =
-        caseIndex
-          .filter(caseItem =>
 
-            caseItem.name
-              .toLowerCase()
-              .includes(
-                searchTerm
-              )
+      const matches =
+        globalCaseDatabase
 
+          .filter(
+            caseItem => {
+
+
+              const searchable =
+                `
+
+                  ${caseItem.name}
+
+                  ${caseItem.course}
+
+                  ${caseItem.topic}
+
+                `
+                  .toLowerCase();
+
+
+              return searchable.includes(
+                normalizedQuery
+              );
+
+            }
           )
+
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+
+              const aName =
+                a.name
+                  .toLowerCase();
+
+
+              const bName =
+                b.name
+                  .toLowerCase();
+
+
+
+              /*
+                Cases beginning with the search
+                term appear first.
+              */
+
+              const aStarts =
+                aName.startsWith(
+                  normalizedQuery
+                );
+
+
+              const bStarts =
+                bName.startsWith(
+                  normalizedQuery
+                );
+
+
+              if (
+                aStarts &&
+                !bStarts
+              ) {
+
+                return -1;
+
+              }
+
+
+              if (
+                !aStarts &&
+                bStarts
+              ) {
+
+                return 1;
+
+              }
+
+
+              return a.name.localeCompare(
+                b.name
+              );
+
+            }
+          )
+
           .slice(
             0,
             20
           );
 
 
+
       if (
-        matchingCases.length === 0
+        matches.length === 0
       ) {
 
         globalCaseSearchResults
           .innerHTML =
             `
+
               <div class="global-search-message">
+
                 No cases found.
+
               </div>
+
             `;
+
 
         return;
 
       }
 
 
+
       globalCaseSearchResults
         .innerHTML =
-          matchingCases
-            .map(caseItem => {
 
-              return `
-                <a
-                  class="global-search-result"
-                  href="${caseItem.href}"
-                >
-                  ${escapeHtml(caseItem.name)}
-                </a>
-              `;
+          matches
 
-            })
+            .map(
+              caseItem => {
+
+
+                const courseLine =
+                  caseItem.topic
+
+                    ? `${caseItem.course} · ${caseItem.topic}`
+
+                    : caseItem.course;
+
+
+                return `
+
+                  <a
+                    href="${escapeHtml(caseItem.page)}"
+                    class="global-search-result"
+                  >
+
+                    <div class="global-result-name">
+
+                      ${escapeHtml(caseItem.name)}
+
+                    </div>
+
+                    <div class="global-result-course">
+
+                      ${escapeHtml(courseLine)}
+
+                    </div>
+
+                  </a>
+
+                `;
+
+              }
+            )
+
             .join("");
 
     }
 
 
 
+    /* ========================================
+       SEARCH EVENTS
+    ======================================== */
+
     globalCaseSearch
       .addEventListener(
         "input",
         function () {
 
+
           showSearchResults(
             this.value
           );
+
 
         }
       );
@@ -2150,6 +2681,7 @@
         "focus",
         function () {
 
+
           if (
             this.value.trim()
           ) {
@@ -2160,6 +2692,7 @@
 
           }
 
+
         }
       );
 
@@ -2168,7 +2701,10 @@
     document
       .addEventListener(
         "click",
-        function (event) {
+        function (
+          event
+        ) {
+
 
           if (
             !event.target.closest(
@@ -2184,12 +2720,18 @@
 
           }
 
+
         }
       );
 
 
 
-    buildGlobalCaseIndex();
+    /* ========================================
+       START DATABASE INDEX
+    ======================================== */
+
+    buildGlobalDatabase();
+
 
   </script>
 
