@@ -2669,31 +2669,110 @@ const conLawTopics = [
 
 
 /* =====================================================
-   AUDIO LIBRARY
+   AUTOMATIC AUDIO + TRANSCRIPTS
 
-   Every case with audio can include:
-   - audio: MP3 path
-   - chapters: chapter list with time in seconds (optional)
+   NO MANUAL AUDIO LIBRARY NEEDED.
 
-   TRANSCRIPTS ARE AUTOMATIC:
-   If the MP3 is files/example-case.mp3, the page will automatically
-   look for files/example-case.txt. Uploading that TXT file is enough;
-   no transcript code change is needed.
+   Examples:
 
+   Cooper v. Aaron
+   files/cooper-v-aaron.mp3
+   files/cooper-v-aaron.txt
+
+   Lujan v. Defenders of Wildlife
+   files/lujan-v-defenders-of-wildlife.mp3
+   files/lujan-v-defenders-of-wildlife.txt
 ===================================================== */
 
 
-const audioLibrary = {
+/*
+   ONLY use this for old files that already have
+   a filename different from the automatic format.
+*/
 
-  "Brown v. Board of Education": {
-    audio: "files/brown-v-board.mp3",
+const fileAliases = {
 
-    chapters: [
-      { title: "Beginning", time: 0 }
-    ]
-  }
+  "Brown v. Board of Education":
+    "brown-v-board"
 
 };
+
+
+
+function caseToFilename(
+  caseName
+) {
+
+  if (
+    fileAliases[
+      caseName
+    ]
+  ) {
+
+    return fileAliases[
+      caseName
+    ];
+
+  }
+
+
+  return caseName
+
+    .toLowerCase()
+
+    .replace(
+      /&/g,
+      "and"
+    )
+
+    .replace(
+      /['’]/g,
+      ""
+    )
+
+    .replace(
+      /[^a-z0-9]+/g,
+      "-"
+    )
+
+    .replace(
+      /^-+|-+$/g,
+      ""
+    );
+
+}
+
+
+
+function getAudioPath(
+  caseName
+) {
+
+  return (
+    "files/" +
+    caseToFilename(
+      caseName
+    ) +
+    ".mp3"
+  );
+
+}
+
+
+
+function getTranscriptPath(
+  caseName
+) {
+
+  return (
+    "files/" +
+    caseToFilename(
+      caseName
+    ) +
+    ".txt"
+  );
+
+}
 
 
 
@@ -2855,6 +2934,146 @@ let speedIndex =
 
 
 /* =====================================================
+   AUDIO AVAILABILITY
+===================================================== */
+
+
+const audioAvailability =
+  {};
+
+
+const audioChecks =
+  {};
+
+
+
+async function checkAudioExists(
+  caseName
+) {
+
+  if (
+    Object.prototype.hasOwnProperty.call(
+      audioAvailability,
+      caseName
+    )
+  ) {
+
+    return audioAvailability[
+      caseName
+    ];
+
+  }
+
+
+  if (
+    audioChecks[
+      caseName
+    ]
+  ) {
+
+    return audioChecks[
+      caseName
+    ];
+
+  }
+
+
+  const audioPath =
+    getAudioPath(
+      caseName
+    );
+
+
+  audioChecks[
+    caseName
+  ] =
+    (async () => {
+
+      try {
+
+        let response =
+          await fetch(
+            audioPath,
+            {
+              method:
+                "HEAD",
+
+              cache:
+                "no-store"
+            }
+          );
+
+
+        /*
+          Some hosts do not handle HEAD well.
+          If HEAD fails, try a tiny GET request.
+        */
+
+        if (
+          !response.ok
+        ) {
+
+          response =
+            await fetch(
+              audioPath,
+              {
+                method:
+                  "GET",
+
+                headers: {
+                  Range:
+                    "bytes=0-1"
+                },
+
+                cache:
+                  "no-store"
+              }
+            );
+
+        }
+
+
+        const exists =
+          response.ok ||
+          response.status === 206;
+
+
+        audioAvailability[
+          caseName
+        ] =
+          exists;
+
+
+        return exists;
+
+      }
+
+      catch (
+        error
+      ) {
+
+        audioAvailability[
+          caseName
+        ] =
+          false;
+
+
+        return false;
+
+      }
+
+    })();
+
+
+  return audioChecks[
+    caseName
+  ];
+
+}
+
+
+
+/* =====================================================
    TOTAL CASE ENTRIES
 ===================================================== */
 
@@ -2884,7 +3103,9 @@ function getTotalCases() {
 ===================================================== */
 
 
-function escapeHtml(text) {
+function escapeHtml(
+  text
+) {
 
   return text
 
@@ -3043,25 +3264,19 @@ function renderLibrary(
         caseName => {
 
 
-          const caseAudioData =
-
-            audioLibrary[
-              caseName
-            ];
-
-
           const hasAudio =
 
-            Boolean(
-              typeof caseAudioData === "string"
-                ? caseAudioData
-                : caseAudioData?.audio
-            );
+            audioAvailability[
+              caseName
+            ] === true;
 
 
           html += `
 
-            <div class="case-card">
+            <div
+              class="case-card"
+              data-case="${escapeHtml(caseName)}"
+            >
 
               <div class="case-content">
 
@@ -3224,39 +3439,22 @@ caseSearch.addEventListener(
 
 /* =====================================================
    AUTOMATIC TRANSCRIPTS
-
-   Transcript filenames are derived from the MP3 filename.
-   Example:
-     files/brown-v-board.mp3
-     files/brown-v-board.txt
-
-   This means you only need to upload the matching .txt file.
 ===================================================== */
 
 
-const transcriptCache = {};
+const transcriptCache =
+  {};
 
 
-function getTranscriptPath(audioFile) {
 
-  if (!audioFile) {
-    return "";
-  }
-
-  return audioFile.replace(/\.mp3(?:\?.*)?$/i, ".txt");
-
-}
-
-
-async function loadTranscriptForAudio(audioFile) {
+async function loadTranscriptForCase(
+  caseName
+) {
 
   const transcriptPath =
-    getTranscriptPath(audioFile);
-
-
-  if (!transcriptPath) {
-    return "";
-  }
+    getTranscriptPath(
+      caseName
+    );
 
 
   if (
@@ -3279,16 +3477,21 @@ async function loadTranscriptForAudio(audioFile) {
       await fetch(
         transcriptPath,
         {
-          cache: "no-store"
+          cache:
+            "no-store"
         }
       );
 
 
-    if (!response.ok) {
+    if (
+      !response.ok
+    ) {
 
       transcriptCache[
         transcriptPath
-      ] = "";
+      ] =
+        "";
+
 
       return "";
 
@@ -3301,28 +3504,30 @@ async function loadTranscriptForAudio(audioFile) {
 
     transcriptCache[
       transcriptPath
-    ] = text;
+    ] =
+      text;
 
 
     return text;
 
-  } catch (error) {
+  }
 
-    console.warn(
-      `Could not load transcript: ${transcriptPath}`,
-      error
-    );
-
+  catch (
+    error
+  ) {
 
     transcriptCache[
       transcriptPath
-    ] = "";
+    ] =
+      "";
+
 
     return "";
 
   }
 
 }
+
 
 
 /* =====================================================
@@ -3364,37 +3569,20 @@ async function playCase(
   );
 
 
-  const caseAudioData =
-
-    audioLibrary[
-      caseName
-    ];
-
-
   const audioFile =
-
-    typeof caseAudioData === "string"
-      ? caseAudioData
-      : caseAudioData?.audio;
-
-
-  let transcript =
-    "";
+    getAudioPath(
+      caseName
+    );
 
 
-  const chapters =
-
-    typeof caseAudioData === "object"
-      && Array.isArray(
-        caseAudioData?.chapters
-      )
-
-      ? caseAudioData.chapters
-      : [];
+  const hasAudio =
+    await checkAudioExists(
+      caseName
+    );
 
 
   if (
-    !audioFile
+    !hasAudio
   ) {
 
 
@@ -3431,6 +3619,11 @@ async function playCase(
     );
 
 
+    player.classList.remove(
+      "visible"
+    );
+
+
     return;
 
   }
@@ -3453,49 +3646,30 @@ async function playCase(
     "inline-block";
 
 
-  transcriptButton.style.display =
-    "none";
+  /*
+     All automatically detected cases receive
+     a Beginning chapter.
+  */
 
+  const chapters = [
 
-  transcriptText.textContent =
-    "Loading transcript…";
+    {
+      title:
+        "Beginning",
+
+      time:
+        0
+    }
+
+  ];
 
 
   chaptersButton.style.display =
-
-    chapters.length
-      ? "inline-block"
-      : "none";
+    "inline-block";
 
 
   chaptersList.innerHTML =
     "";
-
-
-  transcript =
-    await loadTranscriptForAudio(
-      audioFile
-    );
-
-
-  if (transcript) {
-
-    transcriptText.textContent =
-      transcript;
-
-
-    transcriptButton.style.display =
-      "inline-block";
-
-  } else {
-
-    transcriptText.textContent =
-      "Transcript not available.";
-
-    transcriptButton.style.display =
-      "none";
-
-  }
 
 
   chapters.forEach(
@@ -3554,6 +3728,52 @@ async function playCase(
   );
 
 
+
+  /*
+     TRANSCRIPT AUTOMATICALLY USES SAME
+     CASE FILENAME AS MP3.
+  */
+
+  transcriptButton.style.display =
+    "none";
+
+
+  transcriptText.textContent =
+    "Loading transcript…";
+
+
+  const transcript =
+    await loadTranscriptForCase(
+      caseName
+    );
+
+
+  if (
+    transcript
+  ) {
+
+    transcriptText.textContent =
+      transcript;
+
+
+    transcriptButton.style.display =
+      "inline-block";
+
+  }
+
+  else {
+
+    transcriptText.textContent =
+      "Transcript not available.";
+
+
+    transcriptButton.style.display =
+      "none";
+
+  }
+
+
+
   if (
 
     audioPlayer.getAttribute(
@@ -3596,11 +3816,24 @@ async function playCase(
   }
 
 
-  audioPlayer.play();
+  try {
+
+    await audioPlayer.play();
 
 
-  mainPlay.textContent =
-    "❚❚";
+    mainPlay.textContent =
+      "❚❚";
+
+  }
+
+  catch (
+    error
+  ) {
+
+    mainPlay.textContent =
+      "▶";
+
+  }
 
 }
 
@@ -3620,12 +3853,6 @@ mainPlay.addEventListener(
       !currentHasAudio
     ) {
 
-
-      alert(
-        "Audio for this case is coming soon."
-      );
-
-
       return;
 
     }
@@ -3643,7 +3870,9 @@ mainPlay.addEventListener(
         "❚❚";
 
 
-    } else {
+    }
+
+    else {
 
 
       audioPlayer.pause();
@@ -3800,6 +4029,7 @@ rewind10.addEventListener(
 );
 
 
+
 forward10.addEventListener(
   "click",
   () => {
@@ -3878,6 +4108,7 @@ transcriptButton.addEventListener(
 
   }
 );
+
 
 
 chaptersButton.addEventListener(
@@ -4045,11 +4276,84 @@ function formatTime(
 
 
 /* =====================================================
+   AUTOMATICALLY SCAN FOR UPLOADED MP3S
+===================================================== */
+
+
+async function scanForUploadedAudio() {
+
+
+  const allCases =
+
+    [
+      ...new Set(
+
+        conLawTopics.flatMap(
+          topic =>
+            topic.cases
+        )
+
+      )
+    ];
+
+
+
+  /*
+     Check a few cases at a time.
+     Each completed batch refreshes the page,
+     so Listen buttons appear automatically.
+  */
+
+  const batchSize =
+    12;
+
+
+
+  for (
+    let i = 0;
+    i < allCases.length;
+    i += batchSize
+  ) {
+
+
+    const batch =
+      allCases.slice(
+        i,
+        i + batchSize
+      );
+
+
+    await Promise.all(
+
+      batch.map(
+        caseName =>
+          checkAudioExists(
+            caseName
+          )
+      )
+
+    );
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
    INITIAL LOAD
 ===================================================== */
 
 
 renderLibrary();
+
+
+scanForUploadedAudio();
 
 
 </script>
