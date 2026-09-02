@@ -2937,132 +2937,151 @@ let speedIndex =
    AUDIO AVAILABILITY
 ===================================================== */
 
-const audioAvailability = {};
-const audioChecks = {};
 
-async function checkAudioExists(caseName) {
+const audioAvailability =
+  {};
 
-  const audioPath = getAudioPath(caseName);
 
-  /*
-    If we already KNOW the file exists,
-    don't check it again.
+const audioChecks =
+  {};
 
-    We deliberately do NOT permanently cache
-    a false result. This way a newly uploaded
-    MP3 can become available after deployment.
-  */
 
-  if (audioAvailability[caseName] === true) {
+
+async function checkAudioExists(
+  caseName
+) {
+
+
+  if (
+    audioAvailability[
+      caseName
+    ] === true
+  ) {
+
     return true;
+
   }
 
-  /*
-    Prevent duplicate checks happening at
-    exactly the same time.
-  */
 
-  if (audioChecks[caseName]) {
-    return audioChecks[caseName];
+  if (
+    audioChecks[
+      caseName
+    ]
+  ) {
+
+    return audioChecks[
+      caseName
+    ];
+
   }
 
-  audioChecks[caseName] = new Promise((resolve) => {
 
-    const testAudio = new Audio();
+  const audioPath =
 
-    testAudio.preload = "metadata";
+    getAudioPath(
+      caseName
+    )
 
-    const cleanup = () => {
+    +
 
-      testAudio.removeEventListener(
-        "loadedmetadata",
-        success
-      );
+    "?check="
 
-      testAudio.removeEventListener(
-        "canplay",
-        success
-      );
+    +
 
-      testAudio.removeEventListener(
-        "error",
-        failure
-      );
-
-      delete audioChecks[caseName];
-
-    };
+    Date.now();
 
 
-    const success = () => {
-
-      cleanup();
-
-      audioAvailability[caseName] = true;
-
-      resolve(true);
-
-    };
+  audioChecks[
+    caseName
+  ] =
+    (async () => {
 
 
-    const failure = () => {
-
-      cleanup();
-
-      /*
-        Do NOT save false permanently.
-
-        This allows newly uploaded files
-        to work after GitHub Pages deploys.
-      */
-
-      delete audioAvailability[caseName];
-
-      resolve(false);
-
-    };
+      try {
 
 
-    testAudio.addEventListener(
-      "loadedmetadata",
-      success,
-      { once: true }
-    );
+        const response =
+          await fetch(
+            audioPath,
+            {
+              method:
+                "GET",
+
+              cache:
+                "no-store"
+            }
+          );
 
 
-    testAudio.addEventListener(
-      "canplay",
-      success,
-      { once: true }
-    );
+        const exists =
+          response.ok;
 
 
-    testAudio.addEventListener(
-      "error",
-      failure,
-      { once: true }
-    );
+        if (
+          response.body
+        ) {
+
+          try {
+
+            await response.body.cancel();
+
+          }
+
+          catch (
+            error
+          ) {}
+
+        }
 
 
-    /*
-      Add a cache-buster so GitHub Pages/browser
-      doesn't reuse an old 404 response.
-    */
+        if (
+          exists
+        ) {
 
-    testAudio.src =
-      audioPath +
-      "?v=" +
-      Date.now();
+          audioAvailability[
+            caseName
+          ] =
+            true;
 
-
-    testAudio.load();
-
-  });
+        }
 
 
-  return audioChecks[caseName];
+        delete audioChecks[
+          caseName
+        ];
+
+
+        return exists;
+
+
+      }
+
+      catch (
+        error
+      ) {
+
+
+        delete audioChecks[
+          caseName
+        ];
+
+
+        return false;
+
+      }
+
+
+    })();
+
+
+  return audioChecks[
+    caseName
+  ];
 
 }
+
+
+
 /* =====================================================
    TOTAL CASE ENTRIES
 ===================================================== */
@@ -3530,6 +3549,12 @@ async function playCase(
 ) {
 
 
+  const audioFile =
+    getAudioPath(
+      caseName
+    );
+
+
   playerName.textContent =
     caseName;
 
@@ -3559,44 +3584,10 @@ async function playCase(
   );
 
 
- const audioFile =
-  getAudioPath(caseName);
 
-
-const hasAudio =
-  await checkAudioExists(caseName);
-
-
-if (!hasAudio) {
-
-  currentHasAudio = false;
-
-  audioPlayer.pause();
-
-  audioPlayer.removeAttribute("src");
-
-  playerControls.style.display = "none";
-
-  rewind10.style.display = "none";
-
-  forward10.style.display = "none";
-
-  mainPlay.textContent = "▶";
-
-  alert(
-    `Audio for ${caseName} could not be found.\n\nExpected file:\n${audioFile}`
-  );
-
-  player.classList.remove("visible");
-
-  return;
-
-}
-
-
-
-  currentHasAudio =
-    true;
+  /* ---------------------------------------
+     SHOW PLAYER CONTROLS
+  --------------------------------------- */
 
 
   playerControls.style.display =
@@ -3611,10 +3602,11 @@ if (!hasAudio) {
     "inline-block";
 
 
-  /*
-     All automatically detected cases receive
-     a Beginning chapter.
-  */
+
+  /* ---------------------------------------
+     CHAPTERS
+  --------------------------------------- */
+
 
   const chapters = [
 
@@ -3694,10 +3686,10 @@ if (!hasAudio) {
 
 
 
-  /*
-     TRANSCRIPT AUTOMATICALLY USES SAME
-     CASE FILENAME AS MP3.
-  */
+  /* ---------------------------------------
+     TRANSCRIPT
+  --------------------------------------- */
+
 
   transcriptButton.style.display =
     "none";
@@ -3717,6 +3709,7 @@ if (!hasAudio) {
     transcript
   ) {
 
+
     transcriptText.textContent =
       transcript;
 
@@ -3724,9 +3717,11 @@ if (!hasAudio) {
     transcriptButton.style.display =
       "inline-block";
 
+
   }
 
   else {
+
 
     transcriptText.textContent =
       "Transcript not available.";
@@ -3735,53 +3730,101 @@ if (!hasAudio) {
     transcriptButton.style.display =
       "none";
 
-  }
-
-
-
-  if (
-
-    audioPlayer.getAttribute(
-      "src"
-    )
-
-    !==
-
-    audioFile
-
-  ) {
-
-
-    audioPlayer.src =
-      audioFile;
-
-
-    audioPlayer.load();
-
-
-    progress.value =
-      0;
-
-
-    currentTime.textContent =
-      "0:00";
-
-
-    speedIndex =
-      0;
-
-
-    audioPlayer.playbackRate =
-      1;
-
-
-    speedButton.textContent =
-      "1×";
 
   }
+
+
+
+  /* ---------------------------------------
+     LOAD MP3 DIRECTLY
+
+     The player now tries the actual MP3
+     instead of letting the availability
+     scan block playback.
+  --------------------------------------- */
+
+
+  currentHasAudio =
+    true;
+
+
+  audioPlayer.pause();
+
+
+  audioPlayer.src =
+    audioFile;
+
+
+  audioPlayer.load();
+
+
+  progress.value =
+    0;
+
+
+  currentTime.textContent =
+    "0:00";
+
+
+  duration.textContent =
+    "0:00";
+
+
+  speedIndex =
+    0;
+
+
+  audioPlayer.playbackRate =
+    1;
+
+
+  speedButton.textContent =
+    "1×";
+
+
+
+  /* ---------------------------------------
+     IF THE MP3 ACTUALLY FAILS
+  --------------------------------------- */
+
+
+  const audioErrorHandler =
+    () => {
+
+
+      currentHasAudio =
+        false;
+
+
+      mainPlay.textContent =
+        "▶";
+
+
+      alert(
+        "HearSay could not load this audio file.\n\n" +
+        "Expected file:\n" +
+        audioFile
+      );
+
+
+    };
+
+
+  audioPlayer.addEventListener(
+    "error",
+    audioErrorHandler,
+    { once: true }
+  );
+
+
+
+  /* ---------------------------------------
+     TRY PLAYING
+  --------------------------------------- */
 
 
   try {
+
 
     await audioPlayer.play();
 
@@ -3789,14 +3832,28 @@ if (!hasAudio) {
     mainPlay.textContent =
       "❚❚";
 
+
+    audioAvailability[
+      caseName
+    ] =
+      true;
+
+
+    renderLibrary(
+      caseSearch.value
+    );
+
+
   }
 
   catch (
     error
   ) {
 
+
     mainPlay.textContent =
       "▶";
+
 
   }
 
