@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HearSay | Case Audio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #111827;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 24px;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .back-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .case-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
+    .player {
+      margin-top: 30px;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    button,
+    select {
+      border: 1px solid #2563eb;
+      background: white;
+      color: #2563eb;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #eff6ff;
+    }
+
+    .transcript-section {
+      margin-top: 30px;
+    }
+
+    .transcript {
+      display: none;
+      margin-top: 16px;
+      padding: 20px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      line-height: 1.7;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .status {
+      margin-top: 20px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      hear<span>say</span>
+    </a>
+
+    <a href="index.html" class="back-link">
+      ← Back to Library
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <div class="case-card">
+
+    <h1 id="caseTitle">Loading case...</h1>
+
+    <div class="player">
+
+      <audio id="audioPlayer" controls></audio>
+
+      <div class="controls">
+
+        <button onclick="skip(-10)">
+          ↶ 10 sec
+        </button>
+
+        <button onclick="skip(10)">
+          10 sec ↷
+        </button>
+
+        <select id="speedControl">
+          <option value="0.75">0.75×</option>
+          <option value="1" selected>1×</option>
+          <option value="1.25">1.25×</option>
+          <option value="1.5">1.5×</option>
+          <option value="1.75">1.75×</option>
+          <option value="2">2×</option>
+        </select>
+
+        <button onclick="toggleTranscript()">
+          Transcript
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="transcript-section">
+
+      <div id="transcript" class="transcript">
+        Loading transcript...
+      </div>
+
+    </div>
+
+    <div id="status" class="status"></div>
+
+  </div>
+
+</main>
+
+<script>
+
+  const params = new URLSearchParams(window.location.search);
+
+  const slug = params.get("case");
+
+  const audio = document.getElementById("audioPlayer");
+
+  const transcript = document.getElementById("transcript");
+
+  const title = document.getElementById("caseTitle");
+
+  const status = document.getElementById("status");
+
+  function slugToTitle(slug) {
+
+    if (!slug) return "Case Audio";
+
+    return slug
+      .split("-")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
+  }
+
+  if (!slug) {
+
+    title.textContent = "Case not found";
+
+    status.textContent =
+      "No case was selected. Return to the library and choose a case.";
+
+  } else {
+
+    const displayTitle = slugToTitle(slug);
+
+    title.textContent = displayTitle;
+
+    document.title = displayTitle + " | HearSay";
+
+    audio.src = `files/${slug}.mp3`;
+
+    fetch(`files/${slug}.txt`)
+      .then(response => {
+
+        if (!response.ok) {
+          throw new Error("Transcript unavailable");
+        }
+
+        return response.text();
+
+      })
+
+      .then(text => {
+
+        transcript.textContent = text;
+
+      })
+
+      .catch(() => {
+
+        transcript.textContent =
+          "Transcript is not currently available for this case.";
+
+      });
+
+  }
+
+  function skip(seconds) {
+
+    audio.currentTime =
+      Math.max(0, audio.currentTime + seconds);
+
+  }
+
+  document
+    .getElementById("speedControl")
+    .addEventListener("change", function() {
+
+      audio.playbackRate =
+        parseFloat(this.value);
+
+    });
+
+  function toggleTranscript() {
+
+    if (
+      transcript.style.display === "block"
+    ) {
+
+      transcript.style.display = "none";
+
+    } else {
+
+      transcript.style.display = "block";
+
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
